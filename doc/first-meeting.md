@@ -38,6 +38,7 @@ I think at the first meeting we need to define the documents
 4. Establish a source submission process
 
     Follow prof's rule
-
+    
+5. Establish process schedule
 
  
