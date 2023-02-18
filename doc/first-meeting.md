@@ -26,9 +26,9 @@ I think at the first meeting we need to define the documents
 
         Users: including login, sigup, profile
 
-        Quiz: multiple choice page, calcuate marks for user
+        Quiz: multiple choice page, calcuate marks for user, create, edit, delete quiz, assign quiz item to quiz
 
-        QuizItem: create, edite, delete quizitem pages
+        QuizItem: create, edit, delete quizitem pages
 
 
 3. Establish Code Review Standards
