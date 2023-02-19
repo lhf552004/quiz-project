@@ -16,7 +16,7 @@ I think at the first meeting we need to define the documents
     
     Here is my suggestions, please brain storm
     
-    1. Use [express.js](https://expressjs.com/) framework
+    1. Use [express.js](https://expressjs.com/) framework or [next.js](https://nextjs.org/) 
 
     2. Store data in database, for example postgres,
 
