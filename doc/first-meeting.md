@@ -42,6 +42,10 @@ I think at the first meeting we need to define the documents
 5. Establish process schedule
 
 
+### 2/20/2023
+
+   Held the meeting
+
 #### Meeting record
 
 1. We set up the roles for all team members.
