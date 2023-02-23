@@ -8,6 +8,7 @@ Here is source submission process
 2. Create own branch from latest dev branch to develop
    
    You don't need to do it manually, you can create the branch for task
+   
    !["create branch"](./images/create-branch.png)
    
    Confirm it:
