@@ -3,8 +3,15 @@
   "scripts": {
     "start": "node serve.js"
   },
+  "author": "Sukrut Dani",
+  "license": "ISC",
+  "devDependencies": {
+    "mocha": "^10.2.0"
+  },
   "dependencies": {
     "express": "^4.18.2",
+    "firebase": "^9.17.1",
+    "nodemon": "^2.0.20",
     "pug": "^3.0.2"
   }
 }

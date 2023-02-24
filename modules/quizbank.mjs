@@ -3,11 +3,13 @@
 /**
  * @module Quizbank The module is exports two classes Quiz and QuizItem
  * One quiz could have many quizitems
- * TODO: store data into database
- * Currently data stores in the json file
+ * Currently data stores in the firebase database
  */
 
-import fs from 'fs';
+/**
+ * @typedef import ref from db config file
+ */
+import {quiz_db} from '../api/config.js'
 /** 
  * @class QuizItem representing a Quiz Item. 
  * @author: Yawen
@@ -22,10 +24,11 @@ class QuizItem {
      * @param {string} question The question of the QuizItem.
      * @param {string} answer   The answer of the QuizItem. 
      */
-    constructor(id, question, answer) {
+    constructor(id, question, answer, options) {
         this.id = id;
         this.question = question;
         this.answer = answer;
+        this.options = options;
     }
 
     /**
@@ -33,16 +36,43 @@ class QuizItem {
      * @param {string} answer 
      * @returns {boolean} indicator whether it is correct answer
      */
-    correct(answer) {
-        return this.answer === answer
+    correct(id, answer) {
+        // Fetch the correct answer from the Firebase Firestore
+      quiz_db.doc(id).get()
+      .then(function(doc) {
+        if (doc.exists) {
+          var quizItem = doc.data();
+          if (quizItem.answer === answer) {
+              console.log("Correct Answer!!!");
+              return true;
+          }
+          else{
+              console.log("Wrong Answer!!!");
+              return false;
+          }
+        } else {
+          // Handle error if the document does not exist
+          console.log("No Quiz Item found with Id:" + id);
+        }
+      })
+      .catch(function(error) {
+        // Handle any errors
+        console.error("Error fetching correct answer: ", error);
+      });
     }
 
     /**
      * Store the quiz item into database
      * @param {*} bankSpec file name for json file to save
      */
-    store(bankSpec) {
-        // TODO
+    storeQuizItem() {
+       // Store the quiz item in the Firebase Firestore
+      console.log(this.id + "|" + this.question + "|" + this.answer);
+      quiz_db.doc(this.id).set({
+        question: this.question,
+        answer: this.answer,
+        options: this.options
+      });
     }
 
     /**
@@ -61,9 +91,10 @@ class QuizItem {
      * @param {*} bankSpec file name for json file to save
      * @param {string} id 
      */
-    static delete(bankSpec, id) {
-        // TODO
-
+    delete(id) {
+       // delete the quiz item in the Firebase Firestore
+       quiz_db.doc(id).delete();
+       console.log("Deleted" + id);
     }
 }
 
@@ -157,4 +188,7 @@ class Quiz {
     }
 }
 
+var quizItem = new QuizItem("4", "Select the correct name of university?", "1",["Memoriel","Memorial","MUM","Mamoriel"]);
+quizItem.storeQuizItem();
+quizItem.delete("3");
 export { Quiz, QuizItem };
