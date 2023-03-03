@@ -67,24 +67,52 @@ class QuizItem {
      */
     storeQuizItem() {
        // Store the quiz item in the Firebase Firestore
-      console.log(this.id + "|" + this.question + "|" + this.answer);
       quiz_db.doc(this.id).set({
         question: this.question,
         answer: this.answer,
         options: this.options
       });
+      console.log(this.id + "|" + this.question + "|" + this.answer);
     }
 
     /**
      * Static method to fetch quiz item by quiz item id
-     * @param {string} bankSpec file name for json file to save
-     * @param {string} id The id of quiz item
+    // * @param {string} id The id of quiz item
      * @returns QuizItem instance
-     */
-    static fetch(bankSpec, id) {
+    */
+    async getQuizItemById(id) {
+        try {
+          const docRef = quiz_db.doc(id);
+          const doc = await docRef.get();
+          if (doc.exists) {
+            // If the document exists, return it as a quizItem object
+            const quizItem = doc.data();
+            quizItem.id = doc.id;
+            console.log(quizItem.id + "|" + quizItem.question + "|" + quizItem.answer + "|" + quizItem.options)
+            return quizItem;
+          } else {
+            console.log(`No quizItem found with id ${id}`);
+            return null;
+          }
+        } catch (error) {
+          console.error("Error fetching quiz item: ", error);
+          return null;
+        }
+      }
+      
 
-        // TODO
-    }
+   
+      
+    // async fetchAllQuizItems() {
+    //     const quizItems = this.fetchAllIds();
+    //     for (let i = 0; i < quizItems.length; i++) {
+    //         //const quizItem = this.getQuizItemById(quizItems[i]);
+    //         console.log(quizItems[i]);
+    //       }
+    //     //console.log(quizItems);
+    //     //return quizItems;
+    // }     
+
 
     /**
      * Static method to delete quiz item by id in the database
@@ -130,6 +158,41 @@ class Quiz {
             }
         };
     }
+
+     /**
+     * Async method to fetch all quiz item id's
+     * @returns QuizItem ID's array
+     */
+    async fetchAllIds() {
+        quiz_db.get().then((data) => {
+            let IDarray = [];
+            data.docs.forEach((doc) => {
+              IDarray.push(+doc.id);
+            });
+        console.log(IDarray);
+        return IDarray;
+        });
+      }
+
+    async fetchAllQuizItems() {
+        try {
+          const quizIds = fetchAllIds();
+          const quizItems = [];
+      
+          for (const id of quizIds) {
+            const quizItem = await getQuizItemById(id);
+            quizItems.push(quizItem);
+          }
+          quizItems.forEach(item => {
+            console.log(item.id);
+            console.log(item.question);
+            console.log(item.answer);
+          });
+          return quizItems;
+        } catch (error) {
+          console.error("Error fetching quiz items: ", error);
+        }
+      }
 
     /**
      * Add a quiz item into the quiz
@@ -188,7 +251,15 @@ class Quiz {
     }
 }
 
-var quizItem = new QuizItem("4", "Select the correct name of university?", "1",["Memoriel","Memorial","MUM","Mamoriel"]);
-quizItem.storeQuizItem();
-quizItem.delete("3");
+//var quizItem = new QuizItem("3", "what is 10+6", "2",["12","14","16","20"]);
+//quizItem.storeQuizItem();
+// quizItem.delete("3");
+//quizItem.fetchAllQuizItems();
+//quizItem.fetchAllIds();
+//quizItem.getQuizItemById("4");
+//quizItem.fetchAllQuizItems();
+
+const quiz = new Quiz();
+quiz.fetchAllQuizItems();
+
 export { Quiz, QuizItem };
