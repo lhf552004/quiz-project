@@ -15,7 +15,7 @@ const quizRouter = express.Router();
 @returns {void}
 */
 quizRouter.get('/', (req, res) => {
-    res.render("quiz", {data: '', layout: 'layout'});
+    res.render("quizlist", {data: '', layout: 'layout'});
 });
 
 /**
@@ -28,7 +28,15 @@ quizRouter.get('/', (req, res) => {
 @returns {void}
 */
 quizRouter.get('/:id', (req, res) => {
-    res.send(`Details of user with id ${req.params.id}`);
+    res.render('quiz', {
+        id: 1,
+        quizitems: [{
+            id: 4,
+            question: 'What\s the.,sdasdas',
+            answer: 'A',
+            options: [{A:'Option 1'}, {B: 'Option 2'}, {C: 'Option 3'}, {D: 'Option 4'}]
+        }]
+    });
 });
 
 export { quizRouter };

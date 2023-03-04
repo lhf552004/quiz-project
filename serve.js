@@ -55,8 +55,17 @@ app.use(express.static('public'));
  * @type {Object}
  * @property {Function} get - Handle GET requests to the home page.
  */
-// app.use('/', homeRouter);   // TODO at the next assignemnt
-app.use('/', quizRouter);   // This is temporary solution
+app.use('/', homeRouter);
+
+/**
+
+Mounts the quiz router to the specified route
+@function
+@name app.use
+@param {string} route - The route to mount the router to
+@param {Object} quizRouter - The quiz router to mount
+*/
+app.use('/quiz', quizRouter); 
 
 /**
 
