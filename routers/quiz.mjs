@@ -16,7 +16,7 @@ const quizRouter = express.Router();
 */
 quizRouter.get('/', (req, res) => {
     // const allQuizIds = Quiz.fetchAllIds();  // Cause error
-    res.render("quizlist", {data: [1, 2, 3, 4, 5], layout: 'layout'});
+    res.render("quizlist", {list: [1, 2, 3, 4, 5]});
 });
 
 /**
