@@ -49,6 +49,8 @@ app.set('views', './views');
  */
 app.use(express.static('public'));
 
+// Use middleware to parse incoming request bodies
+app.use(express.json()); // for parsing application/json
 
 /**
  * The router for the home page.
