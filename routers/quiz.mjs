@@ -28,7 +28,31 @@ quizRouter.get('/', (req, res) => {
 @returns {void}
 */
 quizRouter.get('/:id', (req, res) => {
-    res.send(`Details of user with id ${req.params.id}`);
+    // res.send(`Details of user with id ${req.params.id}`);
+
+    res.render("quiz", {data: {
+        id: 1,
+        quizitems: [{
+            question: 'This is a test question',
+            answer: 'A',
+            options: {
+                'A' : 'First option',
+                'B' : 'Second option',
+                'C' : 'Third option',
+                'D' : 'Fourth Option'
+            }
+        },
+        {
+            question: 'This is a test question 2',
+            answer: 'B',
+            options: {
+                'A' : '2 First option',
+                'B' : '2 Second option',
+                'C' : '2 Third option',
+                'D' : '2 Fourth Option'
+            }
+        }]
+    }})
 });
 
 export { quizRouter };

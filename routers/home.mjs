@@ -15,7 +15,19 @@ const homeRouter = express.Router();
 @returns {void}
 */
 homeRouter.get('/', (req, res) => {
-    res.render("home", {data: '', layout: 'layout'});  // Currently not used
+    res.render("home", {data: {
+        id: 1,
+        quizitems: [{
+            question: 'This is a test question',
+            answer: 'A',
+            options: {
+                'A' : 'First option',
+                'B' : 'Second option',
+                'C' : 'Third option',
+                'D' : 'Fourth Option'
+            }
+        }]
+    }, layout: 'layout'});  // Currently not used
 });
 
 export {homeRouter};
