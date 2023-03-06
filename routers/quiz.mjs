@@ -31,15 +31,29 @@ quizRouter.get('/', (req, res) => {
 quizRouter.get('/:id', (req, res) => {
     const id = req.params.id;
     const quiz = Quiz.fetch('', id); // Not work
-    res.render('quiz', {
+    res.render("quiz", {data: {
         id: 1,
         quizitems: [{
-            id: 4,
-            question: 'What\s the.,sdasdas',
+            question: 'This is a test question',
             answer: 'A',
-            options: [{A:'Option 1'}, {B: 'Option 2'}, {C: 'Option 3'}, {D: 'Option 4'}]
+            options: {
+                'A' : 'First option',
+                'B' : 'Second option',
+                'C' : 'Third option',
+                'D' : 'Fourth Option'
+            }
+        },
+        {
+            question: 'This is a test question 2',
+            answer: 'B',
+            options: {
+                'A' : '2 First option',
+                'B' : '2 Second option',
+                'C' : '2 Third option',
+                'D' : '2 Fourth Option'
+            }
         }]
-    });
+    }})
 });
 
 /**
