@@ -49,14 +49,25 @@ app.set('views', './views');
  */
 app.use(express.static('public'));
 
+// Use middleware to parse incoming request bodies
+app.use(express.json()); // for parsing application/json
 
 /**
  * The router for the home page.
  * @type {Object}
  * @property {Function} get - Handle GET requests to the home page.
  */
-// app.use('/', homeRouter);   // TODO at the next assignemnt
-app.use('/quiz', quizRouter);   // This is temporary solution
+app.use('/', homeRouter);
+
+/**
+
+Mounts the quiz router to the specified route
+@function
+@name app.use
+@param {string} route - The route to mount the router to
+@param {Object} quizRouter - The quiz router to mount
+*/
+app.use('/quiz', quizRouter); 
 
 /**
 

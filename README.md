@@ -11,6 +11,15 @@
 3. Quiz test system, with user management and quiz management
 4. At assignment 2 sprint, the quiz system could offer new student signup, login, (@All, do we have quiz page at sprint 2? )
 
+## Instructions
+
+Home: http://localhost:3000/
+
+Quizs: http://localhost:3000/quiz
+
+Quiz: http://localhost:3000/quiz/1
+
+
 ## Repository Structure
 
     api/
@@ -64,7 +73,7 @@
 
 [First Meeting](/doc/first-meeting.md)
 
-[Second Meeting]() not finished
+[Second Meeting]() Notes not finished
 
 ## teammember-tasks status
 
