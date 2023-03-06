@@ -9,6 +9,7 @@
 1. This project adopts the express.js framework and view engine pug.
 2. The persistence is implemented through the database, maybe firebase.
 3. Quiz test system, with user management and quiz management
+4. At assignment 2 sprint, the quiz system could offer new student signup, login, (@All, do we have quiz page at sprint 2? )
 
 ## Repository Structure
 
@@ -40,6 +41,30 @@
 
   README file is the introduction for the project
 
+## Structure Design
+
+[Structure Design](/doc/structuredesign.md)
+
+## Code Style
+[Nodejs Code style](https://github.com/felixge/node-style-guide)s
+
+## Source submission process
+
+[Source submission process](/doc/sourcesubmission.md)
+
+## Team Schedule process
+
+[Process schedule](/doc/processSchedule.md)
+
+## Scrum meetings
+
+[First Meeting](/doc/first-meeting.md)
+
+[Second Meeting]() not finished
+
+## teammember-tasks status
+
+[Teammember tasks status](/doc/teammember-tasks-status.md)
 
 ## Attributions
 
@@ -50,3 +75,4 @@ Each line/entry of your attributions section should consist of three parts: (1) 
    2. The nature of the contribution, it helps to use express to build a server using view engine
    3. N/A
 
+### If you guys cite some tech or code, please write here
