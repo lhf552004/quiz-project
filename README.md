@@ -46,7 +46,11 @@
 [Structure Design](/doc/structuredesign.md)
 
 ## Code Style
-[Nodejs Code style](https://github.com/felixge/node-style-guide)s
+[Nodejs Code style](https://github.com/felixge/node-style-guide)
+
+## Code Review Standard
+
+[Code Review standard](https://google.github.io/eng-practices/review/reviewer/standard.html)
 
 ## Source submission process
 
