@@ -15,7 +15,7 @@ const homeRouter = express.Router();
 @returns {void}
 */
 homeRouter.get('/', (req, res) => {
-    res.render("home", {data: '', layout: 'layout'});  // Currently not used
+    res.render("home", {data: {}, layout: 'layout'});  // Currently not used
 });
 
 export {homeRouter};

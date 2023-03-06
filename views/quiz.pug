@@ -1,4 +1,23 @@
-extends layout
+extends layout.pug
+
+block scripts 
+    script(src='/js/quiz.js')
 
 block content
-    h2 This is quiz ui
+    .container.quiz-container(data-right-answer=0) 
+        h1.text-center Quiz #{data.id}
+        .row 
+            .col-md-6 
+                each quizItems, n in data.quizitems
+                    .quiz-item(class= n == 0 ? 'active' : '')
+                        h4 Question #{n + 1}:
+                        p.quiz-item-question(data-answer=quizItems.answer) #{quizItems.question}
+                        each answer, index in quizItems.options 
+                            div.quiz-answer(data-answer-id=index) #{answer}
+                .button-container 
+                    button.btn.btn-primary.next-button(disabled=true) Next
+
+        .finish-quiz
+                h3 Thank you for completing Quiz #{data.id}
+                h4 You got #[span.right-answer ]/ #{data.quizitems.length} right
+                                

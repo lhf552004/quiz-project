@@ -56,7 +56,7 @@ app.use(express.static('public'));
  * @property {Function} get - Handle GET requests to the home page.
  */
 // app.use('/', homeRouter);   // TODO at the next assignemnt
-app.use('/', quizRouter);   // This is temporary solution
+app.use('/quiz', quizRouter);   // This is temporary solution
 
 /**
 
