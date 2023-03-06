@@ -3,7 +3,7 @@
   "scripts": {
     "start": "node serve.js"
   },
-  "author": "Sukrut Dani, Yawen Li, Vo, Trang, avynnyk, nvthakare",
+  "author": "Sukrut Dani, Yawen Li, Trang Vo, avynnyk, nvthakare",
   "license": "ISC",
   "devDependencies": {
     "mocha": "^10.2.0"
