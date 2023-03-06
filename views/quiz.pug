@@ -8,13 +8,16 @@ block content
         h1.text-center Quiz #{data.id}
         .row 
             .col-md-6 
+                // Loop through all quiz items
                 each quizItems, n in data.quizitems
-                    .quiz-item(class= n == 0 ? 'active' : '')
+                    // Initially show the first quiz item
+                    .quiz-item(class= n == 0 ? 'active' : '') 
                         h4 Question #{n + 1}:
                         p.quiz-item-question(data-answer=quizItems.answer) #{quizItems.question}
                         each answer, index in quizItems.options 
                             div.quiz-answer(data-answer-id=index) #{answer}
-                .button-container 
+                .button-container
+                    // Next button is disabled until an answer is chosen 
                     button.btn.btn-primary.next-button(disabled=true) Next
 
         .finish-quiz
