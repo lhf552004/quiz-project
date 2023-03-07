@@ -1,4 +1,6 @@
 import express from 'express';
+import { User } from '../modules/user.mjs';
+
 /**
 
 @module userRouter The module is to handle user router
@@ -19,6 +21,47 @@ userRouter.get('/', (req, res) => {
 });
 
 /**
+ * Render the login page.
+ *
+ * @name GET /user/login
+ * @function
+ * @memberof module:user
+ * @param {Object} req - The Express request object.
+ * @param {Object} res - The Express response object.
+ * @returns {undefined}
+ */
+userRouter.get('/user/login', (req, res) => {
+    res.render('login');
+});
+
+/**
+ * Process a login form submission.
+ *
+ * @name POST /user/login
+ * @function
+ * @memberof module:user
+ * @param {Object} req - The Express request object.
+ * @param {Object} req.body - The request body, containing the email and password.
+ * @param {string} req.body.email - The user's email address.
+ * @param {string} req.body.password - The user's password.
+ * @param {Object} res - The Express response object.
+ * @returns {undefined}
+ */
+userRouter.post('/user/login', (req, res) => {
+    let {email, password} = req.body;
+    console.log(email); // Currently req.body is empty. I don't know why
+    // Use mock data
+    email = 'tom.cruise@gmail.com';
+    password = 'tom_123'
+    const user = User.fetch('user', email, password);
+    if (user !== undefined) {
+      res.render('profile', {email});
+    }else {
+      res.send('User not found or password not correct.');
+    }
+});
+
+/**
 
 @function getUserDetails
 @description This function is used to retrieve details of a user by id
@@ -27,25 +70,46 @@ userRouter.get('/', (req, res) => {
 @returns {void}
 */
 userRouter.get('/:id', (req, res) => {
-    res.send(`Details of user with id ${req.params.id}`); // This is demo
+    res.render('user', {data: {}}); // This is demo
 });
 
 /**
+ * Render the create account page.
+ *
+ * @name GET /user/create
+ * @function
+ * @memberof module:user
+ * @param {Object} req - The Express request object.
+ * @param {Object} res - The Express response object.
+ * @returns {undefined}
+ */
+userRouter.get('/user/create', (req, res) => {
+    res.render('createAccount'); 
+});
 
-@function createUser
-@description This function is used to create a new user
-@param {object} req - The request object
-@param {object} res - The response object
-@returns {void}
-*/
-userRouter.post('/', (req, res) => {
-    const newUser = {
-        id: 1,
-        firstName: 'Tom',
-        lastName: 'Cruise',
-        email: 'tom.cruise@gmail.com'
-    }
-    res.send('user', newUser)
+/**
+ * Process a create account form submission.
+ *
+ * @name POST /user/create
+ * @function
+ * @memberof module:user
+ * @param {Object} req - The Express request object.
+ * @param {Object} req.body - The request body, containing the email and password.
+ * @param {string} req.body.email - The user's email address.
+ * @param {string} req.body.password - The user's password.
+ * @param {Object} res - The Express response object.
+ * @returns {undefined}
+ */
+userRouter.post('/user/create', (req, res) => {
+    let {email, password} = req.body;
+    console.log(email); // Currently req.body is empty. I don't know why
+    // Use mock data
+    email = 'tom.cruise@gmail.com';
+    password = 'tom_123'
+    const user = new User(email, password);
+    user.store('user');
+    // Redirect to profile
+    res.render('profile', {email});
 });
 
 /**
@@ -63,7 +127,7 @@ userRouter.put('/:id', (req, res) => {
         lastName: 'Cruise',
         email: 'tom.cruise@gmail.com'
     }
-    res.send('user', update); // This is demo
+    res.render('profile', update); // This is demo
 });
 
 /**
