@@ -91,3 +91,65 @@ footer {
   text-align: center;
 }
 
+input[type="text"], input[type="email"], input[type="password"] {
+  display: block;
+  width: 178% ;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-color: #A4A4A4;
+  border-radius: 30px;
+  margin-bottom: 30px;
+  font-size: 14px;
+  font-family: Open ui-sans-serif;
+  color: #4A4A4A;        
+}
+input[type="submit"] {
+  background-color: #7BB0FF;
+  color: #404040;
+  border: none;
+  border-radius: 30px;
+  padding: 10px 20px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: Open ui-sans-serif;
+  font-weight: bold;
+}     
+form {
+  border: 2px solid #fff;
+  padding: 20px;
+  border-radius: 8px;
+  padding-right: 35px;
+  background-color: #fff;
+   /* margin-top: 10px; */
+}
+.containerCreateAccount h3 {
+  margin-top: 1px;
+  text-align: center;
+  padding-top: 10px;
+  color: var(--main-grey);
+  margin-bottom: 24px;
+}
+.containerCreateAccount {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 66vh;
+}
+.buttonLink {
+  margin-left: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.formInner{
+  margin-left: 12px; 
+  margin-right: 170px;
+}
+
+.linkSignUp{
+  margin-left: 12px; 
+  font-size: 14px; 
+}
+
