@@ -1,77 +1,16 @@
-doctype html
-html(lang="en")
-  head
-    meta(charset="UTF-8")
-    title Create Account
-    style.
-      body {
-        background-color: #646464;        
-      }      
-      input[type="text"], input[type="email"], input[type="password"] {
-        display: block;
-        width: 178% ;
-        padding: 10px;
-        border: 1px solid #ccc;
-        border-color: #A4A4A4;
-        border-radius: 30px;
-        margin-bottom: 30px;
-        font-size: 14px;
-        font-family: Open ui-sans-serif;
-        color: #4A4A4A;        
-      }
-      input[type="submit"] {
-        background-color: #7BB0FF;
-        color: #404040;
-        border: none;
-        border-radius: 30px;
-        padding: 10px 20px;
-        font-size: 14px;
-        cursor: pointer;
-        font-family: Open ui-sans-serif;
-        font-weight: bold;
-      }     
-      form {
-        border: 2px solid #fff;
-        padding: 20px;
-        border-radius: 8px;
-        padding-right: 35px;
-        background-color: #fff;
-        //- margin-top: 10px;
-      }
-      h3 {
-        margin-top: 1px;
-        text-align: center;
-        padding-top: 10px;
-      }
-      .container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        height: 66vh;
-      }
-      .buttonLink {
-        margin-left: 12px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
+extends layout.pug
 
-  body(style="background-color:#646464")
-    div
-      img(src="C:/Users/NEHA/OneDrive/Desktop/Winter2023Courses/SoftwareEnginerring/Assignment/SE_Assignment_2/QuizCreateAccount/QuizzyLogo.png" alt="Your Image" height= "120px" width="165px" style ="margin-left: 42px; margin-top: 42px")
-    .container
+block content
+
+    .containerCreateAccount
       form(method="post" action="/create-account")
-        h3   Create Your Account
-        <br>
-        <div style = "margin-left: 12px; margin-right: 170px;">
-          //- input(type="text" id="username" name="username"  placeholder="Your Name" required)
-          
-          input(type="email" id="email" name="email" placeholder="Email" required)
-          
+        h3 Create Your Account
+        .formInner 
+        
+          input(type="email" id="email" name="email" placeholder="Email" required)          
           input(type="password" id="password" name="password" placeholder="Password" required)
-        </div>
-        <div class ="buttonLink">
+        
+        .buttonLink
+        
             input(type="submit" value="SIGN UP")
-            a(href="#" style="margin-left: 12px; font-size: 14px; font-family: Open ui-sans-serif;") Already have an account? Login!
-        </div>
+            a(class= "linkSignUp" href="#") Already have an account? Login!
