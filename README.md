@@ -22,9 +22,9 @@ Quizs: http://localhost:3000/quiz
 
 Quiz: http://localhost:3000/quiz/1
 
-Signup: http://localhost:3000/users/user/create
+Signup: http://localhost:3000/users/create
 
-Login: http://localhost:3000/users/user/login
+Login: http://localhost:3000/users/login
 
 
 ## Repository Structure
