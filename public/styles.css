@@ -153,3 +153,20 @@ form {
   font-size: 14px; 
 }
 
+.containerLP {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 66vh;
+}
+.formLP{
+    margin-left: 12px; 
+    margin-right: 170px;
+}
+.linkLP{
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+}
