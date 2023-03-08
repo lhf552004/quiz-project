@@ -76,8 +76,8 @@ class QuizItem {
     }
 
     /**
-     * Static method to fetch quiz item by quiz item id
-    // * @param {string} id The id of quiz item
+     * Method to fetch quiz item by quiz item id
+     * @param {string} id The id of quiz item
      * @returns QuizItem instance
     */
     async getQuizItemById(id) {
@@ -98,25 +98,10 @@ class QuizItem {
           console.error("Error fetching quiz item: ", error);
           return null;
         }
-      }
-      
-
-   
-      
-    // async fetchAllQuizItems() {
-    //     const quizItems = this.fetchAllIds();
-    //     for (let i = 0; i < quizItems.length; i++) {
-    //         //const quizItem = this.getQuizItemById(quizItems[i]);
-    //         console.log(quizItems[i]);
-    //       }
-    //     //console.log(quizItems);
-    //     //return quizItems;
-    // }     
-
+      }    
 
     /**
-     * Static method to delete quiz item by id in the database
-     * @param {*} bankSpec file name for json file to save
+     * Method to delete quiz item by id in the database
      * @param {string} id 
      */
     delete(id) {
@@ -164,7 +149,7 @@ class Quiz {
      * @returns QuizItem ID's array
      */
     async fetchAllIds() {
-        quiz_db.get().then((data) => {
+        return quiz_db.get().then((data) => {
             let IDarray = [];
             data.docs.forEach((doc) => {
               IDarray.push(+doc.id);
@@ -176,13 +161,16 @@ class Quiz {
 
     async fetchAllQuizItems() {
         try {
-          const quizIds = fetchAllIds();
-          const quizItems = [];
-      
-          for (const id of quizIds) {
-            const quizItem = await getQuizItemById(id);
-            quizItems.push(quizItem);
+          let quizIds = [];
+          quizIds = await this.fetchAllIds();
+          console.log(quizIds);
+          let quizItems = [];
+          var quizitem_instance = new QuizItem();
+          for (let i =0; i < quizIds.length; i++) {
+              const quizItem = await quizitem_instance.getQuizItemById(quizIds[i]);
+              quizItems.push(quizItem);
           }
+          console.log(quizItems);
           quizItems.forEach(item => {
             console.log(item.id);
             console.log(item.question);
@@ -190,7 +178,7 @@ class Quiz {
           });
           return quizItems;
         } catch (error) {
-          console.error("Error fetching quiz items: ", error);
+          console.error("Error fetching quiz items:", error);
         }
       }
 
@@ -207,59 +195,24 @@ class Quiz {
     }
 
     /**
-     * Remove the quiz item from the quiz
-     * @param {*} quizItem it could be object of QuizItem, or id of the object
-     */
-    remove(quizItem) {
-        const theType = typeof quizItem;
-        let index = -1;
-        if (theType === "object") {
-            index = this.quizitems.findIndex(q => q.id === quizItem.id);
-        } else {
-            index = this.quizitems.findIndex(q => q.id === quizItem); // Parameter quizItem is id actually
-        }
-        if (index > -1) {
-            this.quizitems.splice(index, 1);
-        }
-    }
-
-    /**
-     * Store the quiz into database
-     * @param {*} bankSpec file name for json file to save
-     */
-    store(bankSpec) {
-        // TODO
-    }
-
-    /**
      * Static method to retrieve quiz from database by id
      * @param {*} bankSpec file name for json file to save
      * @param {*} id Id of the quiz
      * @returns 
      */
-    static fetch(bankSpec, id) {
-        // TODO
-    }
-
-    /**
-     * Static method to delete the quiz by id in the database
-     * @param {*} bankSpec file name for json file to save
-     * @param {*} id Id of the quiz
-     */
-    static delete(bankSpec, id) {
-        // TODO
-    }
 }
 
-//var quizItem = new QuizItem("3", "what is 10+6", "2",["12","14","16","20"]);
+var quizItem = new QuizItem("3", "what is 10+6", "2",["12","14","16","20"]);
 //quizItem.storeQuizItem();
 // quizItem.delete("3");
 //quizItem.fetchAllQuizItems();
 //quizItem.fetchAllIds();
-//quizItem.getQuizItemById("4");
+quizItem.getQuizItemById("4");
 //quizItem.fetchAllQuizItems();
 
 const quiz = new Quiz();
+quiz.fetchAllIds();
 quiz.fetchAllQuizItems();
+
 
 export { Quiz, QuizItem };
