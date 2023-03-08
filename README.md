@@ -9,15 +9,22 @@
 1. This project adopts the express.js framework and view engine pug.
 2. The persistence is implemented through the database, maybe firebase.
 3. Quiz test system, with user management and quiz management
-4. At assignment 2 sprint, the quiz system could offer new student signup, login, (@All, do we have quiz page at sprint 2? )
+4. At assignment 2 sprint, the quiz system could offer new student signup, login, quiz page with mock data
 
 ## Instructions
+Start: 
+
+    node .\serve.js 
 
 Home: http://localhost:3000/
 
 Quizs: http://localhost:3000/quiz
 
 Quiz: http://localhost:3000/quiz/1
+
+Signup: http://localhost:3000/users/user/create
+
+Login: http://localhost:3000/users/user/login
 
 
 ## Repository Structure

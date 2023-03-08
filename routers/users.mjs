@@ -30,7 +30,7 @@ userRouter.get('/', (req, res) => {
  * @param {Object} res - The Express response object.
  * @returns {undefined}
  */
-userRouter.get('/user/login', (req, res) => {
+userRouter.get('/login', (req, res) => {
     res.render('login');
 });
 
@@ -47,12 +47,8 @@ userRouter.get('/user/login', (req, res) => {
  * @param {Object} res - The Express response object.
  * @returns {undefined}
  */
-userRouter.post('/user/login', (req, res) => {
+userRouter.post('/login', (req, res) => {
     let {email, password} = req.body;
-    console.log(email); // Currently req.body is empty. I don't know why
-    // Use mock data
-    email = 'tom.cruise@gmail.com';
-    password = 'tom_123'
     const user = User.fetch('user', email, password);
     if (user !== undefined) {
       res.render('profile', {email});
@@ -61,17 +57,6 @@ userRouter.post('/user/login', (req, res) => {
     }
 });
 
-/**
-
-@function getUserDetails
-@description This function is used to retrieve details of a user by id
-@param {object} req - The request object
-@param {object} res - The response object
-@returns {void}
-*/
-userRouter.get('/:id', (req, res) => {
-    res.render('user', {data: {}}); // This is demo
-});
 
 /**
  * Render the create account page.
@@ -83,7 +68,7 @@ userRouter.get('/:id', (req, res) => {
  * @param {Object} res - The Express response object.
  * @returns {undefined}
  */
-userRouter.get('/user/create', (req, res) => {
+userRouter.get('/create', (req, res) => {
     res.render('createAccount'); 
 });
 
@@ -100,13 +85,10 @@ userRouter.get('/user/create', (req, res) => {
  * @param {Object} res - The Express response object.
  * @returns {undefined}
  */
-userRouter.post('/user/create', (req, res) => {
+userRouter.post('/create', (req, res) => {
     let {email, password} = req.body;
-    console.log(email); // Currently req.body is empty. I don't know why
-    // Use mock data
-    email = 'tom.cruise@gmail.com';
-    password = 'tom_123'
-    const user = new User(email, password);
+    
+    const user = new User('', email, password);
     user.store('user');
     // Redirect to profile
     res.render('profile', {email});
@@ -121,13 +103,11 @@ userRouter.post('/user/create', (req, res) => {
 @returns {void}
 */
 userRouter.put('/:id', (req, res) => {
-    const update = {
-        id: req.params.id,
-        firstName: 'Tom second',
-        lastName: 'Cruise',
-        email: 'tom.cruise@gmail.com'
-    }
-    res.render('profile', update); // This is demo
+    const id = req.params.id;
+    let {email, password} = req.body;
+    const user = new User(id, email, password);
+    user.store('user');
+    res.render('profile', {email}); // This is demo
 });
 
 /**
@@ -139,8 +119,14 @@ userRouter.put('/:id', (req, res) => {
 @returns {void}
 */
 userRouter.delete('/:id', (req, res) => {
+    const id = req.params.id;
+    const code = User.delete('user', id);
+    if (code === 0) {
+        res.status(200).json({ message: 'user deleted successfully.' });
+    }else {
+        res.status(500).json({ message: 'user deleted failed.' });
+    }
     
-    res.status(200).json({ message: 'user deleted successfully.' });
 });
 
 
