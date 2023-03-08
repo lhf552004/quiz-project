@@ -73,7 +73,7 @@ Quiz: http://localhost:3000/quiz/1
 
 [First Meeting](/doc/first-meeting.md)
 
-[Second Meeting]() Notes not finished
+[Second Meeting](https://github.com/MUN-COMP6905/project-eteam/issues/58)
 
 ## teammember-tasks status
 
