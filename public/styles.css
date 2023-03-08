@@ -153,42 +153,20 @@ form {
   font-size: 14px; 
 }
 
-.bLP {
-  background-color: #646464 ;
+.containerLP {
   display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
-  align-items: center;
-  height: 100vh;
+  height: 66vh;
 }
-.contLP{
-  text-align: center;
-  margin: auto;
-  align-items: center;
-  top: 50%;
-  left: 50%;
-  width: 360px;
-  height: 330px;
-  border-radius: 8px;
-  background: #FFFFFF;
-  mix-blend-mode: lighten;
-}
-.buttonLP{
-  box-sizing: border-box;
-  text-align: center;
-  width: 120px;
-  height: 40px;
-  left: 590px;
-  top: 480px;
-  background: #7BB0FF;
-  border-radius: 20px;
-  margin-top: 30px;}
 .formLP{
-  text-align: center;
-  box-sizing: border-box;
-  width: 300px;
-  height: 35px;
-  background: #FFFFFF;
-  border: 1px solid #A4A4A4;
-  border-radius: 10px;
-  margin-bottom: 16px; 
+    margin-left: 12px; 
+    margin-right: 170px;
+}
+.linkLP{
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
 }

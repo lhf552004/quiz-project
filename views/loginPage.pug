@@ -1,18 +1,11 @@
-doctype html
-html(lang-"en")
-
-head
-      title Login
-      meta charset="utf-8"
-    </head>
+extends layout.pug
     
 block content  
-    .bLP
-        .contLP
-            .formLP 
-                <br>
-                input(type="text" class="formLP" id="email" placeholder="Enter E-Mail" required)
-                input( type="password" class="formLP" id="password" placeholder="Enter password" required)
-                button( type="submit" class="buttonLP" value="Sign In")
-                <br>
-                a (href="£"style="font-family: 'Open Sans';font-style: normal;font-weight: 400;font-size: 14px;") Dont have an account? Sign up      
+    .containerLP
+            form(method="post" action="/login-page")
+            .formLP  
+                input(type="text"  id="email" name="email" placeholder="Enter E-Mail" required)
+                input(type="password"  id="password" name="password" placeholder="Enter password" required)
+                .btn
+                    input( type="submit" value="Sign In")
+                    a (href="#" class ="linkLP") Dont have an account? Sign up      
