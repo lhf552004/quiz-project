@@ -37,5 +37,20 @@
 
 5. Create 2 user stories and tasks for the stories in backlog [task 40](https://github.com/MUN-COMP6905/project-eteam/issues/40) [task 41](https://github.com/MUN-COMP6905/project-eteam/issues/41) with task 44, 39, 42, 43 in backlog
 
+## Neha Thakare
+
+1. Created 3 UI designs using figma tool (Sign Up Page, Login In Page, Quiz Page).
+
+2. Worked and closed [task13] (https://github.com/MUN-COMP6905/project-eteam/issues/13).
+
+3. Created multiple issues and assigned it to associated member of team like [task32] https://github.com/MUN-COMP6905/project-eteam/issues/32 , [task31] https://github.com/MUN-COMP6905/project-eteam/issues/31 , [task30] https://github.com/MUN-COMP6905/project-eteam/issues/30
+
+4. Did code and PR reviewing for https://github.com/MUN-COMP6905/project-eteam/pull/61 and helped other team members with in creating UI.
+
+5. Worked on PR's like https://github.com/MUN-COMP6905/project-eteam/pull/67 , https://github.com/MUN-COMP6905/project-eteam/pull/57 and mergered them to Main(dev).
+
+6. Created 3 users stories [task46] https://github.com/MUN-COMP6905/project-eteam/issues/46 , [task47] https://github.com/MUN-COMP6905/project-eteam/issues/47 , [task48] https://github.com/MUN-COMP6905/project-eteam/issues/48 
+
+7. Created 4 tasks in backlogs for the userstories I have creared :[task50] https://github.com/MUN-COMP6905/project-eteam/issues/50 , [task52] https://github.com/MUN-COMP6905/project-eteam/issues/52 , [task53] https://github.com/MUN-COMP6905/project-eteam/issues/53 , [task51] https://github.com/MUN-COMP6905/project-eteam/issues/51
 
 ### You guys could write your tasks status here
