@@ -25,5 +25,17 @@
 
 10. Create one user story [New student signup on quiz system](https://github.com/MUN-COMP6905/project-eteam/issues/45)
 
+## Trang Vo
+
+1. Finish first phase of quiz page [task 31](https://github.com/MUN-COMP6905/project-eteam/issues/31) [quiz.pug] (../views/quiz.pug)
+
+2. Help with creating UI design [task13] (https://github.com/MUN-COMP6905/project-eteam/issues/13)
+
+3. Review multiple PRs and help other team members in creating the UI screens [task 30](https://github.com/MUN-COMP6905/project-eteam/pull/59) [task 31](https://github.com/MUN-COMP6905/project-eteam/issues/31)
+
+4. Create member roles documentation [memberroles] (../doc/memberroles.md)
+
+5. Create 2 user stories and tasks for the stories in backlog [task 40](https://github.com/MUN-COMP6905/project-eteam/issues/40) [task 41](https://github.com/MUN-COMP6905/project-eteam/issues/41) with task 44, 39, 42, 43 in backlog
+
 
 ### You guys could write your tasks status here
