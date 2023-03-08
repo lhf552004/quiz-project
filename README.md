@@ -73,7 +73,7 @@ Quiz: http://localhost:3000/quiz/1
 
 [First Meeting](/doc/first-meeting.md)
 
-[Second Meeting]() Notes not finished
+[Second Meeting](/doc/second-meeting.md) Notes are avaliable in file "second-meeting.md"
 
 ## teammember-tasks status
 
