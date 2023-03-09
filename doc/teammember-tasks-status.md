@@ -53,11 +53,13 @@
 
 3. Review multiple PRs and help other team members in creating the UI screens [task 30](https://github.com/MUN-COMP6905/project-eteam/pull/59) [task 31](https://github.com/MUN-COMP6905/project-eteam/issues/31)
 
-4. Create member roles documentation [memberroles] (../doc/memberroles.md)
+4. Create member roles documentation [memberroles](../doc/memberroles.md)
 
 5. Create 2 user stories and tasks for the stories in backlog [task 40](https://github.com/MUN-COMP6905/project-eteam/issues/40) [task 41](https://github.com/MUN-COMP6905/project-eteam/issues/41) with task 44, 39, 42, 43 in backlog
 
-6. Create documentation for Code View Standard [../doc/codereviewstandard.md] 
+6. Create documentation for Code View Standard  [codereviewstandard.md](../doc/codereviewstandard.md)
+
+7. Create Front-End Structure Design  [frontendstructuredesign.md](../doc/frontendstructuredesign.md)
 
 ## Neha Thakare
 
