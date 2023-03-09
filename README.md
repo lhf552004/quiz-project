@@ -95,4 +95,9 @@ Each line/entry of your attributions section should consist of three parts: (1) 
    2. The nature of the contribution, it helps to use express to build a server using view engine
    3. N/A
 
+2. Atrribution 2
+    1. [Firebase Docs](https://firebase.google.com/docs)
+    2. It helped in connecting webapp to firebase firestore.
+    3. Some parts of methods or funtions are referenced from stackoverflow & W3school.
+
 ### If you guys cite some tech or code, please write here
