@@ -93,7 +93,7 @@ footer {
 
 input[type="text"], input[type="email"], input[type="password"] {
   display: block;
-  width: 178% ;
+  width: 100% ;
   padding: 10px;
   border: 1px solid #ccc;
   border-color: #A4A4A4;
@@ -158,11 +158,30 @@ form {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 66vh;
+  text-align: center;
+  margin: auto;
+  width: 360px;
+  height: 330px;
+  vertical-align: middle;
+  background: #FFFFFF;
+  mix-blend-mode: lighten;
+  border-radius: 8px;
 }
-.formLP{
-    margin-left: 12px; 
-    margin-right: 170px;
+input[type="submitLP"] {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin: auto;
+  background-color: #7BB0FF;
+  color: #404040;
+  border: none;
+  border-radius: 30px;
+  padding: 10px 20px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: Open ui-sans-serif;
+  font-weight: bold;
 }
 .linkLP{
   font-family: 'Open Sans';
