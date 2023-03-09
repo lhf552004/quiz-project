@@ -1,14 +1,29 @@
 import fs from 'fs';
 import { v4 as uuidv4 } from 'uuid';
 
+/**
+ * @module User The module is exports one classes User
+ * The instance of User represent a user with email and password
+ * 
+ */
 class User {
     
+    /**
+     * User Constructor
+     * @param {*} id The id of the user, which would be generated automatically.
+     * @param {*} email The email address of the user
+     * @param {*} password The plain text of the user
+     */
     constructor(id, email, password) {
         this.id = id;
         this.email = email;
         this.password = password;
     }
 
+    /**
+     * Store the user into database
+     * @param {*} bankSpec 
+     */
     store(bankSpec) {
         const fileName = `${bankSpec}.json`;
         let users = [];
@@ -31,10 +46,10 @@ class User {
     }
 
     /**
-     * Static method to fetch quiz item by user email
+     * Static method to fetch user by user email
      * @param {string} bankSpec file name for json file to save
      * @param {string} email The email of user
-     * @returns QuizItem instance
+     * @returns User instance
      */
     static fetch(bankSpec, email, password) {
         const fileName = `${bankSpec}.json`;
@@ -42,11 +57,11 @@ class User {
             if (fs.existsSync(fileName)) {
                 let rawdata = fs.readFileSync(fileName);
                 let users = JSON.parse(rawdata);
-                const user = users.find(q => q.id === email && q.password == password);
+                const user = users.find(q => q.email === email && q.password == password);
                 return Object.assign(new User(), user);
             }
         } catch (err) {
-            // TODO
+            
         }
         return undefined;
     }
@@ -73,7 +88,6 @@ class User {
             return -1;
         }
         return 0;
-
     }
 }
 
