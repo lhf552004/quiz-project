@@ -1,6 +1,7 @@
 import qs from 'querystring';
 
 import express from 'express';
+import bodyParser from 'body-parser';
 import {homeRouter} from './routers/home.mjs';
 import {userRouter} from './routers/users.mjs';
 import {quizRouter} from './routers/quiz.mjs';
@@ -50,8 +51,8 @@ app.set('views', './views');
 app.use(express.static('public'));
 
 // Use middleware to parse incoming request bodies
-app.use(express.json()); // for parsing application/json
-
+app.use(bodyParser.json()); // for parsing application/json
+app.use(bodyParser.urlencoded({ extended: false }))
 /**
  * The router for the home page.
  * @type {Object}

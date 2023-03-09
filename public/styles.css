@@ -144,8 +144,8 @@ form {
 }
 
 .formInner{
-  margin-left: 12px; 
-  margin-right: 170px;
+  margin: 0px 12px; 
+  /* margin-right: 170px; */
 }
 
 .linkSignUp{
