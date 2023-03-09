@@ -100,7 +100,6 @@ input[type="text"], input[type="email"], input[type="password"] {
   border-radius: 30px;
   margin-bottom: 30px;
   font-size: 14px;
-  font-family: Open ui-sans-serif;
   color: #4A4A4A;        
 }
 input[type="submit"] {
@@ -111,7 +110,6 @@ input[type="submit"] {
   padding: 10px 20px;
   font-size: 14px;
   cursor: pointer;
-  font-family: Open ui-sans-serif;
   font-weight: bold;
 }     
 form {
@@ -120,7 +118,7 @@ form {
   border-radius: 8px;
   padding-right: 35px;
   background-color: #fff;
-   /* margin-top: 10px; */
+  width: 100%;
 }
 .containerCreateAccount h3 {
   margin-top: 1px;
@@ -135,6 +133,8 @@ form {
   align-items: center;
   justify-content: center;
   height: 66vh;
+  max-width: 430px;
+  margin: 0 auto;
 }
 .buttonLink {
   margin-left: 12px;
@@ -160,14 +160,16 @@ form {
   justify-content: center;
   text-align: center;
   margin: auto;
-  width: 360px;
-  height: 330px;
+  /* width: 360px;
+  height: 330px; */
+  max-width: 430px;
+  padding: 24px 40px;
   vertical-align: middle;
   background: #FFFFFF;
   mix-blend-mode: lighten;
   border-radius: 8px;
 }
-input[type="submitLP"] {
+/* input[type="submitLP"] {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -182,7 +184,7 @@ input[type="submitLP"] {
   cursor: pointer;
   font-family: Open ui-sans-serif;
   font-weight: bold;
-}
+} */
 .linkLP{
   font-family: 'Open Sans';
   font-style: normal;
