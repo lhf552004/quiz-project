@@ -86,6 +86,9 @@ Login: http://localhost:3000/users/login
 
 [Teammember tasks status](/doc/teammember-tasks-status.md)
 
+## Performance Review of Each Team-Member
+[Sprint Performance Review](https://docs.google.com/spreadsheets/d/1Gm-qb7FD2baLD-eDKrLjbsh3EBmGTTs08O_xN5u_UjA/edit?resourcekey#gid=104030491)
+
 ## Attributions
 
 Each line/entry of your attributions section should consist of three parts: (1) the source (such as web page URL, individual name, or bibliographic reference), (2) the nature of the contribution to your submission, and (3) any additional information (such as how the collaboration worked, or whether your collaborator is a classmate or student)
