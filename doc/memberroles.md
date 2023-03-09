@@ -10,3 +10,5 @@
 | avynnyk     | An-vyn | Project Manager |
 
 ### Everyone in the team should contribute to maintain the board and project plan not just Project Manager 
+
+## Notes: We did not know that the member roles supposed to be shuffled around in each meetings. In sprint 2, we will discuss and figure out the roles model that will work for our group.
