@@ -57,6 +57,8 @@
 
 5. Create 2 user stories and tasks for the stories in backlog [task 40](https://github.com/MUN-COMP6905/project-eteam/issues/40) [task 41](https://github.com/MUN-COMP6905/project-eteam/issues/41) with task 44, 39, 42, 43 in backlog
 
+6. Create documentation for Code View Standard [../doc/codereviewstandard.md] 
+
 ## Neha Thakare
 
 1. Created 3 UI designs using figma tool (Sign Up Page, Login In Page, Quiz Page).
