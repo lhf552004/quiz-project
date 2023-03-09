@@ -136,8 +136,6 @@ class Quiz {
                 IDarray.push(+doc.id);
             });
             console.log("Insdide fetchAllIds: " + typeof (IDarray));
-            IDarray.map(String);
-            console.log("fetchAllIds tostring: " + typeof (IDarray));
             return IDarray;
         });
     }
@@ -194,7 +192,7 @@ class Quiz {
 //quizItem.fetchAllIds();
 //quizItem.getQuizItemById("4");
 //quizItem.fetchAllQuizItems();
-
+//quizItem.correct("2", "4");
 //const quiz = new Quiz();
 //quiz.fetchAllIds();
 //quiz.fetchAllQuizItems();
