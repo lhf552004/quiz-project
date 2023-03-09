@@ -1,5 +1,5 @@
 import assert from 'assert';
-import { QuizItem, Quiz } from '../quizbank.mjs'
+import { QuizItem, Quiz } from '../modules/quizbank.mjs'
 
 
 describe('QuizItem class', () => {
