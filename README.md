@@ -82,9 +82,12 @@ Login: http://localhost:3000/users/login
 
 [Second Meeting](/doc/second-meeting.md) Notes are avaliable in file "second-meeting.md"
 
-## teammember-tasks status
+## Team members tasks status
 
 [Teammember tasks status](/doc/teammember-tasks-status.md)
+
+## Performance Review of Each Team-Member
+[Sprint Performance Review](https://docs.google.com/spreadsheets/d/1Gm-qb7FD2baLD-eDKrLjbsh3EBmGTTs08O_xN5u_UjA/edit?resourcekey#gid=104030491)
 
 ## Attributions
 
@@ -94,5 +97,10 @@ Each line/entry of your attributions section should consist of three parts: (1) 
    1. [Express home page](https://expressjs.com/)
    2. The nature of the contribution, it helps to use express to build a server using view engine
    3. N/A
+
+2. Atrribution 2
+    1. [Firebase Docs](https://firebase.google.com/docs)
+    2. It helped in connecting webapp to firebase firestore.
+    3. Some parts of methods or funtions are referenced from stackoverflow & W3school.
 
 ### If you guys cite some tech or code, please write here
