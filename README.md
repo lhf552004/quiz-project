@@ -82,7 +82,7 @@ Login: http://localhost:3000/users/login
 
 [Second Meeting](/doc/second-meeting.md) Notes are avaliable in file "second-meeting.md"
 
-## teammember-tasks status
+## Team members tasks status
 
 [Teammember tasks status](/doc/teammember-tasks-status.md)
 
