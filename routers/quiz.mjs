@@ -28,32 +28,11 @@ quizRouter.get('/', (req, res) => {
 @param {object} res - The response object
 @returns {void}
 */
-quizRouter.get('/:id', (req, res) => {
+quizRouter.get('/:id', async (req, res) => {
     const id = req.params.id;
-    const quiz = Quiz.fetch('', id); // Not work
-    res.render("quiz", {data: {
-        id: 1,
-        quizitems: [{
-            question: 'This is a test question',
-            answer: 'A',
-            options: {
-                'A' : 'First option',
-                'B' : 'Second option',
-                'C' : 'Third option',
-                'D' : 'Fourth Option'
-            }
-        },
-        {
-            question: 'This is a test question 2',
-            answer: 'B',
-            options: {
-                'A' : '2 First option',
-                'B' : '2 Second option',
-                'C' : '2 Third option',
-                'D' : '2 Fourth Option'
-            }
-        }]
-    }})
+    const quiz = new Quiz()
+    const quizItems = await quiz.fetchAllQuizItems();
+    res.render("quiz", {quizItems: quizItems});
 });
 
 /**
