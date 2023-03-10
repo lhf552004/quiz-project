@@ -11,4 +11,3 @@
 5. [Structural Diagram](https://github.com/MUN-COMP6905/project-eteam/blob/dev/doc/structure%20diagram.png)
 
 6. [QuizBank explanation](https://github.com/MUN-COMP6905/project-eteam/blob/dev/doc/Quizbank%20%26%20DB%20explanation.pdf)
-
