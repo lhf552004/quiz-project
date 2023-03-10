@@ -79,6 +79,11 @@
 
 7. Created 4 tasks in backlogs for the userstories I have creared :[task50] https://github.com/MUN-COMP6905/project-eteam/issues/50 , [task52] https://github.com/MUN-COMP6905/project-eteam/issues/52 , [task53] https://github.com/MUN-COMP6905/project-eteam/issues/53 , [task51] https://github.com/MUN-COMP6905/project-eteam/issues/51
 
+8. Created document for Performence Review. 
+
+9. Create documentation for Individual Task [neha_code_task](../doc/individual_submission/neha_code_task.md)
+
+
 ## Anton Vynnyk
 1.Record and upload Second metting with notes [Task 58](https://github.com/MUN-COMP6905/project-eteam/issues/58) *Done*
 
