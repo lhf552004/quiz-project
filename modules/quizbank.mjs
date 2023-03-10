@@ -1,7 +1,8 @@
 'use strict';
 
 /**
- * @module Quizbank The module is exports two classes Quiz and QuizItem
+ * @module Quizbank 
+ * @description The module is exports two classes Quiz and QuizItem
  * One quiz could have many quizitems
  * Currently data stores in the firebase database
  */
@@ -12,14 +13,14 @@
 import { quiz_db } from '../api/config.js'
 /** 
  * @class QuizItem representing a Quiz Item. 
- * @author: Yawen
- * It contains a question and its answer and could check the answer is correct
+ * @author: Sukrut
+ * @description It contains a question and its answer and could check the answer is correct
  * */
 class QuizItem {
 
     /**
-     * QuizItem Constructor
-     * Creates an instance of QuizItem.
+     * @constructor QuizItem Constructor
+     * @description Creates an instance of QuizItem.
      * @param {number} id       The id of the QuizItem.
      * @param {string} question The question of the QuizItem.
      * @param {string} answer   The answer of the QuizItem. 
@@ -32,7 +33,8 @@ class QuizItem {
     }
 
     /**
-     * Method to indicate the answer is correct or not
+     * @method correct
+     * @description method to indicate the answer is correct or not
      * @param {string} answer 
      * @returns {boolean} indicator whether it is correct answer
      */
@@ -62,7 +64,8 @@ class QuizItem {
     }
 
     /**
-     * Store the quiz item into database
+     * @method storeQuizItem
+     * @description Store the quiz item into database
      */
     storeQuizItem() {
         // Store the quiz item in the Firebase Firestore
@@ -75,7 +78,8 @@ class QuizItem {
     }
 
     /**
-     * Method to fetch quiz item by quiz item id
+     * @method getQuizItemById
+     * @description Method to fetch quiz item by quiz item id
      * @param {string} id The id of quiz item
      * @returns QuizItem instance
     */
@@ -100,7 +104,8 @@ class QuizItem {
     }
 
     /**
-     * Method to delete quiz item by id in the database
+     * @method delete
+     * @description Method to delete quiz item by id in the database
      * @param {string} id 
      */
     delete(id) {
@@ -112,7 +117,8 @@ class QuizItem {
 
 /**
  * @class Quiz representing a Quiz.
- * It contains the array of quiz items 
+ * @description It contains the array of quiz items 
+ * @author: Sukrut
  */
 class Quiz {
 
@@ -126,7 +132,8 @@ class Quiz {
     }
 
     /**
-     * Async method to fetch all quiz item id's
+     * @method fetchAllIds
+     * @description Async method to fetch all quiz item id's
      * @returns QuizItem ID's array
     */
     async fetchAllIds() {
@@ -141,7 +148,8 @@ class Quiz {
     }
 
     /**
-     * This method calls the fetchAllIds()method to get all the IDs from Db
+     * @function fetchAllQuizItems
+     * @description This method calls the fetchAllIds()method to get all the IDs from Db
      * and then fetches its respective entry in the database and pushes it into an array.
      * @returns array of all quizItems 
      */
