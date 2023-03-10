@@ -20,7 +20,7 @@ Home: http://localhost:3000/
 
 Quizs: http://localhost:3000/quiz
 
-Quiz: http://localhost:3000/quiz/1
+Quiz: http://localhost:3000/quiz/1 [Individual README](/doc/individual_submission/trangv_code_task.md)
 
 Signup: http://localhost:3000/users/create
 
@@ -58,7 +58,7 @@ Login: http://localhost:3000/users/login
   README file is the introduction for the project
 
 ## Structure Design
-
+[Front-End Structure Design](/doc/frontendstructuredesign.md)
 [Structure Design](/doc/structuredesign.md)
 
 ## Code Style
@@ -66,7 +66,8 @@ Login: http://localhost:3000/users/login
 
 ## Code Review Standard
 
-[Code Review standard](https://google.github.io/eng-practices/review/reviewer/standard.html)
+[Team Code Review Standard](/doc/codereviewstandard.md)
+[Code Review Standard External Resources](https://google.github.io/eng-practices/review/reviewer/standard.html)
 
 ## Source submission process
 
@@ -98,9 +99,14 @@ Each line/entry of your attributions section should consist of three parts: (1) 
    2. The nature of the contribution, it helps to use express to build a server using view engine
    3. N/A
 
-2. Atrribution 2
+2. Attribution 2
     1. [Firebase Docs](https://firebase.google.com/docs)
     2. It helped in connecting webapp to firebase firestore.
     3. Some parts of methods or funtions are referenced from stackoverflow & W3school.
+
+3. Attribution 3
+    1. [Pug Docs](https://pugjs.org/api/getting-started.html)
+    2. Templating framework to create UI of the webapp
+    3. Learned some of the syntax for PUG from stackoverflow and PUG Docs
 
 ### If you guys cite some tech or code, please write here
