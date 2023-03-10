@@ -11,5 +11,6 @@ According to the promising requirement of assignment 2 (sprint #1) the task is c
 - I have cleared and made proper changes according to the reviewer. 
 - Also asked to backend team for the routing of this page, which is done successfully.   
 
+This is the UML diagram for Create Account Page
 
 !["Create Account Page UML"](/doc/images/createAccountPageUML.png)

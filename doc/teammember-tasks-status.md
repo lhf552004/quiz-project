@@ -47,41 +47,41 @@
 
 ## Trang Vo
 
-1. Finish first phase of quiz page [task 31](https://github.com/MUN-COMP6905/project-eteam/issues/31) [quiz.pug] (../views/quiz.pug)
+1. Finish first phase of single quiz page [task 31](https://github.com/MUN-COMP6905/project-eteam/issues/31) [quiz.pug] (../views/quiz.pug) *-Done*
 
-2. Help with creating UI design [task13] (https://github.com/MUN-COMP6905/project-eteam/issues/13)
+2. Help with creating UI design [task13] (https://github.com/MUN-COMP6905/project-eteam/issues/13) *-Done*
 
-3. Review multiple PRs and help other team members in creating the UI screens [task 30](https://github.com/MUN-COMP6905/project-eteam/pull/59) [task 31](https://github.com/MUN-COMP6905/project-eteam/issues/31)
+3. Review multiple PRs and help other team members in creating the UI screens [task 30](https://github.com/MUN-COMP6905/project-eteam/pull/59) [task 31](https://github.com/MUN-COMP6905/project-eteam/issues/31) *-Done*
 
-4. Create member roles documentation [memberroles](/memberroles.md)
+4. Create member roles documentation [memberroles](/memberroles.md) *-Done*
 
-5. Create 2 user stories and tasks for the stories in backlog [task 40](https://github.com/MUN-COMP6905/project-eteam/issues/40) [task 41](https://github.com/MUN-COMP6905/project-eteam/issues/41) with task 44, 39, 42, 43 in backlog
+5. Create 2 user stories and tasks for the stories in backlog [task 40](https://github.com/MUN-COMP6905/project-eteam/issues/40) [task 41](https://github.com/MUN-COMP6905/project-eteam/issues/41) with task 44, 39, 42, 43 in backlog *-Done*
 
-6. Create documentation for Code View Standard  [codereviewstandard.md](../doc/codereviewstandard.md)
+6. Create documentation for Code View Standard  [codereviewstandard.md](../doc/codereviewstandard.md) *-Done*
 
-7. Create Front-End Structure Design  [frontendstructuredesign.md](../doc/frontendstructuredesign.md)
+7. Create Front-End Structure Design  [frontendstructuredesign.md](../doc/frontendstructuredesign.md) *-Done*
 
-8. Create documentation for Individual Task [trangv_code_task](../doc/individual_submission/trangv_code_task.md)
+8. Create documentation for Individual Task [trangv_code_task](../doc/individual_submission/trangv_code_task.md) *-Done*
 
 ## Neha Thakare
 
-1. Created 3 UI designs using figma tool (Sign Up Page, Login In Page, Quiz Page).
+1. Created 3 UI designs using figma tool (Sign Up Page, Login In Page, Quiz Page). *-Done*
 
-2. Worked and closed [task13] (https://github.com/MUN-COMP6905/project-eteam/issues/13).
+2. Worked and closed [task13] (https://github.com/MUN-COMP6905/project-eteam/issues/13). *-Done*
 
-3. Created multiple issues and assigned it to associated member of team like [task32] https://github.com/MUN-COMP6905/project-eteam/issues/32 , [task31] https://github.com/MUN-COMP6905/project-eteam/issues/31 , [task30] https://github.com/MUN-COMP6905/project-eteam/issues/30
+3. Created multiple issues and assigned it to associated member of team like [task32] https://github.com/MUN-COMP6905/project-eteam/issues/32 , [task31] https://github.com/MUN-COMP6905/project-eteam/issues/31 , [task30] https://github.com/MUN-COMP6905/project-eteam/issues/30 *-Done*
 
-4. Did code and PR reviewing for https://github.com/MUN-COMP6905/project-eteam/pull/61 and helped other team members with in creating UI.
+4. Did code and PR reviewing for https://github.com/MUN-COMP6905/project-eteam/pull/61 and helped other team members with in creating UI. *-Done*
 
-5. Worked on PR's like https://github.com/MUN-COMP6905/project-eteam/pull/67 , https://github.com/MUN-COMP6905/project-eteam/pull/57 and mergered them to Main(dev).
+5. Worked on PR's like https://github.com/MUN-COMP6905/project-eteam/pull/67 , https://github.com/MUN-COMP6905/project-eteam/pull/57 and mergered them to Main(dev). *-Done*
 
-6. Created 3 users stories [task46] https://github.com/MUN-COMP6905/project-eteam/issues/46 , [task47] https://github.com/MUN-COMP6905/project-eteam/issues/47 , [task48] https://github.com/MUN-COMP6905/project-eteam/issues/48 
+6. Created 3 users stories [task46] https://github.com/MUN-COMP6905/project-eteam/issues/46 , [task47] https://github.com/MUN-COMP6905/project-eteam/issues/47 , [task48] https://github.com/MUN-COMP6905/project-eteam/issues/48 *-Done*
 
-7. Created 4 tasks in backlogs for the userstories I have creared :[task50] https://github.com/MUN-COMP6905/project-eteam/issues/50 , [task52] https://github.com/MUN-COMP6905/project-eteam/issues/52 , [task53] https://github.com/MUN-COMP6905/project-eteam/issues/53 , [task51] https://github.com/MUN-COMP6905/project-eteam/issues/51
+7. Created 4 tasks in backlogs for the userstories I have creared :[task50] https://github.com/MUN-COMP6905/project-eteam/issues/50 , [task52] https://github.com/MUN-COMP6905/project-eteam/issues/52 , [task53] https://github.com/MUN-COMP6905/project-eteam/issues/53 , [task51] https://github.com/MUN-COMP6905/project-eteam/issues/51 *-Done*
 
-8. Created document for Performence Review. 
+8. Created document for Performence Review. [performance_review](../doc/performancereview.md) *-Done*
 
-9. Create documentation for Individual Task [neha_code_task](../doc/individual_submission/neha_code_task.md)
+9. Create documentation for Individual Task [neha_code_task](../doc/individual_submission/neha_code_task.md) *-Done*
 
 
 ## Anton Vynnyk
