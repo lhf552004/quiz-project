@@ -8,8 +8,9 @@ $(function() {
     });
 
     $('.next-button').on('click', function() {
-        let current_right_answer = $('.quiz-item.active .quiz-item-question').data('answer');
-        let current_answer = $('.quiz-item.active .quiz-answer.active').data('answer-id');
+        /** @todo Will need to use correct method to check the correct answer instead of manually checking a string answer */
+        let current_right_answer = $('.quiz-item.active .quiz-item-question').data('answer').toString().trim().toLowerCase();
+        let current_answer = $('.quiz-item.active .quiz-answer.active').text().toString().trim().toLowerCase();
 
         if(current_answer == current_right_answer) { // if the current answer is right
             $('.quiz-item.active .quiz-answer.active').addClass('right'); // visually show right answer

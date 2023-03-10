@@ -2,7 +2,7 @@
 
 Task Card in Kanban board [Kanban Board Task Card](https://github.com/MUN-COMP6905/project-eteam/issues/31)
 
-I also commented what need to improve and be done in the next sprint. 
+I also commented what need to improve and be done in the next sprint in that task card. 
 
 The PR for the quiz task. [PR Task](https://github.com/MUN-COMP6905/project-eteam/pull/49)
 - I made a mistake in this PR of miscommunication with a team member who built the routers. His PR came right after mine that causes conflicts.  
