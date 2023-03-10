@@ -31,8 +31,32 @@ quizRouter.get('/', (req, res) => {
 quizRouter.get('/:id', async (req, res) => {
     const id = req.params.id;
     const quiz = new Quiz()
-    const quizItems = await quiz.fetchAllQuizItems();
-    res.render("quiz", {quizItems: quizItems});
+    // const quizItems = await quiz.fetchAllQuizItems();
+
+    // We have to use mock data for sprint one because quizItem in the database doesn't have
+    // the right format for the view to present.
+    const quizItems = [{
+        question: 'This is a test question',
+        answer: 'A',
+        options: {
+            'A' : 'First option',
+            'B' : 'Second option',
+            'C' : 'Third option',
+            'D' : 'Fourth Option'
+        }
+    },
+    {
+        question: 'This is a test question 2',
+        answer: 'B',
+        options: {
+            'A' : '2 First option',
+            'B' : '2 Second option',
+            'C' : '2 Third option',
+            'D' : '2 Fourth Option'
+        }
+    }]
+
+    res.render("quiz", {data: {id : id, quizItems: quizItems}});
 });
 
 /**
