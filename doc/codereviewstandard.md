@@ -8,7 +8,7 @@ Naming conventions: We make sure that our filename and methods/functions names c
 
 Code formatting: We need to review each other codes and agree with the same styling to make sure everyone follow the same structure. This would make it easier to understand and follow other developers' code even when we don't personally write them.
 
-Comments: All codes should have adequate comments to explain the logic and reasons behide what we are doing. This does not mean excessive comments when it's not needed for straightforward or simple codes to prevent clustering. 
+Comments: All codes should have adequate comments to explain the logic and reasons behind what we are doing. This does not mean excessive comments when it's not needed for straightforward or simple codes to prevent clustering. 
 
 ### Code quality guidelines: 
 
