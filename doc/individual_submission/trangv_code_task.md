@@ -1,4 +1,4 @@
-## Documentation for Quiz Page - Individual Submission
+## Documentation for Single Quiz Page - Individual Submission
 
 Task Card in Kanban board [Kanban Board Task Card](https://github.com/MUN-COMP6905/project-eteam/issues/31)
 
@@ -15,5 +15,7 @@ The PR for comments to follow TOD [PR comment task](https://github.com/MUN-COMP6
 The route for this view right now is [/quiz/1](http://localhost:3000/quiz/1)
 
 The task is complete with the original purpose for sprint #1: Making sure we have a UI done first
+
+This is the UML diagram for Single Quiz Page
 
 !["Quiz Page UML"](/doc/images/quizpageUML.png)

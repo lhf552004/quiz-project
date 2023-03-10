@@ -20,9 +20,9 @@ Home: http://localhost:3000/
 
 Quizs: http://localhost:3000/quiz
 
-Quiz: http://localhost:3000/quiz/1 [Individual README](/doc/individual_submission/trangv_code_task.md)
+Quiz: http://localhost:3000/quiz/1 | [Individual README](/doc/individual_submission/trangv_code_task.md)
 
-Signup: http://localhost:3000/users/create
+Signup: http://localhost:3000/users/create | [Individual README](/doc/individual_submission/neha_code_task.md)
 
 Login: http://localhost:3000/users/login
 
@@ -68,6 +68,7 @@ Login: http://localhost:3000/users/login
 ## Code Review Standard
 
 [Team Code Review Standard](/doc/codereviewstandard.md)
+
 [Code Review Standard External Resources](https://google.github.io/eng-practices/review/reviewer/standard.html)
 
 ## Source submission process
@@ -89,7 +90,8 @@ Login: http://localhost:3000/users/login
 [Teammember tasks status](/doc/teammember-tasks-status.md)
 
 ## Performance Review of Each Team-Member
-[Sprint Performance Review](https://docs.google.com/spreadsheets/d/1Gm-qb7FD2baLD-eDKrLjbsh3EBmGTTs08O_xN5u_UjA/edit?resourcekey#gid=104030491)
+
+[Performance Review](/doc/performancereview.md)
 
 ## Attributions
 
