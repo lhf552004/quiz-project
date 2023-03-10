@@ -15,7 +15,7 @@ block content
                         h4 Question #{n + 1}:
                         p.quiz-item-question(data-answer=quizItem.answer) #{quizItem.question}
                         each answer, index in quizItem.options 
-                            div.quiz-answer(data-answer-id=index) #{answer}
+                            div.quiz-answer #{answer}
                 .button-container
                     // Next button is disabled until an answer is chosen 
                     button.btn.btn-primary.next-button(disabled=true) Next
