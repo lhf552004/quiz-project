@@ -63,11 +63,13 @@ Login: http://localhost:3000/users/login
 [Full Structure Design](https://github.com/MUN-COMP6905/project-eteam/blob/dev/doc/structuredesign.md)
 
 ## Code Style
-[Nodejs Code style](https://github.com/felixge/node-style-guide)
+[Nodejs Code style External Resources](https://github.com/felixge/node-style-guide)
 
 ## Code Review Standard
 
 [Team Code Review Standard](/doc/codereviewstandard.md)
+
+[Code Review Checklist](/doc/codereviewchecklist.md)
 
 [Code Review Standard External Resources](https://google.github.io/eng-practices/review/reviewer/standard.html)
 
@@ -112,4 +114,6 @@ Each line/entry of your attributions section should consist of three parts: (1) 
     2. Templating framework to create UI of the webapp
     3. Learned some of the syntax for PUG from stackoverflow and PUG Docs
 
-### If you guys cite some tech or code, please write here
+4. Attribution 4
+    1. Various lectures about coding format and principles
+    2. Inspiration to create code review checklist

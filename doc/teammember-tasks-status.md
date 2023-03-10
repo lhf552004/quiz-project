@@ -65,6 +65,8 @@
 
 9. Clean up and organize docs added from team members
 
+10. Create Code Review Checklist [code_review_checklist](../doc/codereviewchecklist.md)
+
 ## Neha Thakare
 
 1. Created 3 UI designs using figma tool (Sign Up Page, Login In Page, Quiz Page). *-Done*

@@ -28,7 +28,7 @@ Each changes from a team member needs to be made into a separate branch from dev
 
 The developers then move their task card to review columns, and tag the reviewer to review the PR. After a PR is approved, the reviewer or the developer can merge it into the main branch. 
 
-The reviewer's responsibility is making sure that the PR is working correctly and do not affect existing functionalities. If there are issues, the reviewer needs to comment and gives the original developer know the issue, and may provide assistance. 
+The reviewer's responsibility is making sure that the PR is working correctly and do not affect existing functionalities. If there are issues, the reviewer needs to comment and gives the original developer know the issue, and may provide assistance. The reviewer also uses the code review checklist to make sure everything is covered. Code Review Checklist may change as necessary to adapt the project's growth.
 
 Both reviewers and responsible developers need to response in timely manner. If they can get back in allowed time, they should deligate the reviewing response to someone else who can also do the reviewing process. 
 
