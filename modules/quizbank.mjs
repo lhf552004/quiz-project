@@ -9,7 +9,7 @@
 /**
  * @typedef import ref from db config file
  */
-import {quiz_db} from '../api/config.js'
+import { quiz_db } from '../api/config.js'
 /** 
  * @class QuizItem representing a Quiz Item. 
  * @author: Yawen
@@ -38,91 +38,75 @@ class QuizItem {
      */
     correct(id, answer) {
         // Fetch the correct answer from the Firebase Firestore
-      quiz_db.doc(id).get()
-      .then(function(doc) {
-        if (doc.exists) {
-          var quizItem = doc.data();
-          if (quizItem.answer === answer) {
-              console.log("Correct Answer!!!");
-              return true;
-          }
-          else{
-              console.log("Wrong Answer!!!");
-              return false;
-          }
-        } else {
-          // Handle error if the document does not exist
-          console.log("No Quiz Item found with Id:" + id);
-        }
-      })
-      .catch(function(error) {
-        // Handle any errors
-        console.error("Error fetching correct answer: ", error);
-      });
+        quiz_db.doc(id).get()
+            .then(function (doc) {
+                if (doc.exists) {
+                    var quizItem = doc.data();
+                    if (quizItem.answer === answer) {
+                        console.log("Correct Answer!!!");
+                        return true;
+                    }
+                    else {
+                        console.log("Wrong Answer!!!");
+                        return false;
+                    }
+                } else {
+                    // Handle error if the document does not exist
+                    console.log("No Quiz Item found with Id:" + id);
+                }
+            })
+            .catch(function (error) {
+                // Handle any errors
+                console.error("Error fetching correct answer: ", error);
+            });
     }
 
     /**
      * Store the quiz item into database
-     * @param {*} bankSpec file name for json file to save
      */
     storeQuizItem() {
-       // Store the quiz item in the Firebase Firestore
-      quiz_db.doc(this.id).set({
-        question: this.question,
-        answer: this.answer,
-        options: this.options
-      });
-      console.log(this.id + "|" + this.question + "|" + this.answer);
+        // Store the quiz item in the Firebase Firestore
+        quiz_db.doc(this.id).set({
+            question: this.question,
+            answer: this.answer,
+            options: this.options
+        });
+        console.log(this.id + "|" + this.question + "|" + this.answer);
     }
 
     /**
-     * Static method to fetch quiz item by quiz item id
-    // * @param {string} id The id of quiz item
+     * Method to fetch quiz item by quiz item id
+     * @param {string} id The id of quiz item
      * @returns QuizItem instance
     */
     async getQuizItemById(id) {
         try {
-          const docRef = quiz_db.doc(id);
-          const doc = await docRef.get();
-          if (doc.exists) {
-            // If the document exists, return it as a quizItem object
-            const quizItem = doc.data();
-            quizItem.id = doc.id;
-            console.log(quizItem.id + "|" + quizItem.question + "|" + quizItem.answer + "|" + quizItem.options)
-            return quizItem;
-          } else {
-            console.log(`No quizItem found with id ${id}`);
-            return null;
-          }
+            const docRef = quiz_db.doc(id);
+            const doc = await docRef.get();
+            if (doc.exists) {
+                // If the document exists, return it as a quizItem object
+                const quizItem = doc.data();
+                quizItem.id = doc.id;
+                console.log(quizItem.id + "|" + quizItem.question + "|" + quizItem.answer + "|" + quizItem.options)
+                return quizItem;
+            } else {
+                console.log(`No quizItem found with id ${id}`);
+                return null;
+            }
         } catch (error) {
-          console.error("Error fetching quiz item: ", error);
-          return null;
+            console.error("Error fetching quiz item: ", error);
+            return null;
         }
-      }
-      
-
-   
-      
-    // async fetchAllQuizItems() {
-    //     const quizItems = this.fetchAllIds();
-    //     for (let i = 0; i < quizItems.length; i++) {
-    //         //const quizItem = this.getQuizItemById(quizItems[i]);
-    //         console.log(quizItems[i]);
-    //       }
-    //     //console.log(quizItems);
-    //     //return quizItems;
-    // }     
-
+    }
 
     /**
-     * Static method to delete quiz item by id in the database
-     * @param {*} bankSpec file name for json file to save
+     * Method to delete quiz item by id in the database
      * @param {string} id 
      */
     delete(id) {
-       // delete the quiz item in the Firebase Firestore
-       quiz_db.doc(id).delete();
-       console.log("Deleted" + id);
+        // delete the quiz item in the Firebase Firestore
+        quiz_db.doc(id).delete();
+        console.log("Deleted" + id);
     }
 }
 
@@ -142,113 +126,63 @@ class Quiz {
     }
 
     /**
-     * Custom iterator
-     * @returns Custom iterator instance
-     */
-    [Symbol.iterator] = function () {
-        let index = 0;
-        const that = this;
-        return {
-            next() {
-                if (index < that.quizitems.length) {
-                    const val = that.quizitems[index];
-                    index++;
-                    return { value: val, done: false };
-                } else return { done: true };
-            }
-        };
-    }
-
-     /**
      * Async method to fetch all quiz item id's
      * @returns QuizItem ID's array
-     */
+    */
     async fetchAllIds() {
-        quiz_db.get().then((data) => {
-            let IDarray = [];
+        return quiz_db.get().then((data) => {
+            var IDarray = [];
             data.docs.forEach((doc) => {
-              IDarray.push(+doc.id);
+                IDarray.push(+doc.id);
             });
-        console.log(IDarray);
-        return IDarray;
+            console.log("Insdide fetchAllIds: " + typeof (IDarray));
+            return IDarray;
         });
-      }
+    }
 
+    /**
+     * This method calls the fetchAllIds()method to get all the IDs from Db
+     * and then fetches its respective entry in the database and pushes it into an array.
+     * @returns array of all quizItems 
+     */
     async fetchAllQuizItems() {
         try {
-          const quizIds = fetchAllIds();
-          const quizItems = [];
-      
-          for (const id of quizIds) {
-            const quizItem = await getQuizItemById(id);
-            quizItems.push(quizItem);
-          }
-          quizItems.forEach(item => {
-            console.log(item.id);
-            console.log(item.question);
-            console.log(item.answer);
-          });
-          return quizItems;
+            let quizIds = [];
+            quizIds = await this.fetchAllIds();
+            console.log("Inside fetchAllQuizItems: " + quizIds);
+            let quizItems = [];
+            for (let i = 0; i < quizIds.length; i++) {
+                try {
+                    const docRef = quiz_db.doc(quizIds[i].toString());
+                    const doc = await docRef.get();
+                    if (doc.exists) {
+                        // If the document exists, return it as a quizItem object
+                        const quizItem = doc.data();
+                        quizItem.id = doc.id;
+                        console.log("Inside forloop: " + quizItem.id + "|" + quizItem.question + "|" + quizItem.answer + "|" + quizItem.options)
+                        quizItems.push(quizItem)
+                    } else {
+                        console.log(`No quizItem found with id ${id}`);
+                        return null;
+                    }
+                } catch (error) {
+                    console.error("Error fetching quiz item: ", error);
+                    return null;
+                }
+            }
+            console.log("Forloop exit" + quizItems);
+            quizItems.forEach(item => {
+                console.log(item.id);
+                console.log(item.question);
+                console.log(item.answer);
+                console.log(item.options);
+            });
+            return quizItems;
         } catch (error) {
-          console.error("Error fetching quiz items: ", error);
-        }
-      }
-
-    /**
-     * Add a quiz item into the quiz
-     * @param {QuizItem} quizItem 
-     */
-    add(quizItem) {
-        // Ensure no duplicate item
-        if (quizItem !== undefined && this.quizitems.findIndex(q => q.id === quizItem.id) === -1) {
-            // TODO: Synchronize
-            this.quizitems.push(quizItem);
+            console.error("Error fetching quiz items:", error);
         }
     }
 
-    /**
-     * Remove the quiz item from the quiz
-     * @param {*} quizItem it could be object of QuizItem, or id of the object
-     */
-    remove(quizItem) {
-        const theType = typeof quizItem;
-        let index = -1;
-        if (theType === "object") {
-            index = this.quizitems.findIndex(q => q.id === quizItem.id);
-        } else {
-            index = this.quizitems.findIndex(q => q.id === quizItem); // Parameter quizItem is id actually
-        }
-        if (index > -1) {
-            this.quizitems.splice(index, 1);
-        }
-    }
-
-    /**
-     * Store the quiz into database
-     * @param {*} bankSpec file name for json file to save
-     */
-    store(bankSpec) {
-        // TODO
-    }
-
-    /**
-     * Static method to retrieve quiz from database by id
-     * @param {*} bankSpec file name for json file to save
-     * @param {*} id Id of the quiz
-     * @returns 
-     */
-    static fetch(bankSpec, id) {
-        // TODO
-    }
-
-    /**
-     * Static method to delete the quiz by id in the database
-     * @param {*} bankSpec file name for json file to save
-     * @param {*} id Id of the quiz
-     */
-    static delete(bankSpec, id) {
-        // TODO
-    }
 }
 
 //var quizItem = new QuizItem("3", "what is 10+6", "2",["12","14","16","20"]);
@@ -258,8 +192,10 @@ class Quiz {
 //quizItem.fetchAllIds();
 //quizItem.getQuizItemById("4");
 //quizItem.fetchAllQuizItems();
+//quizItem.correct("2", "4");
+//const quiz = new Quiz();
+//quiz.fetchAllIds();
+//quiz.fetchAllQuizItems();
 
-const quiz = new Quiz();
-quiz.fetchAllQuizItems();
 
 export { Quiz, QuizItem };
