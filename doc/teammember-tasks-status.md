@@ -63,6 +63,8 @@
 
 8. Create documentation for Individual Task [trangv_code_task](../doc/individual_submission/trangv_code_task.md) *-Done*
 
+9. Clean up and organize docs added from team members
+
 ## Neha Thakare
 
 1. Created 3 UI designs using figma tool (Sign Up Page, Login In Page, Quiz Page). *-Done*

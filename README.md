@@ -60,7 +60,7 @@ Login: http://localhost:3000/users/login
 ## Structure Design
 [Front-End Structure Design](/doc/frontendstructuredesign.md)
 
-[Full Structure Design](https://github.com/MUN-COMP6905/project-eteam/blob/dev/doc/structure%20diagram.png)
+[Full Structure Design](https://github.com/MUN-COMP6905/project-eteam/blob/dev/doc/structuredesign.md)
 
 ## Code Style
 [Nodejs Code style](https://github.com/felixge/node-style-guide)
