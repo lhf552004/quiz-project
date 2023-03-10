@@ -63,9 +63,9 @@
 
 8. Create documentation for Individual Task [trangv_code_task](../doc/individual_submission/trangv_code_task.md) *-Done*
 
-9. Clean up and organize docs added from team members
+9. Clean up and organize docs added from team members *-Done*
 
-10. Create Code Review Checklist [code_review_checklist](../doc/codereviewchecklist.md)
+10. Create Code Review Checklist [code_review_checklist](../doc/codereviewchecklist.md) *-Done*
 
 ## Neha Thakare
 
