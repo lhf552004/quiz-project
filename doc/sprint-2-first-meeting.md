@@ -2,6 +2,8 @@
 
 Scrum Master + Note Taker: Trang V. 
 
+Link on video: https://drive.google.com/file/d/1_QTfelcuNkJtGLyYncxwkkLgIw9P64Sa/view?usp=share_link
+
 ## Discussion about what was missing from sprint 1 
 
 - Take turn to be Scrum Master and Note Taker for each meeting
