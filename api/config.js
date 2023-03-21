@@ -18,6 +18,6 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig)
 //const db = firebase.getFirestore(app);
 const db = firebase.firestore()
-const quiz_db = db.collection('QuizBankDb')
+//const quiz_db = db.collection('QuizBankDb')
 
-export {quiz_db};
+export {db};

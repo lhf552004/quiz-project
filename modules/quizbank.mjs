@@ -10,7 +10,7 @@
 /**
  * @typedef import ref from db config file
  */
-import { quiz_db } from '../api/config.js'
+import {db} from '../api/config.js'
 /** 
  * @class QuizItem representing a Quiz Item. 
  * @author: Sukrut
@@ -32,86 +32,128 @@ class QuizItem {
         this.options = options;
     }
 
+    
     /**
-     * @method correct
-     * @description method to indicate the answer is correct or not
-     * @param {string} answer 
-     * @returns {boolean} indicator whether it is correct answer
-     */
-    correct(id, answer) {
-        // Fetch the correct answer from the Firebase Firestore
-        quiz_db.doc(id).get()
-            .then(function (doc) {
-                if (doc.exists) {
-                    var quizItem = doc.data();
-                    if (quizItem.answer === answer) {
-                        console.log("Correct Answer!!!");
-                        return true;
-                    }
-                    else {
-                        console.log("Wrong Answer!!!");
-                        return false;
-                    }
+    * @method correct
+    * @description Method to check if the given answer is correct or not for the quiz item with the given ID and quiz name in the database
+    * @param {string} quizName - The name of the quiz collection in which the quiz item exists
+    * @param {string} quizItemId - The ID of the quiz item to be checked
+    * @param {string} answer - The answer to be checked
+    * @returns {boolean} - Returns true if the answer is correct, else returns false
+    */
+    async correct(quizName, quizItemId, answer) {
+        try {
+            const docRef = db.collection(quizName).doc(quizItemId);
+            const doc = await docRef.get();
+            if (doc.exists) {
+                const quizItem = doc.data();
+                if (quizItem.answer === answer) {
+                    console.log("Correct Answer!!!");
+                    return true;
                 } else {
-                    // Handle error if the document does not exist
-                    console.log("No Quiz Item found with Id:" + id);
+                    console.log("Wrong Answer!!!");
+                    return false;
                 }
-            })
-            .catch(function (error) {
-                // Handle any errors
-                console.error("Error fetching correct answer: ", error);
-            });
+            } else {
+                console.log(`No quiz item found with id ${quizItemId} in quiz collection ${quizName}`);
+            }
+        } catch (error) {
+            console.error(`Error fetching quiz item with id ${quizItemId} from quiz collection ${quizName}: `, error);
+        }
     }
 
     /**
      * @method storeQuizItem
+     * @param {string} quizName - The name of the quiz to add the quiz items to
      * @description Store the quiz item into database
      */
-    storeQuizItem() {
-        // Store the quiz item in the Firebase Firestore
-        quiz_db.doc(this.id).set({
-            question: this.question,
-            answer: this.answer,
-            options: this.options
+    storeQuizItem(quizName) {
+        // Get the collection reference for the quiz with the given name
+        const quizCollectionRef = db.collection(quizName);
+    
+        // Check if the collection already exists
+        quizCollectionRef.get().then((snapshot) => {
+        if (snapshot.empty) {
+            // If the collection doesn't exist, create it
+            quizCollectionRef
+            .doc(this.id)
+            .set({
+                question: this.question,
+                answer: this.answer,
+                options: this.options,
+            })
+            .then(() => {
+                console.log(
+                `Quiz collection '${quizName}' created and quiz item '${this.id}' added`
+                );
+            })
+            .catch((error) => {
+                console.error(
+                `Error adding quiz item '${this.id}' to new quiz collection '${quizName}': ${error}`
+                );
+            });
+        } else {
+            // If the collection already exists, add the quiz item to it
+            quizCollectionRef
+            .doc(this.id)
+            .set({
+                question: this.question,
+                answer: this.answer,
+                options: this.options,
+            })
+            .then(() => {
+                console.log(
+                `Quiz item '${this.id}' added to existing quiz collection '${quizName}'`
+                );
+            })
+            .catch((error) => {
+                console.error(
+                `Error adding quiz item '${this.id}' to existing quiz collection '${quizName}': ${error}`
+                );
+            });
+        }
         });
-        console.log(this.id + "|" + this.question + "|" + this.answer);
     }
 
     /**
-     * @method getQuizItemById
-     * @description Method to fetch quiz item by quiz item id
-     * @param {string} id The id of quiz item
-     * @returns QuizItem instance
-    */
-    async getQuizItemById(id) {
+     * Retrieves a specific quiz item from the specified quiz collection in Firestore
+     *
+     * @async
+     * @function getQuizItemById
+     * @param {string} quizName - The name of the quiz collection in Firestore
+     * @param {string} quizItemId - The ID of the quiz item to retrieve
+     * @returns {Promise<Object>} The retrieved quiz item object
+     */
+    async getQuizItemById(quizName, quizItemId) {
         try {
-            const docRef = quiz_db.doc(id);
-            const doc = await docRef.get();
+            const docRef = db.collection(quizName);
+            const doc = await docRef.doc(quizItemId).get();
             if (doc.exists) {
                 // If the document exists, return it as a quizItem object
                 const quizItem = doc.data();
                 quizItem.id = doc.id;
-                console.log(quizItem.id + "|" + quizItem.question + "|" + quizItem.answer + "|" + quizItem.options)
+                console.log(quizItem.id + "|" + quizItem.question + "|" + quizItem.answer + "|" + quizItem.options);
                 return quizItem;
             } else {
-                console.log(`No quizItem found with id ${id}`);
+                console.log(`No quiz item found with id ${quizItemId} in quiz collection ${quizName}`);
                 return null;
             }
         } catch (error) {
-            console.error("Error fetching quiz item: ", error);
+            console.error(`Error fetching quiz item with id ${quizItemId} from quiz collection ${quizName}: `, error);
             return null;
         }
     }
 
     /**
-     * @method delete
+     * @method deleteQuizItem
      * @description Method to delete quiz item by id in the database
-     * @param {string} id 
+     * @param {string} quizName - Name of the quiz collection to delete the quiz item from
+     * @param {string} quizItemId - ID of the quiz item to be deleted
      */
-    delete(id) {
+    deleteQuizItem(quizName, quizItemId) {
         // delete the quiz item in the Firebase Firestore
-        quiz_db.doc(id).delete();
-        console.log("Deleted" + id);
+        db.collection(quizName).doc(quizItemId).delete();
+        console.log(`Deleted quiz item ${quizItemId} from ${quizName}`);
     }
 }
 
@@ -126,84 +168,138 @@ class Quiz {
      * Quiz Constructor
      * @param {number} id 
      */
-    constructor(id) {
-        this.id = id;
+    constructor(quizName) {
+        this.quizName = quizName;
         this.quizitems = [];
     }
 
     /**
-     * @method fetchAllIds
-     * @description Async method to fetch all quiz item id's
-     * @returns QuizItem ID's array
-    */
-    async fetchAllIds() {
-        return quiz_db.get().then((data) => {
-            var IDarray = [];
-            data.docs.forEach((doc) => {
-                IDarray.push(+doc.id);
-            });
-            console.log("Insdide fetchAllIds: " + typeof (IDarray));
-            return IDarray;
-        });
-    }
-
-    /**
-     * @function fetchAllQuizItems
-     * @description This method calls the fetchAllIds()method to get all the IDs from Db
-     * and then fetches its respective entry in the database and pushes it into an array.
-     * @returns array of all quizItems 
+     * @method createNewQuiz
+     * @description Method to create a new Quiz and a new collection with the quiz name in Firestore
+     * @param {string} quizName The name of the new quiz
+     * @returns {Promise} A promise that resolves with the ID of the new quiz collection
      */
-    async fetchAllQuizItems() {
+    async createNewQuiz(quizName) {
         try {
-            let quizIds = [];
-            quizIds = await this.fetchAllIds();
-            console.log("Inside fetchAllQuizItems: " + quizIds);
-            let quizItems = [];
-            for (let i = 0; i < quizIds.length; i++) {
-                try {
-                    const docRef = quiz_db.doc(quizIds[i].toString());
-                    const doc = await docRef.get();
-                    if (doc.exists) {
-                        // If the document exists, return it as a quizItem object
-                        const quizItem = doc.data();
-                        quizItem.id = doc.id;
-                        console.log("Inside forloop: " + quizItem.id + "|" + quizItem.question + "|" + quizItem.answer + "|" + quizItem.options)
-                        quizItems.push(quizItem)
-                    } else {
-                        console.log(`No quizItem found with id ${id}`);
-                        return null;
-                    }
-                } catch (error) {
-                    console.error("Error fetching quiz item: ", error);
-                    return null;
-                }
-            }
-            console.log("Forloop exit" + quizItems);
-            quizItems.forEach(item => {
-                console.log(item.id);
-                console.log(item.question);
-                console.log(item.answer);
-                console.log(item.options);
-            });
-            return quizItems;
+          // Check if a quiz with the same name already exists
+          const quizRef = await db.collection('Quizzes').doc(quizName).get();
+          if (quizRef.exists) {
+            console.log(`Quiz with name ${quizName} already exists.`);
+            return null;
+          }
+          
+          // Add a new quiz collection in Firestore with the given quiz name as the ID
+          await db.collection('Quizzes').doc(quizName).set({
+            quizName: quizName
+          });
+          
+          console.log(`New quiz added with ID: ${quizName}`);
+      
+          // Create a new Quiz instance with the new quiz ID
+          const newQuiz = new Quiz(quizName);
+          return quizName;
         } catch (error) {
-            console.error("Error fetching quiz items:", error);
+          console.error("Error creating new quiz: ", error);
+          return null;
+        }
+      }
+      
+    /**
+    @method fetchAllQuizNames
+    @description Fetches all the Quiz names from the Firestore "Quizzes" collection and stores them in an array.
+    @returns {Promise<Array<string>|null>} A Promise that resolves with an array of Quiz names, or null if an error occurs.
+    */
+    async fetchAllQuizNames() {
+        try {
+            const quizNames = [];
+            const querySnapshot = await db.collection("Quizzes").get();
+            querySnapshot.forEach(doc => {
+                const quizName = doc.id;
+                quizNames.push(quizName);
+            });
+            console.log(quizNames);
+            return quizNames;
+        } catch (error) {
+            console.error("Error fetching quiz names: ", error);
+            return null;
         }
     }
+    
+    /**
+    @method fetchAllQuizItems
+    @async
+    @description Fetches all quiz items from the Firestore database.
+    @returns {Promise<Array<Object>|null>} - Returns a promise that resolves to an array of quiz items or null if there was an error.
+    @throws {Error} - Throws an error if there was an error fetching the quiz items.
+    @param {string} quizName - The name of the quiz collection to fetch quiz items from.
+    */
+    async fetchAllQuizItems(quizName) {
+        try {
+          const collectionRef = db.collection(quizName);
+          const quizItemsSnapshot = await collectionRef.get();
+          const quizItems = [];
+          quizItemsSnapshot.forEach(doc => {
+            const quizItem = doc.data();
+            quizItem.id = doc.id;
+            quizItems.push(quizItem);
+          });
+          console.log(`Fetched ${quizItems.length} quiz items from collection ${quizName}`);
+          quizItems.forEach(item => {
+            console.log(item.id);
+            console.log(item.question);
+            console.log(item.answer);
+            console.log(item.options);
+          });
+          return quizItems;
+        } catch (error) {
+          console.error("Error fetching quiz items:", error);
+        }
+      }
 
+    /**
+     * @method deleteQuiz
+     * @description Method to delete a quiz collection from Firestore by its name
+     * @param {string} quizName - The name of the quiz collection to delete
+     * @returns {Promise<boolean>} - A Promise that resolves to true if the collection was deleted successfully, or false otherwise
+     */
+    async deleteQuiz(quizName) {
+        try {
+        // Delete the quiz collection
+        const collectionRef = db.collection(quizName);
+        const querySnapshot = await collectionRef.get();
+        querySnapshot.forEach(async (doc) => {
+            await doc.ref.delete();
+        });
+    
+        // Delete the quiz from the Quizzes collection
+        const quizRef = db.collection("Quizzes").doc(quizName);
+        await quizRef.delete();
+    
+        console.log(`Quiz collection '${quizName}' deleted successfully.`);
+        return true;
+        } catch (error) {
+        console.error(`Error deleting quiz collection '${quizName}':`, error);
+        return false;
+        }
+    }
+  
+    
 }
 
-//var quizItem = new QuizItem("3", "what is 10+6", "2",["12","14","16","20"]);
-//quizItem.storeQuizItem();
-// quizItem.delete("3");
+//var quizItem = new QuizItem();
+// var quizItem = new QuizItem("1", "Name of the Bollywood actor?", "SRK",["SRK","LRK","PRK","KKR"]);
+// quizItem.storeQuizItem("Bollywood");
+//quizItem.deleteQuizItem("Maths","2");
 //quizItem.fetchAllQuizItems();
 //quizItem.fetchAllIds();
-//quizItem.getQuizItemById("4");
+//quizItem.getQuizItemById("Maths","2");
 //quizItem.fetchAllQuizItems();
-//quizItem.correct("2", "4");
+//quizItem.correct("GK","2", "Poutine");
 //const quiz = new Quiz();
 //quiz.fetchAllIds();
-//quiz.fetchAllQuizItems();
-
+//quiz.fetchAllQuizItems("Maths");
+//const newQuizId = await quiz.createNewQuiz("Hollywood");
+//quiz.fetchAllQuizNames();
+//quiz.deleteQuiz("Bollywood");
 
 export { Quiz, QuizItem };
