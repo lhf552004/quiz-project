@@ -1,14 +1,13 @@
 extends layout.pug
 
 block content
-
-    .containerCreateAccount
-      form(method="post" action="/users/create")
-        h3 Create Your Account
-        .formInner 
-          input(type="email" id="email" name="email" placeholder="Email" required)          
-          input(type="password" id="password" name="password" placeholder="Password" required)
-        
-        .buttonLink
-            input(type="submit" value="SIGN UP")
-            a(class= "linkSignUp" href="/user/login") Already have an account? Login!
+	.form-page-container
+		.form-wrapper
+			h3 Create Your Account
+			form(method="post" action="/users/create")
+				input(type="email" id="email" name="email" placeholder="Email" required)          
+				input(type="password" id="password" name="password" placeholder="Password" required)
+				
+				.button-wrapper
+					input(type="submit" value="SIGN UP" class="btn btn-primary")
+					a(class="button-link" href="/user/login") Already have an account? Login!

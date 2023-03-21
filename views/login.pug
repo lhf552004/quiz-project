@@ -1,11 +1,11 @@
 extends layout.pug
     
 block content  
-    .containerLP
+    .form-page-container
+        .form-wrapper
             form(method="post" action="/login-page") 
-                    input(type="text"   id="email" name="email" placeholder="Enter E-Mail" required)
-                    input(type="password"   id="password" name="password" placeholder="Enter password" required)
-                    .btn
-                        input(type="submit" value="SIGN IN")
-
-            a(href="#" class ="buttonLink") Dont have an account? Sign up      
+                input(type="text" id="email" name="email" placeholder="Enter E-Mail" required)
+                input(type="password" id="password" name="password" placeholder="Enter password" required)
+                .button-wrapper
+                    input(type="submit" value="SIGN IN" class="btn btn-primary")
+                    a(href="#" class="button-link link-sign-up") Don't have an account? Sign up
