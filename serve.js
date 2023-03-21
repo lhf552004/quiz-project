@@ -5,7 +5,7 @@ import bodyParser from 'body-parser';
 import {homeRouter} from './routers/home.mjs';
 import {userRouter} from './routers/users.mjs';
 import {quizRouter} from './routers/quiz.mjs';
-
+import {quizItemRouter} from './routers/quizitem.mjs';
 /**
  * The main express application object.
  * @typedef {Object} expressApp
@@ -69,6 +69,9 @@ Mounts the quiz router to the specified route
 @param {Object} quizRouter - The quiz router to mount
 */
 app.use('/quiz', quizRouter); 
+
+
+app.use('/quizitem', quizItemRouter)
 
 /**
 

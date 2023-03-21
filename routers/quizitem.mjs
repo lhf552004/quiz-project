@@ -1,4 +1,5 @@
 import express from 'express';
+import { QuizItem } from '../modules/quizbank.mjs';
 
 /**
 
@@ -28,8 +29,12 @@ quizItemRouter.get('/', (req, res) => {
 @param {object} res - The response object
 @returns {void}
 */
-quizItemRouter.get('/:id', (req, res) => {
-    res.send(`Details of quiz item with id ${req.params.id}`); // This is demo
+quizItemRouter.get('/:id', async (req, res) => {
+    const id = req.params.id;
+    const quizItem = new QuizItem()
+    const quizItemDetails = await quizItem.getQuizItemById(id);
+
+    res.status(200).json(quizItemDetails);
 });
 
 export { quizItemRouter };
