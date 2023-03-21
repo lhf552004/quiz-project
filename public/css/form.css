@@ -1,0 +1,40 @@
+input[type="text"], input[type="email"], input[type="password"] {
+    display: block;
+    width: 100% ;
+    padding: 10px;
+    border: var(--border-width) solid var(--border-color);
+    border-radius: var(--field-border-radius);
+    margin-bottom: 30px;
+    font-size: var(--field-font-size);
+    color: var(--body-text);        
+}
+.form-wrapper input[type="submit"] {
+    cursor: pointer;
+    font-weight: bold;
+}    
+.form-page-container {
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+} 
+.form-wrapper {
+    border: 2px solid #fff;
+    border-radius: 8px;
+    padding: 48px 32px;
+    background-color: #fff;
+    max-width: 440px;
+    text-align: center;
+    flex: 1;
+}
+.form-wrapper h3 {
+    text-align: center;
+    color: var(--main-grey);
+    margin-bottom: 24px;
+}
+/* Button wrapper at the bottom of the form */
+.button-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
