@@ -17,7 +17,7 @@ const userRouter = express.Router();
 @returns {void}
 */
 userRouter.get('/', (req, res) => {
-    res.send('List of users');   // This is demo
+    res.render('users', {users: User.fetchUsers('user')});
 });
 
 /**
@@ -51,7 +51,7 @@ userRouter.post('/login', (req, res) => {
     let {email, password} = req.body;
     const user = User.fetch('user', email, password);
     if (user !== undefined) {
-      res.render('profile', {email});
+      res.render('profile', {id: user.id});
     }else {
       res.send('User not found or password not correct.');
     }
@@ -91,7 +91,7 @@ userRouter.post('/create', (req, res) => {
     const user = new User('', email, password);
     user.store('user');
     // Redirect to profile
-    res.render('profile', {email});
+    res.render('profile', {id: user.id});
 });
 
 /**
@@ -104,10 +104,9 @@ userRouter.post('/create', (req, res) => {
 */
 userRouter.put('/:id', (req, res) => {
     const id = req.params.id;
-    let {email, password} = req.body;
-    const user = new User(id, email, password);
-    user.store('user');
-    res.render('profile', {email}); // This is demo
+    let updated = req.body;
+    User.update('user', id, updated);
+    res.render('profile', {id: id});
 });
 
 /**
