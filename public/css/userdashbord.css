@@ -13,28 +13,26 @@
   width: 75%;
   height: 100%; 
 }
-
-hr {
-  border: none;
-  border-top: 2px solid #aba9a9;
-  margin: 0px 0;
+.user-dashboard-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding-bottom: 8px;
+}
+.user-dashboard-header h2 {
+  margin-bottom: 0;
 }
 
 .dashboard-heading{
-  display: inline-block;
   color: black;
 }
 
 .welcome-text{
-  display: inline-block;
   font-size: 18px; 
-  margin-left: 10px;
   color: #4A4A4A;
 }
 
 .logout-img{
-  display: inline-block;
-  margin-left: 508px;
   height: 28px;
   /* width: 30px; */
 }
@@ -42,9 +40,9 @@ hr {
 .info-text{
   font-size: 18px;
   color: black;
-  /* margin-left: 288px; */
   border-top: 1.5px solid #aba9a9;
-  padding-left: 300px;
+  text-align: center;
+  padding: 16px 0 8px;
 }
 
 .upper-rectangle {
