@@ -2,15 +2,14 @@ extends layout.pug
 
 block content
   .container-user-dashboard.form-page-container
-    form.user-dashboard-form(method="post" action="")
-      h2 Dashboard
+    div.user-dashboard-form
+      h2(class="dashboard-heading") Dashboard
       span(class="welcome-text") Welcome to Quizzy!
       img(src='/img/Logout.webp', class="logout-img", alt='Quizzy Logo',)
-      hr
       br
-      span(class="text") Select the quiz type you want to play
-      br
-      br
+      
+      p(class="info-text") Select the quiz type you want to play
+      
       div.upper-rectangle
         label(class="quiz-lable") Quizzes
       div.quiz-rectangle
@@ -47,4 +46,4 @@ block content
         | &nbsp; &nbsp;
         img(src='/img/preview.png', alt='preview', class="preview-img")
         | &nbsp; 
-        a(href="#" class="analysis-preview-name") Preview      
+        a(href="#" class="analysis-preview-name") Preview 
