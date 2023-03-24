@@ -1,0 +1,51 @@
+extends layout.pug
+
+block content
+  .container-User-Dashboard
+    form.User-Dashboard-Form(method="post" action="")
+      h2 Dashboard
+      span(class="welcometext") Welcome to Quizzy!
+      img(src='/img/Logout.webp', class="logoutimg", alt='Quizzy Logo',)
+      hr
+      br
+      span(class="text") Select the quiz type you want to play
+      br
+      br
+      div.upperrectangle
+        label(class="QuizLable") Quzzies
+      div.quizArectangle
+        span.link-container
+        a(href="#" class="quizname") Quiz A
+        | &nbsp; &nbsp;
+        img(src='/img/data-analysis.webp', class="analysisimg", alt='preview')
+        | &nbsp;
+        a(href="#" class="analysisPreviewName") Analyze
+        | &nbsp; &nbsp;
+        img(src='/img/preview.png', alt='preview', class="previewimg")
+        | &nbsp; 
+        a(href="#" class="analysisPreviewName") Preview
+
+      div.quizArectangle
+        span.link-container
+        a(href="#" class="quizname") Quiz B
+        | &nbsp; &nbsp;
+        img(src='/img/data-analysis.webp', class="analysisimg", alt='preview')
+        | &nbsp;
+        a(href="#" class="analysisPreviewName") Analyze
+        | &nbsp; &nbsp;
+        img(src='/img/preview.png', alt='preview', class="previewimg")
+        | &nbsp; 
+        a(href="#" class="analysisPreviewName") Preview
+
+      div.lastquizArectangle
+        span.link-container
+        a(href="#" class="quizname") Quiz C
+        | &nbsp; &nbsp;
+        img(src='/img/data-analysis.webp', class="analysisimg", alt='preview')
+        | &nbsp;
+        a(href="#" class="analysisPreviewName") Analyze
+        | &nbsp; &nbsp;
+        img(src='/img/preview.png', alt='preview', class="previewimg")
+        | &nbsp; 
+        a(href="#" class="analysisPreviewName") Preview
+        
