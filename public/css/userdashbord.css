@@ -16,7 +16,7 @@
 .user-dashboard-header {
   display: flex;
   align-items: flex-end;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   padding-bottom: 8px;
 }
 .user-dashboard-header h2 {
@@ -30,10 +30,12 @@
 .welcome-text{
   font-size: 18px; 
   color: #4A4A4A;
+  margin-left: 24px;
 }
 
 .logout-img{
   height: 28px;
+  margin-left: auto;
   /* width: 30px; */
 }
 
