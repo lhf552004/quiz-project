@@ -1,5 +1,8 @@
 extends layout.pug
 
+block head 
+    title Quiz #{data.id}
+
 block scripts 
     script(src='/js/quiz.js')
 
@@ -11,16 +14,16 @@ block content
                 // Loop through all quiz items
                 each quizItem, n in data.quizItems
                     // Initially show the first quiz item
-                    .quiz-item(class= n == 0 ? 'active' : '')(data-id=quizItem.id)
+                    .quiz-item(class= n == 0 ? 'active' : '', data-id=quizItem.id)
                         h4 Question #{n + 1}:
                         p.quiz-item-question #{quizItem.question}
                         each answer, index in quizItem.options 
-                            div.quiz-answer(data-ans-value=answer) #{answer}
+                            div.quiz-answer(data-ans-value=answer.toString().trim()) #{answer}
                 .button-container
                     // Next button is disabled until an answer is chosen 
                     button.btn.btn-primary.next-button(disabled=true) Next
 
         .finish-quiz
                 h3 Thank you for completing Quiz #{data.id}
-                h4 You got #[span.right-answer ]/ #{data.quizItems.length} right
+                h4 You got #[span.right-answer ]/#{data.quizItems.length} right
                                 
