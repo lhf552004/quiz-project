@@ -91,6 +91,8 @@ app.use('/users', userRouter);
  * @param {Function} callback - A callback function to execute when the server starts listening.
  * @returns {http.Server} The HTTP server instance.
  */
-app.listen(3000, () => {
+var server = app.listen(3000, () => {
   console.log('Server is listening on port 3000');
 });
+
+export {server, app}

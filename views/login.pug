@@ -3,6 +3,7 @@ extends layout.pug
 block content  
     .form-page-container
         .form-wrapper
+            h3 Login 
             form(method="post" action="/users/login") 
                 input(type="text" id="email" name="email" placeholder="Enter E-Mail" required)
                 input(type="password" id="password" name="password" placeholder="Enter password" required)

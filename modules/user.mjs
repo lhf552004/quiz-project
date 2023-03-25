@@ -38,8 +38,7 @@ class User {
         // Check whether it exists in the database with email
         const index = users.findIndex(q => q.email === this.email);
         if (index > -1) {
-            // update
-            users.splice(index, 1, this);
+            throw new Error('User already existed.');
         } else {
             // create
             this.id = uuidv4();
@@ -57,20 +56,20 @@ class User {
      */
     static update(bankSpec, id, updated) {
         const fileName = `${bankSpec}.json`;
-        
+        let users = [];
         if (fs.existsSync(fileName)) {
             let rawdata = fs.readFileSync(fileName);
-            const users = JSON.parse(rawdata);
+            users = JSON.parse(rawdata);
 
             // Check whether it exists in the database with email
-            const index = users.findIndex(q => q.id === this.id);
+            const index = users.findIndex(q => q.id === id);
             if (index > -1) {
                 // update
                 const user = users.find(q => q.id === id);
                 const updatedUser = Object.assign(user, updated);
                 users.splice(index, 1, updatedUser);
             } else {
-                console.log("The user doesn't exist.");
+                throw new Error("The user doesn't exist.");
             }
         }
         const data = JSON.stringify(users);
@@ -90,7 +89,10 @@ class User {
                 let rawdata = fs.readFileSync(fileName);
                 let users = JSON.parse(rawdata);
                 const user = users.find(q => q.email === email && q.password == password);
-                return Object.assign(new User(), user);
+                if(user !== undefined)
+                    return Object.assign(new User(), user);
+                else
+                    return undefined;
             }
         } catch (err) {
 

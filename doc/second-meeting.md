@@ -1,11 +1,13 @@
-Record is availible by this link ( https://drive.google.com/file/d/1sBg2f6lhOXqzrot_t8GLxpCYmRcj_gnw/view?usp=share_link )
+Recording is availible by this link ( https://drive.google.com/file/d/1sBg2f6lhOXqzrot_t8GLxpCYmRcj_gnw/view?usp=share_link )
 
 Date: 03.03.2023
 Duration: 1 hour 20 minutes
 
+"Scrum Master" : Trang Vo (@trangv-mun) 
+
 Participants:
-Allen Li (@lhf552004 )
-Trang Vo (@trangv-mun)
+Allen Li (@lhf552004 ) 
+Trang Vo (@trangv-mun) ["Scrum Master"]
 Neha thakare (@Neha-Thakare1995 )
 Sukrut Dani (@Sukrut2710)
 
