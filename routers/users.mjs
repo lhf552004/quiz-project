@@ -128,5 +128,34 @@ userRouter.delete('/:id', (req, res) => {
 
 });
 
+/**
+ * Render the user dashboard page.
+ *
+ * @name GET /users/dash-board/:id
+ * @function
+ * @memberof module:user
+ * @param {string} id - The id of user.
+ * @param {Object} req - The Express request object.
+ * @param {Object} res - The Express response object.
+ * @returns {undefined}
+ */
+userRouter.get('/dash-board/:id', (req, res) => {
+    res.render('userDashboard');
+});
+
+/**
+ * Render the user admin page.
+ *
+ * @name GET /users/admin/:id
+ * @function
+ * @memberof module:user
+ * @param {string} id - The id of user.
+ * @param {Object} req - The Express request object.
+ * @param {Object} res - The Express response object.
+ * @returns {undefined}
+ */
+userRouter.get('/admin/:id', (req, res) => {
+    res.render('userAdmin');
+});
 
 export { userRouter };
