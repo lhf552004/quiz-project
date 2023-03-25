@@ -59,4 +59,32 @@ describe('User Management Regression Test', () => {
     });
 
     // It is difficult to test status 500 for delete
+
+    it('Should access the users page', async () => {
+        console.log('it access users page');
+        const res = await chai.request(app).get(`/users/`);
+        expect(res.status).to.equal(200);       
+        expect(res.text).to.include('<h1>This is user list</h1>');
+    });
+
+    it('Should access the login page', async () => {
+        console.log('it access login page');
+        const res = await chai.request(app).get(`/users/login`);
+        expect(res.status).to.equal(200);      
+        expect(res.text).to.include('<form method="post" action="/login-page">');
+    });
+
+    it('Should access the dashboard page', async () => {
+        console.log('it access dashboard page');
+        const res = await chai.request(app).get(`/users/dash-board/1`);
+        expect(res.status).to.equal(200);       
+        expect(res.text).to.include('<h2 class="dashboard-heading">Dashboard</h2>');
+    });
+
+    it('Should access the admin page', async () => {
+        console.log('it access admin page');
+        const res = await chai.request(app).get(`/users/admin/1`);
+        expect(res.status).to.equal(200);       
+        expect(res.text).to.include('<h1>This is user admin</h1>');
+    });
 });

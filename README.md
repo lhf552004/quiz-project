@@ -26,6 +26,9 @@ Signup: http://localhost:3000/users/create | [Individual README](/doc/individual
 
 Login: http://localhost:3000/users/login
 
+User Dashboard: http://localhost:3000/users/dash-board/:id
+
+User Admin: http://localhost:3000/users/admin/:id
 
 ## Repository Structure
   The main branch is dev

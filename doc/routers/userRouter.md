@@ -120,4 +120,37 @@ Response body:
 
         If the user deletion fails, "user deleted failed." is sent with status code 500.
 
+### GET '/dash-board/:id':
+
+Description: This route is used to render the user dashboard page.
+
+Request type: GET
+
+Request parameters:
+
+        id (string): The id of the user.
+
+Request body: None
+
+Response type: Object
+
+Response body: Rendered dashboard page.
+
+
+### GET '/admin/:id':
+
+Description: This route is used to render the user admin page.
+
+Request type: GET
+
+Request parameters:
+
+        id (string): The id of the user.
+
+Request body: None
+
+Response type: Object
+
+Response body: Rendered admin page.
+
 ### Note: The module uses the User class from the user.mjs module to handle user data.
