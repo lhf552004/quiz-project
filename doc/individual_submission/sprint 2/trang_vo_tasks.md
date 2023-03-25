@@ -1,6 +1,5 @@
-## Team Member Tasks Status Sprint 2 (Complete and/or Ongoing)
+### Completed and Ongoing tasks
 
-## Trang Vo
 1. Connect single quiz page to use get quizItem call [Task 98](https://github.com/MUN-COMP6905/project-eteam/issues/98) **DONE**
 
 2. Clean up and standardize CSS of the project [Task 113](https://github.com/MUN-COMP6905/project-eteam/issues/113) **DONE**
@@ -18,8 +17,3 @@
 8. Help and review teammember PRs
 
 9. Clean up and rearrange project readme file for team project 
-
-
-
-
-
