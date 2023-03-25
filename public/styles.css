@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap");
 @import "/css/common.css"; /* All common styles that are use across the site */
-@import "/css/form.css";/* Styles for form and form fields */
+@import "/css/form.css"; /* Styles for form and form fields */
 @import "/css/admin_dash.css"; /* Admin Dash Style */
 @import "/css/quizpage.css"; /* Specific styles for single quiz page */
