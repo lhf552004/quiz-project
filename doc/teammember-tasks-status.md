@@ -43,7 +43,11 @@
 
 8. Update the QuizBank Module for accepting MCQ's. [Task #12](https://github.com/MUN-COMP6905/project-eteam/issues/12) *-Done*
 
-9. Create new user story for the Assignment 3: [Admin Functionalities to the Quiz App [Task#74]](https://github.com/MUN-COMP6905/project-eteam/issues/74)
+9. Create new user story for the Assignment 3: [Admin Functionalities to the Quiz App [Task#74]](https://github.com/MUN-COMP6905/project-eteam/issues/74) *-Done*
+
+10. Test cases for the updated QuizBank Module [Task #102](https://github.com/MUN-COMP6905/project-eteam/issues/102) *-Done*
+
+11. Update the document explaining QuizBank.mjs module so that everyone will know the updated module working.[Quizbank & DB explanation](https://github.com/MUN-COMP6905/project-eteam/blob/dev/doc/Quizbank%20%26%20DB%20explanation.pdf) *-Done*
 
 ## Trang Vo
 
