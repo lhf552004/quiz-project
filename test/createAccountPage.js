@@ -50,7 +50,7 @@ describe("Create Account Page", () => {
     console.log('New user is created sucessfully! Below is the user id of newly created user:');
     const res = await chai.request("http://localhost:3000")
         .post('/users/create')
-        .send({ email: 'testneuser3@example.com', password: 'testneuser3password' });
+        .send({ email: 'reviewTrang@example.com', password: 'reviewTrangpassword' });
     expect(res.status).to.equal(200);
     expect(res.text).to.include('<h1>This is user profile</h1>');
     userId = res.text.substring(res.text.indexOf('<h2>') + 4, res.text.indexOf('</h2>'));
