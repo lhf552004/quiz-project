@@ -7,7 +7,7 @@ block scripts
     script(src='/js/quiz.js')
 
 block content
-    .container.quiz-container(data-right-answer=0) 
+    .container.quiz-container(data-right-answer=0, data-quiz-name=data.id) 
         h1.text-center Quiz #{data.id}
         .row 
             .col-md-6 
