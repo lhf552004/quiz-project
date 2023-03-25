@@ -88,7 +88,7 @@ Login: http://localhost:3000/users/login
 
 [Second Meeting](/doc/second-meeting.md) Notes are avaliable in file "second-meeting.md"
 
-[Fourth Meeting]([/doc/fourth-meeting.md](https://github.com/MUN-COMP6905/project-eteam/blob/dev/doc/fourth-meeting.md)) Notes are avaliable in file "fourth-meeting.md"
+[Fourth Meeting](https://github.com/MUN-COMP6905/project-eteam/blob/dev/doc/fourth-meeting.md) Notes are avaliable in file "fourth-meeting.md"
 
 ## Team members tasks status
 
