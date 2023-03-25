@@ -17,7 +17,7 @@ const userRouter = express.Router();
 @returns {void}
 */
 userRouter.get('/', (req, res) => {
-    res.render('users', {users: User.fetchUsers('user')});
+    res.render('users', { users: User.fetchUsers('user') });
 });
 
 /**
@@ -48,12 +48,12 @@ userRouter.get('/login', (req, res) => {
  * @returns {undefined}
  */
 userRouter.post('/login', (req, res) => {
-    let {email, password} = req.body;
+    let { email, password } = req.body;
     const user = User.fetch('user', email, password);
     if (user !== undefined) {
-      res.render('profile', {id: user.id});
-    }else {
-      res.send('User not found or password not correct.');
+        res.render('profile', { id: user.id, email, username: user.username, firstname: user.firstname, lastname: user.lastname, age: user.age });
+    } else {
+        res.status(500).json({ message: 'User not found or password not correct.' });
     }
 });
 
@@ -69,7 +69,7 @@ userRouter.post('/login', (req, res) => {
  * @returns {undefined}
  */
 userRouter.get('/create', (req, res) => {
-    res.render('createAccount'); 
+    res.render('createAccount');
 });
 
 /**
@@ -86,12 +86,12 @@ userRouter.get('/create', (req, res) => {
  * @returns {undefined}
  */
 userRouter.post('/create', (req, res) => {
-    let {email, password} = req.body;
-    
+    let { email, password } = req.body;
+
     const user = new User('', email, password);
     user.store('user');
     // Redirect to profile
-    res.render('profile', {id: user.id});
+    res.render('profile', { id: user.id, email, username: user.username, firstname: user.firstname, lastname: user.lastname, age: user.age });
 });
 
 /**
@@ -106,7 +106,7 @@ userRouter.put('/:id', (req, res) => {
     const id = req.params.id;
     let updated = req.body;
     User.update('user', id, updated);
-    res.render('profile', {id: id});
+    res.render('profile', { id: id, email: updated.email, username: updated.username, firstname: updated.firstname, lastname: updated.lastname, age: updated.age });
 });
 
 /**
@@ -122,10 +122,10 @@ userRouter.delete('/:id', (req, res) => {
     const code = User.delete('user', id);
     if (code === 0) {
         res.status(200).json({ message: 'user deleted successfully.' });
-    }else {
+    } else {
         res.status(500).json({ message: 'user deleted failed.' });
     }
-    
+
 });
 
 
