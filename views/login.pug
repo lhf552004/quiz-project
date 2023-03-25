@@ -3,9 +3,10 @@ extends layout.pug
 block content  
     .form-page-container
         .form-wrapper
-            form(method="post" action="/login-page") 
+            h3 Login 
+            form(method="post" action="/users/login") 
                 input(type="text" id="email" name="email" placeholder="Enter E-Mail" required)
                 input(type="password" id="password" name="password" placeholder="Enter password" required)
                 .button-wrapper
                     input(type="submit" value="SIGN IN" class="btn btn-primary")
-                    a(href="#" class="button-link link-sign-up") Don't have an account? Sign up
+                    a(href="/user/create" class="button-link link-sign-up") Don't have an account? Sign up
