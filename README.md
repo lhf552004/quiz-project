@@ -20,7 +20,7 @@ Home: http://localhost:3000/
 
 Quizs: http://localhost:3000/quiz
 
-Quiz: http://localhost:3000/quiz/1 | [Individual README](/doc/individual_submission/trangv_code_task.md)
+Quiz: http://localhost:3000/quiz/GK
 
 Signup: http://localhost:3000/users/create | [Individual README](/doc/individual_submission/neha_code_task.md)
 
