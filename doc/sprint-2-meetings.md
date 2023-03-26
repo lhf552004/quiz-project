@@ -19,3 +19,9 @@ Because of time conflicts between team members, we had a first meeting for our s
 [Meeting Notes](/doc/meeting_notes/sprint2_mar24.md)
 - Team updates on tasks in prepare for submission 
 - Discussion for future sprint
+
+### 4. March 27, 2022
+[Meeting Notes](/doc/meeting_notes/sprint2_mar27.md)
+- Tasks updates of every team member did in 1 week. 
+- Discussion on left over for final document submission for sprint 2.
+- Ask for performance review from every team member.
