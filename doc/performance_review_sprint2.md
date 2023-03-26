@@ -2,7 +2,8 @@
 
 The Performance Review of Each Team-Member can be seen in the mentioned link: [Sprint 2 Performance Review](https://docs.google.com/spreadsheets/d/1Gm-qb7FD2baLD-eDKrLjbsh3EBmGTTs08O_xN5u_UjA/edit?resourcekey#gid=104030491)
 
-1.  The above link is a google spreadsheet which consist of all the details on performance review given by each team member to every other team member.
+
+1.  The above link is a google spreadsheet which consist of all the details on performance review given by each team member to every other team member. It's the same spreadsheet from sprint 1 with reviews from sprint 1 collapsed and can be expanded. Doing it this way to keep track of all sprint reviews in the same place to observe improvement.
 
 2.  To review each team member we gave used the same methodology which we had used in sprint 1, that is, submit review via google form. This will add the entries (reviews given by every team member) in the google spreadsheeted.
 
@@ -23,3 +24,5 @@ The Performance Review of Each Team-Member can be seen in the mentioned link: [S
     4.  Need to be more responsible while merging PR in dev.
 
 6. This process of documenting and recording the performance with the help of google form and spreadsheet will help in improving the team performance and realising where the team is lagging as a whole and can be handled it appropriately. 
+
+7. All raised issues are created as issue tickets on kanban board to be address in the next sprint
