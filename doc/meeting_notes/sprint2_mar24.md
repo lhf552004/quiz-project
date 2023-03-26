@@ -1,10 +1,9 @@
-
-Recording is availible by this link ( Please put a link here @Trang)
-
 Date: 24.03.2023
 Duration: 40 minutes
 
 "Scrum Master" : Sukrut Dani (@Sukrut2710)
+
+Link to Video: https://drive.google.com/file/d/1-UY8WouZ21ruEceeOP7-E6fPPT8jaFn9/view?usp=sharing
 
 Participants:
 Allen Li (@lhf552004 ) 

@@ -1,8 +1,10 @@
-# Sprint 2 First Meeting 
+Date: 15.03.2023
+
+Duration: 48 minutes
 
 Scrum Master + Note Taker: Trang V. 
 
-Link on video: https://drive.google.com/file/d/1_QTfelcuNkJtGLyYncxwkkLgIw9P64Sa/view?usp=share_link
+Link to video: https://drive.google.com/file/d/1_QTfelcuNkJtGLyYncxwkkLgIw9P64Sa/view?usp=share_link
 
 ## Discussion about what was missing from sprint 1 
 
@@ -48,6 +50,8 @@ Link on video: https://drive.google.com/file/d/1_QTfelcuNkJtGLyYncxwkkLgIw9P64Sa
 
 
 ## Decision from the meeting 
+
+We decided to have all of our tasks done by Mar 25th, so we would have enough time to do code review and performance review by Mar 27th
 
 Sukrut - Regression Test for his models
 Neha - Connection to the database for create an account screen 

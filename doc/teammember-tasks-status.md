@@ -3,11 +3,13 @@
 ## Sprint 1
 
 [Yawen Li](/doc/individual_submission/sprint%201/yawen_li_tasks.md)
+
 [Trang Vo](/doc/individual_submission/sprint%201/trang_vo_tasks.md)
 
 ## Sprint 2
 
 [Yawen Li](/doc/individual_submission/sprint%202/yawen_li_tasks.md)
+
 [Trang Vo](/doc/individual_submission/sprint%202/trang_vo_tasks.md)
 
 ## Sukrut Dani
