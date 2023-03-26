@@ -31,7 +31,7 @@ quizRouter.get('/', (req, res) => {
 quizRouter.get('/:id', async (req, res) => {
     const id = req.params.id;
     const quiz = new Quiz()
-    const quizItems = await quiz.fetchAllQuizItems(id);
+    const quizItems = await quiz.fetchAllQuizItems();
 
     res.render("quiz", {data: {id : id, quizItems: quizItems}});
 });
