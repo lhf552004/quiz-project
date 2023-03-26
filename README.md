@@ -22,11 +22,11 @@ Quizs: http://localhost:3000/quiz
 
 Quiz: http://localhost:3000/quiz/GK
 
-Signup: http://localhost:3000/users/create | [Individual README](/doc/individual_submission/neha_code_task.md)
+Signup: http://localhost:3000/users/create
 
 Login: http://localhost:3000/users/login
 
-User Dashboard: http://localhost:3000/users/dash-board/:id
+User Dashboard: http://localhost:3000/users/dash-board/1
 
 User Admin: http://localhost:3000/users/admin/:id
 
@@ -89,7 +89,7 @@ User Admin: http://localhost:3000/users/admin/:id
 
 ## Scrum meetings
 
-[Sprint 2 Meetings](/doc/sprint-1-meetings.md)
+[Sprint 1 Meetings](/doc/sprint-1-meetings.md)
 
 [Sprint 2 Meetings](/doc/sprint-2-meetings.md)
 
@@ -99,7 +99,9 @@ User Admin: http://localhost:3000/users/admin/:id
 
 ## Performance Review of Each Team-Member
 
-[Performance Review](/doc/performancereview.md)
+[Performance Review Sprint 1](/doc/performance_review_sprint1.md)
+
+[Performance Review Sprint 2](/doc/performance_review_sprint2.md)
 
 ## Attributions
 
