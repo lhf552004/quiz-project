@@ -69,6 +69,8 @@ User Admin: http://localhost:3000/users/admin/:id
 ## Code Style
 [Nodejs Code style External Resources](https://github.com/felixge/node-style-guide)
 
+[CSS Code Style](/doc/csscodestyle.md)
+
 ## Code Review Standard
 
 [Team Code Review Standard](/doc/codereviewstandard.md)
@@ -87,11 +89,9 @@ User Admin: http://localhost:3000/users/admin/:id
 
 ## Scrum meetings
 
-[First Meeting](/doc/first-meeting.md)
+[Sprint 2 Meetings](/doc/sprint-1-meetings.md)
 
-[Second Meeting](/doc/second-meeting.md) Notes are avaliable in file "second-meeting.md"
-
-[Fourth Meeting](https://github.com/MUN-COMP6905/project-eteam/blob/dev/doc/fourth-meeting.md) Notes are avaliable in file "fourth-meeting.md"
+[Sprint 2 Meetings](/doc/sprint-2-meetings.md)
 
 ## Team members tasks status
 
