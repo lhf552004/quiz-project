@@ -31,8 +31,10 @@ quizItemRouter.get('/', (req, res) => {
 */
 quizItemRouter.get('/:id', async (req, res) => {
     const id = req.params.id;
+    const quizName = req.query.quizName;
+
     const quizItem = new QuizItem()
-    const quizItemDetails = await quizItem.getQuizItemById(id);
+    const quizItemDetails = await quizItem.getQuizItemById(quizName, id);
 
     res.status(200).json(quizItemDetails);
 });
