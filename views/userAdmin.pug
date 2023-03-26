@@ -1,4 +1,30 @@
-extends layout
+extends layout.pug
 
-block content
-    h1 This is user admin
+block content 
+        .admin-container
+            .admin-wrapper 
+                h3 Quizzy Admin Panel 
+                h4 Hi Admin, here you can able to mange your Quiz, such as, Add New Question,Edit Question, Delete Question.
+                    br 
+                    | 1. To do so please select the below appropriate tile to perform action on  your quiz. 
+                    br 
+                    | 2.  To Add quiz for particular type, you will have to select the particulate quiz type tile.   
+
+                ul(class="admin-quiz-list")
+                    li 
+                        .admin-quiz-list-name Quiz A
+                        a.admin-quiz-list-link Edit
+                        a.admin-quiz-list-link Analyze
+                    li 
+                        .admin-quiz-list-name Quiz B
+                        a.admin-quiz-list-link Edit
+                        a.admin-quiz-list-link Analyze
+                    li 
+                        .admin-quiz-list-name Quiz C
+                        a.admin-quiz-list-link Edit
+                        a.admin-quiz-list-link Analyze
+                    li 
+                        .admin-quiz-list-name Quiz D
+                        a.admin-quiz-list-link Edit
+                        a.admin-quiz-list-link Analyze 
+
