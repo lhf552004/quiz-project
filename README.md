@@ -2,7 +2,7 @@
 
 ## Team description
 
-[Member roles definition](./doc/memberroles.md)
+[Member roles definition](./doc/memberroles.md) **Updated to align with roles for sprint 2**
 
 ## Project Description
 
@@ -30,7 +30,7 @@ User Dashboard: http://localhost:3000/users/dash-board/1
 
 User Admin: http://localhost:3000/users/admin/:id
 
-## Routers doc:
+## Routers doc: **New document from sprint 2**
 
 Quiz: [Quiz Router](./doc/routers/quizRouter.md)
 
@@ -69,6 +69,26 @@ User: [User Router](./doc/routers/userRouter.md)
 
   README file is the introduction for the project
 
+## Regression/Unit Tests  **New from sprint 2**
+
+Available tests from this sprint 
+
+### Tests for modules and routers
+We are using mocha with the help of chai to make request and puppeteer to run as a shadow browser for UI Tests
+
+[quizbank.test.mjs](/test/quizbank.test.mjs)
+
+[user.test.mjs](/test/user.test.mjs)
+
+[userRouter.test.mjs](/test/userRouter.test.mjs)
+
+### Tests for UI Pages
+Note: Both tests will need `node serve.js` running concurrent with running the tests 
+
+[/test/createAccountPage.js](/test/createAccountPage.js) | [Test Instructions](/doc/individual_submission/sprint%202/neha_code_task.md)
+
+[/test/quizPage.js](/test/quizPage.js) | [Test Instruction](/doc/individual_submission/sprint%202/trangv_code_task_doc.md)
+
 ## Structure Design
 [Front-End Structure Design](/doc/frontendstructuredesign.md)
 
@@ -77,13 +97,13 @@ User: [User Router](./doc/routers/userRouter.md)
 ## Code Style
 [Nodejs Code style External Resources](https://github.com/felixge/node-style-guide)
 
-[CSS Code Style](/doc/csscodestyle.md)
+[CSS Code Style](/doc/csscodestyle.md) **New document from sprint 2**
 
 ## Code Review Standard
 
 [Team Code Review Standard](/doc/codereviewstandard.md)
 
-[Code Review Checklist](/doc/codereviewchecklist.md)
+[Code Review Checklist](/doc/codereviewchecklist.md) **Updates for sprint 2**
 
 [Code Review Standard External Resources](https://google.github.io/eng-practices/review/reviewer/standard.html)
 
@@ -99,7 +119,7 @@ User: [User Router](./doc/routers/userRouter.md)
 
 [Sprint 1 Meetings](/doc/sprint-1-meetings.md)
 
-[Sprint 2 Meetings](/doc/sprint-2-meetings.md)
+[Sprint 2 Meetings](/doc/sprint-2-meetings.md) **New document from sprint 2**
 
 ## Team members tasks status
 

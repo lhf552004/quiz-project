@@ -12,6 +12,7 @@
     Does it break other existing functionality?
     Does it work well with other modules in the product?
     Does it perform all of the required tasks?
+    Does it pass all regress tests?
 
 ## __ Architecture
 

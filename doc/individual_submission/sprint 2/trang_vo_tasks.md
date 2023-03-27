@@ -14,4 +14,4 @@
 
 7. Help and review teammember PRs
 
-8. Clean up and rearrange project readme file for team project [Task 113](https://github.com/MUN-COMP6905/project-eteam/issues/113) **DONE**
+8. Clean up and rearrange project docs
