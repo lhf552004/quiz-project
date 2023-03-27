@@ -1,6 +1,6 @@
 **Following are the task and responsibility I did in sprint 2:**
 
-1.	I was scrum master for meeting 5, and made sure all are completing their tasks on time(decided deadline) *-Done*
+1.	I was scrum master for meeting 4, and made sure all are completing their tasks on time(decided deadline) *-Done*
 
 2.	Create the meeting document for scrum meeting 5, discussing every bit of elements covered in the meeting. *-Done*
 

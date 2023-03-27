@@ -1,15 +1,18 @@
 ## Documentation for Individual Submission Sprint 2
 
 ### 1. Standardize CSS for the project 
+
 After deciding the fixed styling pattern, I did style for User Dashboard Page according to the standardize CSS. Helped another team member in standardizing the CSS.
 
 ### 2. End to End connection of Create Account Page.
+
 From sprint 1, user was not able to create the actual account and store its email id, password and id in database as it was just the UI implementation.
 Now in second sprint I make sure the functionality works end to end for creating new user in cluck of Sign-Up button. 
 
 Pull request for this task: [Pull Request](https://github.com/MUN-COMP6905/project-eteam/pull/115)
 
 ### 3. Creating UI of User Dashboard Page.
+
 In this sprint I have created the UI for User Dashboard. The dashboard reflects the three different modules of quiz: Quiz A, Quiz B, Quiz C.
 
 This quiz module will contain combination of different types of Quiz items related and specific to that quiz module. For Example, quiz item can be multiple choice question, select multiple answer question, Give one word answer in the textbox, etc.
@@ -31,6 +34,7 @@ Temporary URL to view this page: `http://localhost:3000/users/dash-board/1`
 [userDashboard.pug](/views/userDashboard.pug)
 
 ### 4. Regression Test for Create Account Page
+
 I created a UI regression test for the Create Account Page to make sure all the place holders and links are displayed properly. I have used mocha to create the test for this page. 
 
 The things that are need to be checked by the test:
@@ -70,3 +74,9 @@ The things that are need to be checked by the test:
 [Pull Request](https://github.com/MUN-COMP6905/project-eteam/pull/145)
 
 [createAccountPage.js](/test/createAccountPage.js)
+
+### 5. UML Diagram
+
+This is the UML diagram for User Dashboard Page which I have created in sprint 2: 
+
+!["User Dashboard Page UML"](/doc/images/UserDashboardPageUML.png)
