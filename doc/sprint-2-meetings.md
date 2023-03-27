@@ -14,6 +14,7 @@ Because of time conflicts between team members, we had a first meeting for our s
 
 [Meeting Notes](/doc/meeting_notes/sprint2_mar20.md)
 
+
 ### 3. March 24, 2022
 
 [Meeting Notes](/doc/meeting_notes/sprint2_mar24.md)
