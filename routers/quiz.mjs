@@ -1,5 +1,5 @@
 import express from 'express';
-import { Quiz, QuizItem } from '../modules/quizbank.mjs';
+import { Quiz } from '../modules/quizbank.mjs';
 /**
  * @module quizRouter The module is to handler quiz router
  */
@@ -15,8 +15,8 @@ const quizRouter = express.Router();
 @returns {void}
 */
 quizRouter.get('/', (req, res) => {
-    // const allQuizIds = Quiz.fetchAllIds();  // Cause error
-    res.render("quizlist", {list: [1, 2, 3, 4, 5]});
+    const quiz = new Quiz();
+    res.render("quizlist", {list: quiz.fetchAllQuizNames()});
 });
 
 /**
@@ -28,12 +28,12 @@ quizRouter.get('/', (req, res) => {
 @param {object} res - The response object
 @returns {void}
 */
-quizRouter.get('/:id', async (req, res) => {
-    const id = req.params.id;
+quizRouter.get('/:name', async (req, res) => {
+    const name = req.params.name;
     const quiz = new Quiz()
-    const quizItems = await quiz.fetchAllQuizItems(id);
+    const quizItems = await quiz.fetchAllQuizItems(name);
 
-    res.render("quiz", {data: {id : id, quizItems: quizItems}});
+    res.render("quiz", {data: {name : name, quizItems: quizItems}});
 });
 
 /**
@@ -49,37 +49,24 @@ POST route handler for creating a new quiz.
 */
 quizRouter.post('/', (req, res) => {
     const json = req.body; // get the form data from the request body
-    const newQuiz = Object.assign(new Quiz(), json);
-    newQuiz.store();
+    // According to the quizbank module, to create a quiz, a quiz name is needed
+    const newQuiz = new Quiz(json.name);
+    newQuiz.createNewQuiz(json.name);
     res.status(200).json({ message: 'quiz create successfully.' });
 });
 
 /**
 
-@function updateQuiz
-@description This function is used to update a quiz by id
-@param {object} req - The request object
-@param {object} res - The response object
-@returns {void}
-*/
-quizRouter.put('/:id', (req, res) => {
-    const json = req.body; // get the form data from the request body
-    const updateQuiz = Object.assign(new Quiz(), json);
-    updateQuiz.store();
-    res.render('quiz', updateQuiz); 
-});
-
-/**
-
 @function deleteQuiz
-@description This function is used to delete a quiz by id
+@description This function is used to delete a quiz by name
 @param {object} req - The request object
 @param {object} res - The response object
 @returns {void}
 */
-quizRouter.delete('/:id', (req, res) => {
-    const id = req.params.id;
-    Quiz.delete('', id);
+quizRouter.delete('/:name', (req, res) => {
+    const name = req.params.name;
+    const quizToDelete = new Quiz(name);
+    quizToDelete.deleteQuiz(name);
     res.status(200).json({ message: 'quiz deleted successfully.' });
 });
 

@@ -12,10 +12,7 @@ $(function() {
         let current_answer = $('.quiz-item.active .quiz-answer.active').text().toString().trim().toLowerCase();
 
         $.ajax({
-            url: '/quizitem/' + $('.quiz-item.active').data('id'),
-            data: {
-                quizName: $('.quiz-container').data('quiz-name')
-            },
+            url: '/quizitem/' + $('.quiz-item.active').data('id') + '/quiz/' + $('.quiz-container').data('quiz-name'),
             type: 'GET',
             success: function(data) {
                 current_right_answer = data.answer;
