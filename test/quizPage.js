@@ -2,17 +2,20 @@ import puppeteer from "puppeteer";
 import { assert } from "chai";
 import chai from "chai";
 import chaiHttp from "chai-http";
+import { app } from '../serve.js';
+
 let browser = null, page = null;
 chai.use(chaiHttp);
 
 let quizItemDetails = null;
-
 
 describe("Single Quiz Page", function () {
 	this.timeout(60 * 1000);
 	before(async () => {
 		browser = await puppeteer.launch({ headless: false }) // with visual
 		page = await browser.newPage();
+
+		await chai.request(app).keepOpen();
 	});
 	after(async () => {
 		await browser.close();
@@ -44,7 +47,7 @@ describe("Single Quiz Page", function () {
 		const options = await page.evaluate(() => document.querySelectorAll('.quiz-item.active .quiz-answer').length);
 		const quizName = await page.evaluate(() => document.querySelector('.quiz-container').dataset.quizName);
 		// using chai request to get quiz item details
-		return chai.request('http://localhost:3000')
+		return chai.request(app)
 		.get('/quizitem/' + quizItemId + '/quiz/' + quizName)
 		.then((resp) => {
 			quizItemDetails = resp.body;
@@ -60,7 +63,7 @@ describe("Single Quiz Page", function () {
 		const quizItemId = await page.evaluate(() => document.querySelector('.quiz-item.active').dataset.id);
 		const quizName = await page.evaluate(() => document.querySelector('.quiz-container').dataset.quizName);
 
-		return chai.request('http://localhost:3000')
+		return chai.request(app)
 		.get('/quizitem/' + quizItemId + '/quiz/' + quizName)
 		.then(async (resp) => {			
 			quizItemDetails = resp.body;
@@ -100,7 +103,7 @@ describe("Single Quiz Page", function () {
 		const quizName = await page.evaluate(() => document.querySelector('.quiz-container').dataset.quizName);
 		const quizItemId = await page.evaluate(() => document.querySelector('.quiz-item.active').dataset.id);
 
-		return chai.request('http://localhost:3000')
+		return chai.request(app)
 		.get('/quizitem/' + quizItemId + '/quiz/' + quizName)
 		.then(async (resp) => {			
 			quizItemDetails = resp.body;

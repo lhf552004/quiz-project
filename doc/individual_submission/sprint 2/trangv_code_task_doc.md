@@ -51,10 +51,8 @@ These are the things that I check in my test.
 - Result also display correctly with the right result 
 
 Steps to run my test: 
-1. run `npm install`
-2. run `node serve.js`
-3. open NEW terminal, **DO NOT CLOSE** the one from step 3, we need to have it running for the test
-4. in the new terminal, go to the project folder, then run `npx mocha test/quizPage.js`
+1. run `npm install` to install all necessary test suites
+2. run `npx mocha test/quizPage.js --exit`
 
 [PR](https://github.com/MUN-COMP6905/project-eteam/pull/127)
 

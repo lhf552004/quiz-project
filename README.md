@@ -83,7 +83,7 @@ We are using mocha with the help of chai to make request and puppeteer to run as
 [userRouter.test.mjs](/test/userRouter.test.mjs)
 
 ### Tests for UI Pages
-Note: Both tests will need `node serve.js` running concurrent with running the tests 
+Please prefer to instruction docs to run tests 
 
 [/test/createAccountPage.js](/test/createAccountPage.js) | [Test Instructions](/doc/individual_submission/sprint%202/neha_code_task.md)
 
