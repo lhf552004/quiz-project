@@ -1,14 +1,14 @@
 extends layout.pug
 
 block head 
-    title Quiz #{data.id}
+    title Quiz #{data.name}
 
 block scripts 
     script(src='/js/quiz.js')
 
 block content
-    .container.quiz-container(data-right-answer=0, data-quiz-name=data.id) 
-        h1.text-center Quiz #{data.id}
+    .container.quiz-container(data-right-answer=0, data-quiz-name=data.name) 
+        h1.text-center Quiz #{data.name}
         .row 
             .col-md-6 
                 // Loop through all quiz items

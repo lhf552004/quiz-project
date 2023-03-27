@@ -45,10 +45,7 @@ describe("Single Quiz Page", function () {
 		const quizName = await page.evaluate(() => document.querySelector('.quiz-container').dataset.quizName);
 		// using chai request to get quiz item details
 		return chai.request('http://localhost:3000')
-		.get('/quizItem/' + quizItemId)
-		.query({
-			quizName: quizName
-		})
+		.get('/quizitem/' + quizItemId + '/quiz/' + quizName)
 		.then((resp) => {
 			quizItemDetails = resp.body;
 			// checking to make sure the number of options show up correctly
@@ -64,10 +61,7 @@ describe("Single Quiz Page", function () {
 		const quizName = await page.evaluate(() => document.querySelector('.quiz-container').dataset.quizName);
 
 		return chai.request('http://localhost:3000')
-		.get('/quizItem/' + quizItemId)
-		.query({
-			quizName: quizName
-		})
+		.get('/quizitem/' + quizItemId + '/quiz/' + quizName)
 		.then(async (resp) => {			
 			quizItemDetails = resp.body;
 			// Wait for the correct quiz answer and next button available
@@ -107,10 +101,7 @@ describe("Single Quiz Page", function () {
 		const quizItemId = await page.evaluate(() => document.querySelector('.quiz-item.active').dataset.id);
 
 		return chai.request('http://localhost:3000')
-		.get('/quizItem/' + quizItemId)
-		.query({
-			quizName: quizName
-		})
+		.get('/quizitem/' + quizItemId + '/quiz/' + quizName)
 		.then(async (resp) => {			
 			quizItemDetails = resp.body;
 			// purposely choose a wrong answer
