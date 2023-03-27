@@ -30,6 +30,14 @@ User Dashboard: http://localhost:3000/users/dash-board/1
 
 User Admin: http://localhost:3000/users/admin/:id
 
+## Routers doc:
+
+Quiz: [Quiz Router](./doc/routers/quizRouter.md)
+
+QuizItem: [QuizItem Router](./doc/routers/quizItemRouter.md)
+
+User: [User Router](./doc/routers/userRouter.md)
+
 ## Repository Structure
   The main branch is dev
   

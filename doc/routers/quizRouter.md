@@ -16,7 +16,7 @@ Response type: Object
 
 Response body: Rendered *quizlist* page with *list* as a parameter.
 
-### GET '/:id':
+### GET '/:name':
 
 Description: This route is used to render the single quiz page.
 
@@ -24,7 +24,7 @@ Request type: GET
 
 Request parameters:
 
-        id(string): The id of the quiz to be retrieved.
+        name(string): The name of the quiz to be retrieved.
 
 Request body: None
 
@@ -44,7 +44,7 @@ Request parameters: None
 
 Request body: 
 
-object of class [Quiz](../database/quiz.md)        
+       name(string): The name of the quiz to be retrieved.
 
 Response type: Object
 
@@ -52,35 +52,15 @@ Response body:
 
         "quiz create successfully." is sent with status code 200.
 
-### PUT '/:id':
+### DELETE '/:name':
 
-Description: This route is used to render the updating of quiz page.
-
-Request type: PUT
-
-Request parameters: 
-
-        id(string): The id of the quiz to be updated.
-
-Request body: 
-
-object of class [Quiz](../database/quiz.md)
-
-Response type: Object
-
-Response body: 
-
-        "quiz update successfully." is sent with status code 200. (It is not finished.)
-
-### DELETE '/:id':
-
-Description: This route is used to delete a quiz by id.
+Description: This route is used to delete a quiz by name.
 
 Request type: DELETE
 
 Request parameters:
 
-        id (string): The id of the quiz to be deleted.
+        name (string): The name of the quiz to be deleted.
 
 Request body: None
 
