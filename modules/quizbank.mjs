@@ -1,5 +1,4 @@
 'use strict';
-
 /**
  * @module Quizbank 
  * @description The module is exports two classes Quiz and QuizItem
@@ -297,7 +296,8 @@ class Quiz {
 //quizItem.correct("GK","2", "Poutine");
 //const quiz = new Quiz();
 //quiz.fetchAllIds();
-//quiz.fetchAllQuizItems("Maths");
+// const quizItemsArray = await quiz.fetchAllQuizItems("Maths");
+// console.log(quizItemsArray.length);
 //const newQuizId = await quiz.createNewQuiz("Hollywood");
 //quiz.fetchAllQuizNames();
 //quiz.deleteQuiz("Bollywood");
