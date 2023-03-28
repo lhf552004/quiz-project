@@ -8,8 +8,8 @@
 
 4. Update the document explaining QuizBank.mjs module so that everyone will know the updated module working. [Quizbank & DB explanation](https://github.com/MUN-COMP6905/project-eteam/blob/dev/doc/Quizbank%20%26%20DB%20explanation.pdf) *-Done*
 
-5. Update the documentation for individual submission.
+5. Update the documentation for [individual submission Sprint2](https://github.com/MUN-COMP6905/project-eteam/blob/dev/doc/individual_submission/sprint%202/sukrut_task.md). *-Done*
 
-6. Submit the Performance Review for all Team members [Task#129](https://github.com/MUN-COMP6905/project-eteam/issues/129)
+6. Submit the Performance Review for all Team members [Task#129](https://github.com/MUN-COMP6905/project-eteam/issues/129) *-Done*
  
 7. Tasks in backlog for the [Task#74](https://github.com/MUN-COMP6905/project-eteam/issues/74): [Task#163](https://github.com/MUN-COMP6905/project-eteam/issues/163) *-Done*
