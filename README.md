@@ -76,7 +76,7 @@ Available tests from this sprint
 ### Tests for modules and routers
 We are using mocha with the help of chai to make request and puppeteer to run as a shadow browser for UI Tests
 
-[quizbank.test.mjs](/test/quizbank.test.mjs)
+[quizbank.test.mjs](/test/quizbank.test.mjs): If you want to run this file separately, mention full path while running cmd. "/test/quizbank.test.mjs" 
 
 [user.test.mjs](/test/user.test.mjs)
 
