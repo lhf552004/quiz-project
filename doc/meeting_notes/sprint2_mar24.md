@@ -25,14 +25,22 @@ UI Discussion
 2.Was decided to implement a "temporary" solution to ensure proper functionality of the UI as Allen hasn't done the user separation like admin and normal user. 
 3.Review code and functionality for futher understanding what to do.
 
+
+Testing:
+
+Yawen and Trang has finished there testing parts.
+Neha changed her mind and decided to do the UI testing only instead of backend.
+Sukrut is going to write full unit tests for QuizBank Module.
+Anton is going to finish his tasks first and then start with the testing.
+
 Performance Record
 
 1.Talk about performanse goals and efficiency of team members.
 2.Set a deadline of 27th March for submitting the performance review.
 
-User Story (00:59:00- 01:10:00)
+User Story
 
-"Admin Functionality & User Dashboard" Discussion (01:10:00-01:18:00)
+"Admin Functionality & User Dashboard" Discussion
 
 Disscused future updaes that will improve functionality and ensuring propetly working web application, but without decision for implement that immediately.
 
