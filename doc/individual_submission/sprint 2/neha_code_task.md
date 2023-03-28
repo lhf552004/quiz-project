@@ -61,6 +61,8 @@ The things that are need to be checked by the test:
 
 `4 passing (2s)`
 
+**Note:** The test will not be runed correctly for second time, if user mentioned in "createAccountPage.js" file (test) is created successfully in first iteration. That user will be already created in 1st iteration.  
+
 **Steps to run my test:** 
 
 1. Open terminal

@@ -26,3 +26,4 @@ Because of time conflicts between team members, we had a first meeting for our s
 - Tasks updates of every team member did in 1 week. 
 - Discussion on left over for final document submission for sprint 2.
 - Ask for performance review from every team member.
+- Discussion on next sprint tasks.
