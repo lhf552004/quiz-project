@@ -13,3 +13,5 @@
 6. Submit the Performance Review for all Team members [Task#129](https://github.com/MUN-COMP6905/project-eteam/issues/129) *-Done*
  
 7. Tasks in backlog for the [Task#74](https://github.com/MUN-COMP6905/project-eteam/issues/74): [Task#163](https://github.com/MUN-COMP6905/project-eteam/issues/163) *-Done*
+
+8. Conducted a Team Meeting as a Scrum Master: [Meeting Video](https://drive.google.com/file/d/1-UY8WouZ21ruEceeOP7-E6fPPT8jaFn9/view?usp=sharing), [Meeting Notes](/doc/meeting_notes/sprint2_mar24.md)
