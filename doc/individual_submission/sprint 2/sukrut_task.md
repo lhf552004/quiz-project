@@ -1,0 +1,15 @@
+## SUKRUT DANI
+
+1. Create new user story for the Assignment 3: [Admin Functionalities to the Quiz App [Task#74]](https://github.com/MUN-COMP6905/project-eteam/issues/74) *-Done*
+
+2. Modify QuizBank Module: Update almost all the methods from the Quiz Class and QuizITem class so that we can create new quizzes, update the quizItems from specific Quiz, and Delete the particular quizItem or full Quiz. [Task#135](https://github.com/MUN-COMP6905/project-eteam/issues/135) *-Done*
+
+3. Test cases for the updated QuizBank Module for both the classes QuizItem and Quiz class [Task #102](https://github.com/MUN-COMP6905/project-eteam/issues/102) *-Done*
+
+4. Update the document explaining QuizBank.mjs module so that everyone will know the updated module working. [Quizbank & DB explanation](https://github.com/MUN-COMP6905/project-eteam/blob/dev/doc/Quizbank%20%26%20DB%20explanation.pdf) *-Done*
+
+5. Update the documentation for individual submission.
+
+6. Submit the Performance Review for all Team members [Task#129](https://github.com/MUN-COMP6905/project-eteam/issues/129)
+ 
+7. Tasks in backlog for the [Task#74](https://github.com/MUN-COMP6905/project-eteam/issues/74): [Task#163](https://github.com/MUN-COMP6905/project-eteam/issues/163) *-Done*
