@@ -3,7 +3,7 @@ Duration: 40 minutes
 
 "Scrum Master”: Neha Thakare (@Neha-Thakare1995)
 
-Link to Video: 
+Link to Video: https://drive.google.com/file/d/1ndWCeb4jyT6iY3xYkk3VBStfU-mMiUGQ/view?usp=sharing
 
 Participants:
 - Allen Li (@lhf552004) 
