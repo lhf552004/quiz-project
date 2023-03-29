@@ -8,6 +8,6 @@
 
 4. Do the perfomance review of team members **DONE**
 
-5. Create UI Unit Test for Single Quiz Page
+5. Create UI Unit Test for Login Page
 
 6. Create documentation for Admin Page UI 
