@@ -23,4 +23,4 @@
 
 [Neha Thakare](/doc/individual_submission/sprint%202/neha_thakare_task.md)
 
-[Anton Vynnyk](/doc/individual_submission/sprint%202/anton-vynnyk.md)
+[Anton Vynnyk](/doc/individual_submission/sprint%202/anton-vynnyk-task.md)
