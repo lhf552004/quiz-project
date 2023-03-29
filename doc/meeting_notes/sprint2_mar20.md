@@ -3,6 +3,13 @@ Duration: 41 minutes
 
 "Scrum Master" & "Note Taker" : Sukrut Dani (@Sukrut2710)
 
+Participants:
+Allen Li (@lhf552004 ) 
+Trang Vo (@trangv-mun) 
+Neha thakare (@Neha-Thakare1995)
+Anton Vynnyk (@An-vyn)
+Sukrut Dani (@Sukrut2710) ["Scrum Master"]
+
 Link to Video: https://drive.google.com/file/d/1bFK1mTUd8vlO4S3qupCFNpyj27TBkuKw/view?usp=sharing
 
 Updates on Project Status:
@@ -25,6 +32,6 @@ Neha and Sukrut are going to do the backend tests together.
 
 Anton is not finished with documentation yet, he'll finish it ASAP. And He'll write his own tests for UI.
 
-Disscused future updaes that will improve functionality and ensuring propetly working web application, but without decision for implement that immediately.
+Disscused future updates that will improve functionality and ensuring properly working web application, but without decision for implement that immediately.
 
 End of Meeting

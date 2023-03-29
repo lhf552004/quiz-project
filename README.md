@@ -10,6 +10,7 @@
 2. The persistence is implemented through the database, maybe firebase.
 3. Quiz test system, with user management and quiz management
 4. At assignment 2 sprint, the quiz system could offer new student signup, login, quiz page with mock data
+5. At assignment 3 sprint, there are multiple updates to the features of the project. We also provide multiple regression tests for our UI, modules and routers. 
 
 ## Instructions
 Start: 
@@ -103,7 +104,7 @@ Please prefer to instruction docs to run tests
 
 [Team Code Review Standard](/doc/codereviewstandard.md)
 
-[Code Review Checklist](/doc/codereviewchecklist.md) **Updates for sprint 2**
+[Code Review Checklist](/doc/codereviewchecklist.md) **Updates for sprint 2 to include regression test**
 
 [Code Review Standard External Resources](https://google.github.io/eng-practices/review/reviewer/standard.html)
 
@@ -123,13 +124,13 @@ Please prefer to instruction docs to run tests
 
 ## Team members tasks status
 
-[Teammember tasks status](/doc/teammember-tasks-status.md)
+[Teammember tasks status](/doc/teammember-tasks-status.md) **Updates to include status of all sprints**
 
 ## Performance Review of Each Team-Member
 
 [Performance Review Sprint 1](/doc/performance_review_sprint1.md)
 
-[Performance Review Sprint 2](/doc/performance_review_sprint2.md)
+[Performance Review Sprint 2](/doc/performance_review_sprint2.md) **New document from sprint 2**
 
 ## Attributions
 

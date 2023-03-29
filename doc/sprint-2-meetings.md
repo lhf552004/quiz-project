@@ -1,6 +1,6 @@
 # Sprint 2 Meetings 
 
-Because of time conflicts between team members, we had a first meeting for our sprint 2 a bit later. 
+Because of time conflicts between team members, we had a first meeting for our sprint 2 a bit later. We decide to have 2 meetings per week on Monday and Friday at 9:30pm. Because our very first meeting is on Mar 15th (Wed) so we decided to skip that week Friday meeting, since 2-day is too short for a sprint process update meeting. 
 
 ### 1. March 15, 2022 
 
@@ -14,6 +14,8 @@ Because of time conflicts between team members, we had a first meeting for our s
 
 [Meeting Notes](/doc/meeting_notes/sprint2_mar20.md)
 
+- Team updates on tasks progress
+- Discussion about test implementations and future UI designs
 
 ### 3. March 24, 2022
 

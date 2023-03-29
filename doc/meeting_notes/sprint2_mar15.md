@@ -2,15 +2,20 @@ Date: 15.03.2023
 
 Duration: 48 minutes
 
-Scrum Master + Note Taker: Trang V. 
-
 Link to video: https://drive.google.com/file/d/1_QTfelcuNkJtGLyYncxwkkLgIw9P64Sa/view?usp=share_link
+
+Participants:
+- Allen Li (@lhf552004) 
+- Trang Vo (@trangv-mun) ["Scrum Master"]
+- Neha Thakare (@Neha-Thakare1995)
+- Anton Vynnyk (@An-vyn)
+- Sukrut Dani (@Sukrut2710)
 
 ## Discussion about what was missing from sprint 1 
 
 - Take turn to be Scrum Master and Note Taker for each meeting
 
-- Using checklist for code review 
+- Using checklist as guidelines for code review 
 
 - Direct and clear communication between Front-End and Back-End Devs
 
@@ -40,7 +45,7 @@ Link to video: https://drive.google.com/file/d/1_QTfelcuNkJtGLyYncxwkkLgIw9P64Sa
 
 - SHOULD finish one of the tasks after each sprint's week, but not a must since some tasks might take longer to finish. If there is any blocker, you need to document the blockers and tag the responsible person as needed. 
 
-- EVERYTHING needs to be done by _**March 25th**_ so we can start a final code review and performance reviews. If you are late or not done, an issue ticket will be made, you can put your explanations and reasons there for the grader to know. 
+- All code related tasks needs to be done by _**March 25th**_ so we can start a final code review and performance reviews. If you are late or not done, an issue ticket will be made, you can put your explanations and reasons there for the grader to know. 
 
 - Code review should be done for each PR, but I think we should have 1 last one as a whole to document anything that need to be improved.
 
@@ -58,5 +63,3 @@ Neha - Connection to the database for create an account screen
 Anton - Documentation for Login and make sure login is working properly 
 Yawen - Create tests and provide instruction on how to use his 
 Trang - Work with Yawen to understand how to use his route to make call and get/post data. 
-
-The next scrum master is Sukrut/ Yawen, they will decide. 
