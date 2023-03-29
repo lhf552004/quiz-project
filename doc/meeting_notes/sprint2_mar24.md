@@ -10,6 +10,7 @@ Allen Li (@lhf552004 )
 Trang Vo (@trangv-mun) ["Scrum Master"]
 Neha thakare (@Neha-Thakare1995 )
 Sukrut Dani (@Sukrut2710)
+Anton Vynnyk (@An-vyn)
 
 Update on Individual Tasks
 
