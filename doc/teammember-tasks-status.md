@@ -22,3 +22,5 @@
 [Trang Vo](/doc/individual_submission/sprint%202/trang_vo_tasks.md)
 
 [Neha Thakare](/doc/individual_submission/sprint%202/neha_thakare_task.md)
+
+[Anton Vynnyk](/doc/individual_submission/sprint%202/anton-vynnyk.md)
