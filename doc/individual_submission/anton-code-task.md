@@ -1,4 +1,4 @@
-## Documentation for Create Account Page - Individual Submission
+## Documentation for Login Page - Individual Submission
 
 Task Card in Kanban board [Kanban Board Task Card](https://github.com/MUN-COMP6905/project-eteam/issues/30)
 
