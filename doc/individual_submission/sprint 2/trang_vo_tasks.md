@@ -8,10 +8,14 @@
 
 4. Create UI Unit Test for Single Quiz Page [Task 122](https://github.com/MUN-COMP6905/project-eteam/issues/122) **DONE**
 
-5. Create documentation for Individual Task [Individual Task Doc](/doc/individual_submission/sprint%202/trangv_code_task_doc.md) **DONE**
+5. Create documentation for Individual Task Details [Individual Task Doc](/doc/individual_submission/sprint%202/trangv_code_task_doc.md) **DONE**
+
+6. Take initiative to find a meeting time that works for all members [Task 97](https://github.com/MUN-COMP6905/project-eteam/issues/97) **DONE**
+
+7. Conduct Scrum meeting and create meeting notes for March 15 [March 15 Notes](/doc/meeting_notes/sprint2_mar15.md) **DONE**
 
 6. Help creating new UI for sprint 2 and sprint 3
 
-7. Help and review teammember PRs
+7. Help and review multiple Pull Requests
 
 8. Clean up and rearrange project docs
