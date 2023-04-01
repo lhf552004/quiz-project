@@ -1,5 +1,6 @@
 import express from 'express';
 import { User } from '../modules/user.mjs';
+import { Quiz } from '../modules/quizbank.mjs';
 
 /**
 
@@ -139,8 +140,10 @@ userRouter.delete('/:id', (req, res) => {
  * @param {Object} res - The Express response object.
  * @returns {undefined}
  */
-userRouter.get('/dash-board/:id', (req, res) => {
-    res.render('userDashboard');
+userRouter.get('/dash-board/:id', async (req, res) => {
+    const quiz = new Quiz();
+    const quizzes = await quiz.fetchAllQuizNames();
+    res.render('userDashboard', {quizzes: quizzes});
 });
 
 /**
