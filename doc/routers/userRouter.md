@@ -134,7 +134,7 @@ Request body: None
 
 Response type: Object
 
-Response body: Rendered dashboard page.
+Response body: Rendered dashboard page, parameter *quizzes*, which are the array of quiz names.
 
 
 ### GET '/admin/:id':
