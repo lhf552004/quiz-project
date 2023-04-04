@@ -29,6 +29,20 @@ quizItemRouter.get('/:id/quiz/:name', async (req, res) => {
 
 /**
 
+@function RenderAddQuizItemPage
+@description This function is used to render add quiz item page by quiz name
+@param {string} name  - The name of quiz
+@param {object} req - The request object
+@param {object} res - The response object
+@returns {void}
+*/
+quizItemRouter.get('/quiz/:name/add-quiz-item', async (req, res) => {
+    const name = req.params.name;
+    res.render('addQuizItem', {name: name});
+});
+
+/**
+
 @function addQuizItem
 @description This function is used to add a quizItem to a quiz by name
 @param {string} name  - The name of quiz

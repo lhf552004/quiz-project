@@ -21,6 +21,24 @@ Response body:
 
 Return json object [**QuizItem**](../database/quiz.md)
 
+### GET '/quiz/:name/add-quiz-item':
+
+Description: This route is used to render the add-quiz-item page.
+
+Request type: GET
+
+Request parameters:
+
+        name(string): The name of the quiz to be retrieved.
+
+Request body: None
+
+Response type: Object
+
+Response body: 
+
+Rendered add-quiz-item page with the parameter *name* which is quiz name
+
 ### POST '/:name':
 
 Description: This route is used to process a creating of quiz item.

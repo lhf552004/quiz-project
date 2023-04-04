@@ -27,9 +27,11 @@ Signup: http://localhost:3000/users/create
 
 Login: http://localhost:3000/users/login
 
-User Dashboard: http://localhost:3000/users/dash-board/1
+User Dashboard: http://localhost:3000/users/dash-board/:1 (id is the parameter)
 
-User Admin: http://localhost:3000/users/admin/:id
+User Admin: http://localhost:3000/users/admin/:id (id is the parameter)
+
+Add quiz item http://localhost:3000/quizitem/quiz/:name/add-quiz-item (name is the parameter)
 
 ## Routers doc: **New document from sprint 2**
 
