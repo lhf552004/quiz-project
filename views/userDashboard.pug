@@ -15,7 +15,7 @@ block content
                 each quizzess, n in quizzes
                     .quiz-rectangle
                         span.link-container
-                        a(href= `/quiz/${quizzess}` class="quiz-name")= quizzess 
+                            a(href= `/quiz/${quizzess}` class="quiz-name")= quizzess 
                                 span.quiz-buttons-wrapper  
                                     div.quiz-buttons
                                         img(src='/img/data-analysis.webp' class="analysis-img" alt='preview')
@@ -24,4 +24,3 @@ block content
                                         img(src='/img/preview.png' alt='preview' class="preview-img")
                                         | &nbsp; 
                                         a(href="#" class="analysis-preview-name") Preview
-                        if n  < quizzess.length - 1           

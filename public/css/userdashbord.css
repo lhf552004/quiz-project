@@ -71,10 +71,7 @@
 }
 .quiz-main-rectangle{
   border: 1px solid #646464;
-  border-bottom-left-radius: 8px;
-  border-bottom-right-radius: 8px;
-  border-top-left-radius: 8px;
-  border-top-right-radius: 8px;
+  border-radius: 8px;
 }
 
 .analysis-img{
@@ -102,7 +99,7 @@
   margin-top: 15px;
 }
 .quiz-buttons{
-  margin-left: 57%;
+  margin-left: 500px;
   margin-top: -30px;
  
 }
