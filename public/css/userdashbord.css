@@ -48,7 +48,7 @@
 }
 
 .upper-rectangle {
-  border: 1px solid #646464;
+  border-bottom: 1px solid #646464;
   padding: 10px;
   display: inline-block;
   width: 100%;
@@ -64,22 +64,22 @@
 }
 
 .quiz-rectangle{
-  border: 1px solid #646464;
+  border-bottom: 1px solid #646464;
   width: 100%;
   height: 50px;
+  
 }
-
-.last-quiz-rectangle{
+.quiz-main-rectangle{
   border: 1px solid #646464;
-  width: 100%;
-  height: 50px;
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
 }
 
 .analysis-img{
   height: 20px;
-  margin-left: 57%;
+ 
 }
 
 .analysis-preview-name{
@@ -88,7 +88,7 @@
 
 .preview-img{
   height: 23px;
-  margin-left: 6%;    
+  margin-left: 15%;    
 }
 
 .link-container a {
@@ -100,4 +100,13 @@
   margin-left: 33px;
   display: inline-block;
   margin-top: 15px;
+}
+.quiz-buttons{
+  margin-left: 57%;
+  margin-top: -30px;
+ 
+}
+
+.quiz-rectangle:last-child {
+  border-bottom: none;
 }
