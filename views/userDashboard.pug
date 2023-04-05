@@ -12,15 +12,13 @@ block content
             .quiz-main-rectangle
                 .upper-rectangle
                     label(class="quiz-lable") Quizzes                
-                each quizzess, n in quizzes
+                each quiz, n in quizzes
                     .quiz-rectangle
-                        span.link-container
-                            a(href= `/quiz/${quizzess}` class="quiz-name")= quizzess 
-                                span.quiz-buttons-wrapper  
-                                    div.quiz-buttons
-                                        img(src='/img/data-analysis.webp' class="analysis-img" alt='preview')
-                                        | &nbsp;
-                                        a(href="#" class="analysis-preview-name") Analyze                   
-                                        img(src='/img/preview.png' alt='preview' class="preview-img")
-                                        | &nbsp; 
-                                        a(href="#" class="analysis-preview-name") Preview
+                        a(href= `/quiz/${quiz}` class="quiz-name") #{quiz}
+                        div.quiz-buttons
+                            img(src='/img/data-analysis.webp' class="analysis-img" alt='preview')
+                            | &nbsp;
+                            a(href="#" class="analysis-preview-name") Analyze                   
+                            img(src='/img/preview.png' alt='preview' class="preview-img")
+                            | &nbsp; 
+                            a(href="#" class="analysis-preview-name") Preview
