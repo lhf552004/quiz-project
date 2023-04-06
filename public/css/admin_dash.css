@@ -61,3 +61,26 @@
 .admin-quiz-list-link {
     flex: 0 0 15%
 }
+.add-quiz-link {
+    font-size: 20px;
+    color: var(--link-blue);
+    text-align: right;
+    margin-left: auto;
+    margin-bottom: 16px;
+    cursor: pointer;
+}
+.create-quiz-modal {
+    text-align: center;
+}
+.create-quiz-modal .modal-body {
+    padding: 56px 40px;
+}
+.create-quiz-modal button.close {
+    margin-top: 16px;
+    margin-right: 16px;
+    font-size: 32px;
+}
+.create-quiz-modal h2 {
+    color: var(--main-grey);
+    margin-top: 16px;
+}
