@@ -39,6 +39,25 @@ Response body:
 
 Rendered add-quiz-item page with the parameter *name* which is quiz name
 
+### GET '/quiz/:name/update-quiz-item/:id':
+
+Description: This route is used to render the update-quiz-item page.
+
+Request type: GET
+
+Request parameters:
+
+        name(string): The name of the quiz.
+        id(string): The id of the quiz item to be retrieved.
+
+Request body: None
+
+Response type: Object
+
+Response body: 
+
+Rendered update-quiz-item page with the parameter *quizItem* which is quiz item
+
 ### POST '/:name':
 
 Description: This route is used to process a creating of quiz item.
@@ -58,6 +77,27 @@ Response type: Object
 Response body:
 
         Rendered quiz page with the parameter *data* assigned with the instance of class [**Quiz**](../database/quiz.md) retrived from database with the id.
+
+### PUT '/:name/quizitem/:id':
+
+Description: This route is used to process a updating of quiz item.
+
+Request type: PUT
+
+Request parameters:
+
+        name(string): The name of the quiz to be retrieved.
+        id(string): The id of the quiz item to be retrieved.
+
+Request body: 
+
+object of class [QuizItem](../database/quiz.md)        
+
+Response type: Object
+
+Response body:
+
+        If the quizItem is successfully updated, "quizItem updated successfully." is sent with status code 200.
 
 ### DELETE '/:id/quiz/:name':
 
