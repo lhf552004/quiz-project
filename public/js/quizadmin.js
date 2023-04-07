@@ -41,10 +41,9 @@ $(function() {
         });
 
         let dataObj = {
-            'id': 1,
-            'question': "What's the most popular fast food chain?",
-            'options': ["KFC", "McDonald's", "Wendy's", "Mary Brown's"],
-            'answer': "McDonald's"
+            'question': question,
+            'options': optionArr,
+            'answer': answer
         };
 
         $.ajax({
@@ -53,7 +52,7 @@ $(function() {
             data: JSON.stringify(dataObj),
             contentType: 'application/json',
             success: function(data){
-                console.log(data);
+                window.location.href = '/quiz/' + quizName;
             }
         });
     }
