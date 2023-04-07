@@ -27,7 +27,6 @@ input[type="text"], input[type="email"], input[type="password"] {
     text-align: center;
     flex: 1;
 }
-
 .form-wrapper h3 {
     text-align: center;
     color: var(--main-grey);

@@ -1,4 +1,29 @@
 extends layout
 
+block scripts 
+    script(src='/js/quizadmin.js')
+
 block content
-    h1 This is add quiz item page
+    .add-item-container.form-page-container(data-name=name)
+        .form-wrapper
+            h3 Add Question to Your Quiz 
+            .form-wrapper-content 
+                h3 Quiz #{name}
+                .row.g-0
+                    .col-md-6 
+                        .field-container 
+                            .field-label
+                                h5 Question
+                            input(type="text" id="question" name="question" placeholder="Type out your question")
+                        .btn.btn-primary.create-quiz-item-btn Create Question 
+                    .col-md-6
+                        - var n = 1;
+                        while n < 5
+                            .field-container.option-field 
+                                .field-label
+                                    h5 Option #{n}
+                                    input(class="answer-checkbox", type="checkbox", id="check-answer-" + n, name="check-answer-" + n, value="false")
+                                    label(for="check-answer-" + n) Is Answer
+                                input(class="option-text", type="text", id="answer-" + n, name="answer-" + n, placeholder="Type out your question")
+                            - n++
+
