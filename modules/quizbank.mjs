@@ -154,6 +154,34 @@ class QuizItem {
         db.collection(quizName).doc(quizItemId).delete();
         console.log(`Deleted quiz item ${quizItemId} from ${quizName}`);
     }
+
+    /**
+     * @method update
+     * @description Method to update a quiz item with a given ID in the database
+     * @param {string} quizName - The name of the quiz collection to update the quiz item in
+     * @param {string} quizItemId - The ID of the quiz item to update
+     * @param {Object} updatedFields - An object containing the updated fields and their values, e.g. { question: "New question", answer: "New answer" }
+     * @returns {Promise<boolean>} - A Promise that resolves to true if the quiz item was updated successfully, or false otherwise
+     */
+    async update(quizName, quizItemId, updatedFields) {
+        try {
+        const docRef = db.collection(quizName).doc(quizItemId);
+        const doc = await docRef.get();
+        if (doc.exists) {
+            // If the document exists, update the specified fields
+            await docRef.update(updatedFields);
+            console.log(`Quiz item with ID ${quizItemId} in quiz collection ${quizName} updated successfully.`);
+            return true;
+        } else {
+            console.log(`No quiz item found with ID ${quizItemId} in quiz collection ${quizName}.`);
+            return false;
+        }
+        } catch (error) {
+        console.error(`Error updating quiz item with ID ${quizItemId} in quiz collection ${quizName}:`, error);
+        return false;
+        }
+    }
+  
 }
 
 /**
@@ -301,5 +329,10 @@ class Quiz {
 //const newQuizId = await quiz.createNewQuiz("Hollywood");
 //quiz.fetchAllQuizNames();
 //quiz.deleteQuiz("Bollywood");
-
+// const updatedFields = {
+//     question: "What is the capital of Spain?",
+//     answer: "Madrid",
+//     options: ["Paris", "London", "Berlin", "Madrid"]
+//   };
+// quizItem.update("GK","1",updatedFields);
 export { Quiz, QuizItem };
