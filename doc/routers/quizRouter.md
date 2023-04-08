@@ -34,6 +34,24 @@ Response body:
 
 Rendered quiz page with the parameter *data* assigned with the instance of class [**Quiz**](../database/quiz.md) retrived from database with the id.
 
+### GET '/:name/quiz-admin':
+
+Description: This route is used to render the quiz admin page.
+
+Request type: GET
+
+Request parameters:
+
+        name(string): The name of the quiz to be retrieved.
+
+Request body: None
+
+Response type: Object
+
+Response body: 
+
+Rendered quiz admin page with the parameter *data* assigned with the instance of class [**Quiz**](../database/quiz.md) retrived from database with the id.
+
 ### POST '/':
 
 Description: This route is used to process a creating of quiz submission.
