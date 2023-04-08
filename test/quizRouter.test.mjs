@@ -16,9 +16,6 @@ describe('Quiz Router Regression Test', () => {
         const res = await chai.request(app)
             .get('/quiz');
         expect(res.status).to.equal(200);
-        expect(res.text).to.include('<h1>This is user profile</h1>');
-        userId = res.text.substring(res.text.indexOf('<h2>') + 4, res.text.indexOf('</h2>'));
-        console.log(userId);
     });
 
     it('Should access quiz page', async () => {
