@@ -122,7 +122,9 @@ Please prefer to instruction docs to run tests
 
 [Sprint 1 Meetings](/doc/sprint-1-meetings.md)
 
-[Sprint 2 Meetings](/doc/sprint-2-meetings.md) **New document from sprint 2**
+[Sprint 2 Meetings](/doc/sprint-2-meetings.md)
+
+[Sprint 3 Meetings](/doc/sprint-3-meetings.md) **New document from sprint 3**
 
 ## Team members tasks status
 
