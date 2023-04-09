@@ -2,7 +2,7 @@
 
 Routes:
 
-### GET '/:id/quiz/:name':
+### GET '/quizitem/:id/quiz/:name':
 
 Description: This route is used to render the single quiz item.
 
@@ -21,7 +21,7 @@ Response body:
 
 Return json object [**QuizItem**](../database/quiz.md)
 
-### GET '/quiz/:name/add-quiz-item':
+### GET '/quizitem/quiz/:name/add-quiz-item':
 
 Description: This route is used to render the add-quiz-item page.
 
@@ -39,7 +39,7 @@ Response body:
 
 Rendered add-quiz-item page with the parameter *name* which is quiz name
 
-### GET '/quiz/:name/update-quiz-item/:id':
+### GET '/quizitem/quiz/:name/update-quiz-item/:id':
 
 Description: This route is used to render the update-quiz-item page.
 
@@ -58,7 +58,7 @@ Response body:
 
 Rendered update-quiz-item page with the parameter *quizItem* which is quiz item
 
-### POST '/:name':
+### POST '/quizitem/:name':
 
 Description: This route is used to process a creating of quiz item.
 
@@ -78,7 +78,7 @@ Response body:
 
         Rendered quiz page with the parameter *data* assigned with the instance of class [**Quiz**](../database/quiz.md) retrived from database with the id.
 
-### PUT '/:name/quizitem/:id':
+### PUT '/quizitem/:name/quizitem/:id':
 
 Description: This route is used to process a updating of quiz item.
 
@@ -99,7 +99,7 @@ Response body:
 
         If the quizItem is successfully updated, "quizItem updated successfully." is sent with status code 200.
 
-### DELETE '/:id/quiz/:name':
+### DELETE '/quizitem/:id/quiz/:name':
 
 Description: This route is used to delete a quiz item by id and quiz nem.
 
