@@ -4,3 +4,5 @@
 @import "/css/quizpage.css"; /* Specific styles for single quiz page */
 @import "/css/admin_dash.css"; /* Admin Dash Style */
 @import "/css/userdashbord.css";/*Specific styles for user dashboard page*/
+@import "/css/admin_add_quiz_item.css"; /* Add quiz item page*/
+@import "/css/managePage.css";/*Specific styles for manage Page for admin*/

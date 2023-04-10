@@ -23,7 +23,7 @@ quizRouter.get('/', (req, res) => {
 
 @function getQuizPage
 @description This function is used to retrieve details of a quiz by id
-@param {number} id  - The id of quiz
+@param {number} name  - The name of quiz
 @param {object} req - The request object
 @param {object} res - The response object
 @returns {void}
@@ -34,6 +34,23 @@ quizRouter.get('/:name', async (req, res) => {
     const quizItems = await quiz.fetchAllQuizItems(name);
 
     res.render("quiz", {data: {name : name, quizItems: quizItems}});
+});
+
+/**
+
+@function getQuizAdminPage
+@description This function is used to retrieve quiz admin page by quiz name
+@param {number} name  - The name of quiz
+@param {object} req - The request object
+@param {object} res - The response object
+@returns {void}
+*/
+quizRouter.get('/:name/quiz-admin', async (req, res) => {
+    const name = req.params.name;
+    const quiz = new Quiz();
+    const quizItems = await quiz.fetchAllQuizItems(name);
+
+    res.render("manageQuizAdmin", {data: {name : name, quizItems: quizItems}});
 });
 
 /**
@@ -59,6 +76,7 @@ quizRouter.post('/', (req, res) => {
 
 @function deleteQuiz
 @description This function is used to delete a quiz by name
+@param {number} name  - The name of quiz
 @param {object} req - The request object
 @param {object} res - The response object
 @returns {void}

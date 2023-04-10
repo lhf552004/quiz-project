@@ -58,7 +58,6 @@ userRouter.post('/login', (req, res) => {
     }
 });
 
-
 /**
  * Render the create account page.
  *

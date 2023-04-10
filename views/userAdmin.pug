@@ -12,7 +12,7 @@ block content
                 | 1. To do so please select the below appropriate tile to perform action on  your quiz. 
                 br 
                 | 2.  To Add quiz for particular type, you will have to select the particulate quiz type tile.   
-            a(data-toggle="modal", data-target="#createQuizModal") Create New Quiz
+            a.add-quiz-link(data-toggle="modal", data-target="#createQuizModal") Add New Quiz +
             ul(class="admin-quiz-list")
                 each quiz in quizes
                     li 
@@ -25,7 +25,7 @@ block content
                 .modal-header
                     button.close(type="button", data-dismiss="modal", aria-label="Close")
                         span(aria-hidden="true") &times;
-                    h3 Add New Quiz
+                    h2 Add New Quiz
                 .modal-body
                     input(type="text" id="quizname" name="quizname" placeholder="Type Your Quiz Name")
                     button.create-quiz-btn.btn.btn-primary Create Quiz

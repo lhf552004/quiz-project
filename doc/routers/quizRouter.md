@@ -2,7 +2,7 @@
 
 Routes:
 
-### GET '/':
+### GET 'quiz/':
 
 Description: This route is used to retrieve a list of quizes.
 
@@ -16,7 +16,7 @@ Response type: Object
 
 Response body: Rendered *quizlist* page with *list* as a parameter.
 
-### GET '/:name':
+### GET 'quiz/:name':
 
 Description: This route is used to render the single quiz page.
 
@@ -34,7 +34,25 @@ Response body:
 
 Rendered quiz page with the parameter *data* assigned with the instance of class [**Quiz**](../database/quiz.md) retrived from database with the id.
 
-### POST '/':
+### GET 'quiz/:name/quiz-admin':
+
+Description: This route is used to render the quiz admin page.
+
+Request type: GET
+
+Request parameters:
+
+        name(string): The name of the quiz to be retrieved.
+
+Request body: None
+
+Response type: Object
+
+Response body: 
+
+Rendered quiz admin page with the parameter *data* assigned with the instance of class [**Quiz**](../database/quiz.md) retrived from database with the id.
+
+### POST 'quiz/':
 
 Description: This route is used to process a creating of quiz submission.
 
@@ -52,7 +70,7 @@ Response body:
 
         "quiz create successfully." is sent with status code 200.
 
-### DELETE '/:name':
+### DELETE 'quiz/:name':
 
 Description: This route is used to delete a quiz by name.
 

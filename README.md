@@ -92,21 +92,21 @@ Please prefer to instruction docs to run tests
 
 [/test/quizPage.js](/test/quizPage.js) | [Test Instruction](/doc/individual_submission/sprint%202/trangv_code_task_doc.md)
 
-## Structure Design
-[Front-End Structure Design](/doc/frontendstructuredesign.md)
-
-[Full Structure Design](https://github.com/MUN-COMP6905/project-eteam/blob/dev/doc/structuredesign.md)
+## Architeture Docs
+[Architecture Docs](/doc/architecture.md) **New document from sprint 3**
 
 ## Code Style
 [Nodejs Code style External Resources](https://github.com/felixge/node-style-guide)
 
-[CSS Code Style](/doc/csscodestyle.md) **New document from sprint 2**
+[CSS Code Style](/doc/csscodestyle.md)
 
 ## Code Review Standard
 
+Code review is performed in all PR with codes about to be merged to dev branch. Each team member needs to run regression tests to make sure their codes will not break the main branch. The reviewer will then checkout the PR to make sure everything is working as expected and use the code review checklist as guideline. All review comments are posted in the discussion of our PRs. 
+
 [Team Code Review Standard](/doc/codereviewstandard.md)
 
-[Code Review Checklist](/doc/codereviewchecklist.md) **Updates for sprint 2 to include regression test**
+[Code Review Checklist](/doc/codereviewchecklist.md)
 
 [Code Review Standard External Resources](https://google.github.io/eng-practices/review/reviewer/standard.html)
 
@@ -122,7 +122,9 @@ Please prefer to instruction docs to run tests
 
 [Sprint 1 Meetings](/doc/sprint-1-meetings.md)
 
-[Sprint 2 Meetings](/doc/sprint-2-meetings.md) **New document from sprint 2**
+[Sprint 2 Meetings](/doc/sprint-2-meetings.md)
+
+[Sprint 3 Meetings](/doc/sprint-3-meetings.md) **New document from sprint 3**
 
 ## Team members tasks status
 
@@ -132,7 +134,7 @@ Please prefer to instruction docs to run tests
 
 [Performance Review Sprint 1](/doc/performance_review_sprint1.md)
 
-[Performance Review Sprint 2](/doc/performance_review_sprint2.md) **New document from sprint 2**
+[Performance Review Sprint 2](/doc/performance_review_sprint2.md)
 
 ## Attributions
 

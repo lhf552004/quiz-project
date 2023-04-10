@@ -1,0 +1,18 @@
+extends layout.pug
+
+block content
+  .container-user-dashboard.form-page-container
+    .dashboard-form
+      .manage-page-header
+        h2(class="heading-manage-quiz") Manage Your Quiz
+        a(href="") Back
+      .manage-page-container
+        h4(class="heading") #{data.name} Quiz
+        a(href="", class="color-width-font") Add New Question +
+      .list-container
+        ul(class="question-list")
+          each quizItem, n in data.quizItems
+            li(class="question-row")
+              span(class="que-no-font") Question #{n +1}
+              a(href="#", class="edit-link") Edit
+              a(href="#",  class="delete-link color-width-font") Delete
