@@ -102,9 +102,11 @@ Please prefer to instruction docs to run tests
 
 ## Code Review Standard
 
+Code review is performed in all PR with codes about to be merged to dev branch. Each team member needs to run regression tests to make sure their codes will not break the main branch. The reviewer will then checkout the PR to make sure everything is working as expected and use the code review checklist as guideline. All review comments are posted in the discussion of our PRs. 
+
 [Team Code Review Standard](/doc/codereviewstandard.md)
 
-[Code Review Checklist](/doc/codereviewchecklist.md) **Updates for sprint 2 to include regression test**
+[Code Review Checklist](/doc/codereviewchecklist.md)
 
 [Code Review Standard External Resources](https://google.github.io/eng-practices/review/reviewer/standard.html)
 
@@ -132,7 +134,7 @@ Please prefer to instruction docs to run tests
 
 [Performance Review Sprint 1](/doc/performance_review_sprint1.md)
 
-[Performance Review Sprint 2](/doc/performance_review_sprint2.md) **New document from sprint 2**
+[Performance Review Sprint 2](/doc/performance_review_sprint2.md)
 
 ## Attributions
 

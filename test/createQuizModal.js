@@ -21,7 +21,7 @@ describe("Create Quiz Modal", function () {
 		await browser.close();
 	});
 
-	it("Should show quiz page", async function () {
+	it("Should show admin page", async function () {
 		await page.goto("http://localhost:3000/users/admin/1");
 		await page.waitForTimeout(1000);
 
