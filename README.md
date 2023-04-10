@@ -92,15 +92,13 @@ Please prefer to instruction docs to run tests
 
 [/test/quizPage.js](/test/quizPage.js) | [Test Instruction](/doc/individual_submission/sprint%202/trangv_code_task_doc.md)
 
-## Structure Design
-[Front-End Structure Design](/doc/frontendstructuredesign.md)
-
-[Full Structure Design](https://github.com/MUN-COMP6905/project-eteam/blob/dev/doc/structuredesign.md)
+## Architeture Docs
+[Architecture Docs](/doc/architecture.md) **New document from sprint 3**
 
 ## Code Style
 [Nodejs Code style External Resources](https://github.com/felixge/node-style-guide)
 
-[CSS Code Style](/doc/csscodestyle.md) **New document from sprint 2**
+[CSS Code Style](/doc/csscodestyle.md)
 
 ## Code Review Standard
 
