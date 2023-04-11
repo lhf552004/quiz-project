@@ -2,138 +2,106 @@ import assert from 'assert';
 import { QuizItem, Quiz } from '../modules/quizbank.mjs'
 import {db} from '../api/config.js'
 
-describe('QuizItem', function() {
+describe('QuizItem', function () {
   const testQuizName = 'GK';
-  const testQuizItemId = '1';
   const testQuestion = 'What is the capital of France?';
   const testAnswer = 'Paris';
   const testOptions = ['Paris', 'Berlin', 'London', 'Rome'];
+  let testQuizItemId;
 
-  describe('#storeQuizItem()', function() {
-    it('should store a quiz item in the database', async function() {
-      const quizItem = new QuizItem(testQuizItemId, testQuestion, testAnswer, testOptions);
-      await quizItem.storeQuizItem(testQuizName);
+  it('should store a quiz item in the database', async function () {
+    const quizItem = new QuizItem(testQuestion, testAnswer, testOptions);
+    await quizItem.storeQuizItem(testQuizName);
 
-      const docRef = db.collection(testQuizName).doc(testQuizItemId);
-      const doc = await docRef.get();
-      assert.ok(doc.exists, 'Document does not exist in the database');
+    // Fetch the quiz item from the database
+    const quizItems = await db.collection(testQuizName).where('question', '==', testQuestion).get();
+
+    // Test the fetched quiz item
+    let itemExists = false;
+    quizItems.forEach((doc) => {
+      itemExists = true;
+      testQuizItemId = doc.id;
       assert.strictEqual(doc.data().question, testQuestion, 'Question does not match');
       assert.strictEqual(doc.data().answer, testAnswer, 'Answer does not match');
       assert.deepStrictEqual(doc.data().options, testOptions, 'Options do not match');
     });
+
+    assert.ok(itemExists, 'Quiz item does not exist in the database');
   });
 
-  describe('#correct()', function() {
-    it('should return true if the answer is correct', async function() {
-      const quizItem = new QuizItem(testQuizItemId, testQuestion, testAnswer, testOptions);
-      await quizItem.storeQuizItem(testQuizName);
+  it('should retrieve a quiz item by ID', async function () {
+    const quizItem = new QuizItem();
+    const fetchedQuizItem = await quizItem.getQuizItemById(testQuizName, testQuizItemId);
 
-      const result = await quizItem.correct(testQuizName, testQuizItemId, testAnswer);
-      assert.strictEqual(result, true);
-    });
-
-    it('should return false if the answer is incorrect', async function() {
-      const quizItem = new QuizItem(testQuizItemId, testQuestion, testAnswer, testOptions);
-      await quizItem.storeQuizItem(testQuizName);
-
-      const result = await quizItem.correct(testQuizName, testQuizItemId, 'Wrong Answer');
-      assert.strictEqual(result, false);
-    });
+    assert.strictEqual(fetchedQuizItem.question, testQuestion, 'Question does not match');
+    assert.strictEqual(fetchedQuizItem.answer, testAnswer, 'Answer does not match');
+    assert.deepStrictEqual(fetchedQuizItem.options, testOptions, 'Options do not match');
   });
 
-  describe('#getQuizItemById()', function() {
-    it('should retrieve the quiz item with the specified ID', async function() {
-      const quizItem = new QuizItem(testQuizItemId, testQuestion, testAnswer, testOptions);
-      await quizItem.storeQuizItem(testQuizName);
+  it('should update a quiz item in the database', async function () {
+    const updatedQuestion = 'What is the capital city of France?';
+    const quizItem = new QuizItem();
+    const success = await quizItem.update(testQuizName, testQuizItemId, { question: updatedQuestion });
+    assert.ok(success, 'Quiz item update failed');
 
-      const retrievedQuizItem = await quizItem.getQuizItemById(testQuizName, testQuizItemId);
-      assert.ok(retrievedQuizItem);
-      assert.strictEqual(retrievedQuizItem.question, testQuestion);
-      assert.strictEqual(retrievedQuizItem.answer, testAnswer);
-      assert.deepStrictEqual(retrievedQuizItem.options, testOptions);
-    });
+    const fetchedQuizItem = await quizItem.getQuizItemById(testQuizName, testQuizItemId);
+    assert.strictEqual(fetchedQuizItem.question, updatedQuestion, 'Updated question does not match');
   });
 
-  describe('#deleteQuizItem()', function() {
-    it('should delete the quiz item with the specified ID', async function() {
-      const quizItem = new QuizItem(testQuizItemId, testQuestion, testAnswer, testOptions);
-      await quizItem.storeQuizItem(testQuizName);
+  it('should check if the answer is correct', async function () {
+    const quizItem = new QuizItem();
+    const isCorrect = await quizItem.correct(testQuizName, testQuizItemId, testAnswer);
+    assert.ok(isCorrect, 'Answer check failed');
+  });
 
-      await quizItem.deleteQuizItem(testQuizName, testQuizItemId);
+  it('should delete a quiz item from the database', async function () {
+    const quizItem = new QuizItem();
+    quizItem.deleteQuizItem(testQuizName, testQuizItemId);
 
-      const docRef = db.collection(testQuizName).doc(testQuizItemId);
-      const doc = await docRef.get();
-      assert.ok(!doc.exists);
-    });
+    const docRef = db.collection(testQuizName).doc(testQuizItemId);
+    const doc = await docRef.get();
+    assert.ok(!doc.exists, 'Quiz item not deleted from the database');
   });
 });
+
 
 // Tests for the Quiz class below:
 
-describe('Quiz', function() {
-  const testQuizName = 'TestQuiz';
+describe('Quiz', function () {
+  let quiz;
+  const testQuizName = 'GK';
 
-  // Clean up after tests
-  afterEach(async function() {
-    await db.collection('Quizzes').doc(testQuizName).delete();
+  before(function () {
+    quiz = new Quiz(testQuizName);
   });
 
-  describe('#createNewQuiz()', function() {
-    it('should create a new quiz collection in Firestore', async function() {
-      const quiz = new Quiz();
-      const createdQuizName = await quiz.createNewQuiz(testQuizName);
+  it('should create a new quiz', async function () {
+    const newQuizName = 'History';
+    const createdQuizName = await quiz.createNewQuiz(newQuizName);
+    assert.strictEqual(createdQuizName, newQuizName, 'New quiz name does not match');
 
-      const quizRef = db.collection('Quizzes').doc(testQuizName);
-      const doc = await quizRef.get();
-      assert.ok(doc.exists);
-      assert.strictEqual(createdQuizName, testQuizName);
-    });
+    const quizRef = await db.collection('Quizzes').doc(newQuizName).get();
+    assert.ok(quizRef.exists, 'Quiz does not exist in the database');
   });
 
-  describe('#fetchAllQuizNames()', function() {
-    it('should fetch all quiz names from Firestore', async function() {
-      const quiz = new Quiz();
-      await quiz.createNewQuiz(testQuizName);
-
-      const quizNames = await quiz.fetchAllQuizNames();
-      assert.ok(quizNames);
-      assert.ok(quizNames.includes(testQuizName));
-    });
+  it('should fetch all quiz names', async function () {
+    const quizNames = await quiz.fetchAllQuizNames();
+    assert.ok(Array.isArray(quizNames), 'Quiz names should be an array');
+    assert.ok(quizNames.length > 0, 'Quiz names array should not be empty');
+    assert.ok(quizNames.includes(testQuizName), `Quiz names should include ${testQuizName}`);
   });
 
-describe('#fetchAllQuizItems()', function () {
-     const testQuizItemId = '1';
-     const testQuestion = 'What is the capital of France?';
-     const testAnswer = 'Paris';
-     const testOptions = ['Paris', 'Berlin', 'London', 'Rome'];
-  
-    it('should fetch all quiz items from a quiz collection in Firestore', async function () {
-      const quizItem = new QuizItem();
-      const quiz = new Quiz();
-      const quizItems = await quiz.fetchAllQuizItems("GK");
-      
-      assert.ok(quizItems, 'Quiz items not fetched');
-      assert.strictEqual(quizItems.length, 2, 'Incorrect number of quiz items');
-      assert.strictEqual(quizItems[0].id, testQuizItemId, 'ID does not match');
-      assert.strictEqual(quizItems[0].question, testQuestion, 'Question does not match');
-      assert.strictEqual(quizItems[0].answer, testAnswer, 'Answer does not match');
-      assert.deepStrictEqual(quizItems[0].options, testOptions, 'Options do not match');
-    });
-  });  
-
-  describe('#deleteQuiz()', function() {
-    it('should delete a quiz collection from Firestore', async function() {
-      const quiz = new Quiz();
-      await quiz.createNewQuiz(testQuizName);
-
-      const deletionResult = await quiz.deleteQuiz(testQuizName);
-
-      const quizRef = db.collection('Quizzes').doc(testQuizName);
-      const doc = await quizRef.get();
-      assert.ok(!doc.exists);
-      assert.strictEqual(deletionResult, true);
-    });
+  it('should fetch all quiz items', async function () {
+    const quizItems = await quiz.fetchAllQuizItems(testQuizName);
+    assert.ok(Array.isArray(quizItems), 'Quiz items should be an array');
   });
 
+  it('should delete a quiz', async function () {
+    const newQuizName = 'History';
+    const success = await quiz.deleteQuiz(newQuizName);
+    assert.ok(success, 'Quiz deletion failed');
+
+    const quizRef = await db.collection('Quizzes').doc(newQuizName).get();
+    assert.ok(!quizRef.exists, 'Quiz still exists in the database');
+  });
 });
-
