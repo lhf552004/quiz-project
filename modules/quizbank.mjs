@@ -20,12 +20,10 @@ class QuizItem {
     /**
      * @constructor QuizItem Constructor
      * @description Creates an instance of QuizItem.
-     * @param {number} id       The id of the QuizItem.
      * @param {string} question The question of the QuizItem.
      * @param {string} answer   The answer of the QuizItem. 
      */
-    constructor(id, question, answer, options) {
-        this.id = id;
+    constructor(question, answer, options) {
         this.question = question;
         this.answer = answer;
         this.options = options;
@@ -69,50 +67,49 @@ class QuizItem {
     storeQuizItem(quizName) {
         // Get the collection reference for the quiz with the given name
         const quizCollectionRef = db.collection(quizName);
-    
-        // Check if the collection already exists
-        quizCollectionRef.get().then((snapshot) => {
-        if (snapshot.empty) {
-            // If the collection doesn't exist, create it
-            quizCollectionRef
-            .doc(this.id)
-            .set({
-                question: this.question,
-                answer: this.answer,
-                options: this.options,
-            })
-            .then(() => {
-                console.log(
-                `Quiz collection '${quizName}' created and quiz item '${this.id}' added`
-                );
+
+        // Retrieve all quiz items in the collection
+        quizCollectionRef
+            .get()
+            .then((snapshot) => {
+                let maxId = 0;
+
+                // Find the maximum ID among the existing quiz items
+                snapshot.forEach((doc) => {
+                    const currentId = parseInt(doc.id, 10);
+                    if (currentId > maxId) {
+                        maxId = currentId;
+                    }
+                });
+
+                // Increment the maximum ID by one for the new quiz item
+                const nextId = (maxId + 1).toString();
+
+                // Add the new quiz item with the next ID to the collection
+                quizCollectionRef
+                    .doc(nextId)
+                    .set({
+                        question: this.question,
+                        answer: this.answer,
+                        options: this.options,
+                    })
+                    .then(() => {
+                        console.log(
+                            `Quiz item '${nextId}' added to quiz collection '${quizName}'`
+                        );
+                    })
+                    .catch((error) => {
+                        console.error(
+                            `Error adding quiz item '${nextId}' to quiz collection '${quizName}': ${error}`
+                        );
+                    });
             })
             .catch((error) => {
-                console.error(
-                `Error adding quiz item '${this.id}' to new quiz collection '${quizName}': ${error}`
-                );
+                console.error(`Error retrieving quiz items from collection '${quizName}': ${error}`);
             });
-        } else {
-            // If the collection already exists, add the quiz item to it
-            quizCollectionRef
-            .doc(this.id)
-            .set({
-                question: this.question,
-                answer: this.answer,
-                options: this.options,
-            })
-            .then(() => {
-                console.log(
-                `Quiz item '${this.id}' added to existing quiz collection '${quizName}'`
-                );
-            })
-            .catch((error) => {
-                console.error(
-                `Error adding quiz item '${this.id}' to existing quiz collection '${quizName}': ${error}`
-                );
-            });
-        }
-        });
     }
+
+
 
     /**
      * Retrieves a specific quiz item from the specified quiz collection in Firestore
@@ -314,25 +311,21 @@ class Quiz {
 }
 
 //var quizItem = new QuizItem();
-// var quizItem = new QuizItem("1", "Name of the Bollywood actor?", "SRK",["SRK","LRK","PRK","KKR"]);
-// quizItem.storeQuizItem("Bollywood");
-//quizItem.deleteQuizItem("Maths","2");
-//quizItem.fetchAllQuizItems();
-//quizItem.fetchAllIds();
-//quizItem.getQuizItemById("Maths","2");
-//quizItem.fetchAllQuizItems();
-//quizItem.correct("GK","2", "Poutine");
-//const quiz = new Quiz();
-//quiz.fetchAllIds();
-// const quizItemsArray = await quiz.fetchAllQuizItems("Maths");
-// console.log(quizItemsArray.length);
+var quizItem = new QuizItem("What is the hollywood superstar?", "Nick",["SRK","Salman","Nick","Dwane"]);
+quizItem.storeQuizItem("Hollywood");
+//quizItem.deleteQuizItem("foods","4");
+//quizItem.getQuizItemById("foods","2");
+//quizItem.correct("foods","2", "Cheese");
+const quiz = new Quiz();
+//const quizItemsArray = await quiz.fetchAllQuizItems("foods");
+//console.log(quizItemsArray.length);
 //const newQuizId = await quiz.createNewQuiz("Hollywood");
 //quiz.fetchAllQuizNames();
-//quiz.deleteQuiz("Bollywood");
+//quiz.deleteQuiz("Food");
 // const updatedFields = {
 //     question: "What is the capital of Spain?",
 //     answer: "Madrid",
 //     options: ["Paris", "London", "Berlin", "Madrid"]
 //   };
-// quizItem.update("GK","1",updatedFields);
+// quizItem.update("foods","1",updatedFields);
 export { Quiz, QuizItem };
