@@ -41,6 +41,12 @@ QuizItem: [QuizItem Router](./doc/routers/quizItemRouter.md)
 
 User: [User Router](./doc/routers/userRouter.md)
 
+## Module doc
+
+User: [User](./doc/modules/user.md)
+
+QuizBank [QuizBank](./doc/Quizbank%20%26%20DB%20explanation.pdf)
+
 ## Repository Structure
   The main branch is dev
   
@@ -84,6 +90,10 @@ We are using mocha with the help of chai to make request and puppeteer to run as
 [user.test.mjs](/test/user.test.mjs)
 
 [userRouter.test.mjs](/test/userRouter.test.mjs)
+
+[quizRouter.test.mjs](/test/quizRouter.test.mjs)
+
+[quizItemRouter.test.mjs](/test/quizItemRouter.test.mjs)
 
 ### Tests for UI Pages
 Please prefer to instruction docs to run tests 
