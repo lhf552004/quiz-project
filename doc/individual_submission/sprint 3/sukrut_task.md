@@ -19,6 +19,4 @@
  
 7. Tasks in backlog for the [Task#46](https://github.com/MUN-COMP6905/project-eteam/issues/46) *-Done*
 
-8. Conducted a Team Meeting on 20th March as a Scrum Master: [Meeting Video](https://drive.google.com/file/d/1bFK1mTUd8vlO4S3qupCFNpyj27TBkuKw/view?usp=sharing), [Meeting Notes](https://github.com/MUN-COMP6905/project-eteam/blob/dev/doc/meeting_notes/sprint2_mar20.md)
-
-9. Conducted a Team Meeting on 24th March as a Scrum Master: [Meeting Video](https://drive.google.com/file/d/1-UY8WouZ21ruEceeOP7-E6fPPT8jaFn9/view?usp=sharing), [Meeting Notes](/doc/meeting_notes/sprint2_mar24.md)
+8. Conducted a Team Meeting on 24th March as a Scrum Master: [Meeting Video](https://drive.google.com/file/d/1-UY8WouZ21ruEceeOP7-E6fPPT8jaFn9/view?usp=sharing), [Meeting Notes](/doc/meeting_notes/sprint2_mar24.md)
