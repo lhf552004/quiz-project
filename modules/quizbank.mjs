@@ -311,12 +311,12 @@ class Quiz {
 }
 
 //var quizItem = new QuizItem();
-var quizItem = new QuizItem("What is the hollywood superstar?", "Nick",["SRK","Salman","Nick","Dwane"]);
-quizItem.storeQuizItem("Hollywood");
+//var quizItem = new QuizItem("What is the hollywood superstar?", "Nick",["SRK","Salman","Nick","Dwane"]);
+//quizItem.storeQuizItem("Hollywood");
 //quizItem.deleteQuizItem("foods","4");
 //quizItem.getQuizItemById("foods","2");
 //quizItem.correct("foods","2", "Cheese");
-const quiz = new Quiz();
+//const quiz = new Quiz();
 //const quizItemsArray = await quiz.fetchAllQuizItems("foods");
 //console.log(quizItemsArray.length);
 //const newQuizId = await quiz.createNewQuiz("Hollywood");
