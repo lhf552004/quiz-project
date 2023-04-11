@@ -132,7 +132,7 @@ userRouter.delete('/:id', (req, res) => {
  * Render the user dashboard page.
  *
  * @name GET /users/dash-board/:id
- * @function
+ * @function getUserDashboard
  * @memberof module:user
  * @param {string} id - The id of user.
  * @param {Object} req - The Express request object.
@@ -149,7 +149,7 @@ userRouter.get('/dash-board/:id', async (req, res) => {
  * Render the user admin page.
  *
  * @name GET /users/admin/:id
- * @function
+ * @function getAdminPage
  * @memberof module:user
  * @param {string} id - The id of user.
  * @param {Object} req - The Express request object.
