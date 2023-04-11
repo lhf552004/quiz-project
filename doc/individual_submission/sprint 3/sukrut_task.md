@@ -15,7 +15,7 @@
 
 5. Update the documentation for [individual submission Sprint3](https://github.com/MUN-COMP6905/project-eteam/blob/dev/doc/individual_submission/sprint%203/sukrut_task.md). *-Done*
 
-6. Submit the Performance Review for all Team members [Task#129](https://github.com/MUN-COMP6905/project-eteam/issues/129) *-Done*
+6. Submit the Performance Review for all Team members [Task#188](https://github.com/MUN-COMP6905/project-eteam/issues/188) *-Done*
  
 7. Tasks in backlog for the [Task#46](https://github.com/MUN-COMP6905/project-eteam/issues/46) *-Done*
 
