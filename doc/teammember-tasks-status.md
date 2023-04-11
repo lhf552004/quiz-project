@@ -29,3 +29,5 @@
 ## Sprint 3
 
 [Trang Vo](/doc/individual_submission/sprint%203/trang_vo_tasks.md)
+
+[Sukrut Dani](https://github.com/MUN-COMP6905/project-eteam/blob/dev/doc/individual_submission/sprint%203/sukrut_task.md)
