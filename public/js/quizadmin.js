@@ -6,7 +6,7 @@ $(function() {
                 url: '/quiz/',
                 type: 'POST',
                 data: {
-                    name: 'testquiz'
+                    name: quizName
                 },
                 success: function() {
                     window.location.href = '/quizitem/quiz/' + quizName + '/add-quiz-item'
