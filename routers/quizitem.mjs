@@ -71,21 +71,12 @@ quizItemRouter.post('/:name', async (req, res) => {
     const name = req.params.name;
     const json = req.body; // get the form data from the request body
 
-    // Check and assign quizItem id. We have to do this because firebase setup doesn't 
-    // provide id automatically. Therefore it's just simpler and easier to set it with the router
-    const quiz = new Quiz();
-    let quizItems = await quiz.fetchAllQuizItems(name);
-    // I don't think it's good idea to do it in router. By the way firebase could avoid this issue
-    const latestId = quizItems.length == 0 ? '0' : quizItems[quizItems.length - 1].id;
-
-    // Setting new quiz item with a right id
-    json.id = (parseInt(latestId) + 1).toString();
-
     const newQuizItem = Object.assign(new QuizItem(), json);
     newQuizItem.storeQuizItem(name);
 
     // Get quiz items by quiz name
-    quizItems = await quiz.fetchAllQuizItems(name);
+    const quiz = new Quiz();
+    let quizItems = await quiz.fetchAllQuizItems(name);
     res.render('quiz', {data: {name : name, quizItems: quizItems}}); 
 });
 

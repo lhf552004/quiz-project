@@ -8,6 +8,8 @@
 
 4. Create UI Unit Test for add new quiz modal [Task 184](https://github.com/MUN-COMP6905/project-eteam/issues/184) **DONE**
 
+5. Create UI Unit Test for add quiz item [Task 185](https://github.com/MUN-COMP6905/project-eteam/issues/185) **DONE**
+
 5. Create documentation for Individual Task Details [Individual Task Doc](/doc/individual_submission/sprint%203/trangv_code_task_doc.md) **DONE**
 
 6. Create a new architecture doc to incorporate and update existing architecture docs [Task 189](https://github.com/MUN-COMP6905/project-eteam/issues/189) **DONE**
