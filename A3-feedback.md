@@ -1,6 +1,6 @@
 TEAM E checkout f1458ecdd987cdfa1a0ee87d86e7be18d318889d
 
-- met with trangv on apr 13, code reviews are in pull request. Status in individual submissions, do not reflect connection between back end and front end. Need to update marks for code review and regression tests
+- met with trangv on apr 13, code reviews are in pull request. Status in individual submissions, do not reflect connection between back end and front end. Names of test files reflect names of tasks. Need to update marks for code review and regression tests. 
 
 ## Team submission
 
