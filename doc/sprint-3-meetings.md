@@ -15,3 +15,16 @@
 ### 3. April 5th, 2023
 
 - Decided to set Apr 15th as the last day to submit everything for Assignment 4
+
+### 3. April 7th, 2023
+
+[Meeting Notes](/doc/meeting_notes/sprint3_apr7.md)
+
+- Team members gave update on their tasks 
+- Decided who will create documentation for architecture
+
+### 3. April 10th, 2023
+
+[Meeting Notes](/doc/meeting_notes/sprint3_apr10.md)
+
+
