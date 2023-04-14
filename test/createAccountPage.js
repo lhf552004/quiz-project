@@ -6,27 +6,25 @@ chai.use(chaiHttp);
 const expect = chai.expect;
 
 describe("Create Account Page", () => {
-  
   let browser;
   let page;
   let userId;
 
-  before(async () => {
-    try{
-        browser = await puppeteer.launch();
-        page = await browser.newPage();
-        await page.goto("http://localhost:3000/users/create");
+  before(async function () {
+    this.timeout(60000);
+    try {
+      browser = await puppeteer.launch();
+      page = await browser.newPage();
+      await page.goto("http://localhost:3000/users/create");
+    } catch (error) {
+      console.error(error);
     }
-    catch (error) {
-        console.error(error);
-    }
-
-  },{ timeout: 60*6000 });
+  });
 
   after(async () => {
     await browser.close();
   });
-  
+
   //test check for email field
   it("should have an email field", async () => {
     const emailField = await page.$("#email");
@@ -39,24 +37,27 @@ describe("Create Account Page", () => {
     expect(passwordField).to.exist;
   });
 
-   //test check for "Already have an account? Login!" link
-   it("should have 'Already have an account? Login!' link", async () => {
+  //test check for "Already have an account? Login!" link
+  it("should have 'Already have an account? Login!' link", async () => {
     const loginLink = await page.$('.button-link[href="/users/login"]');
     expect(loginLink).to.exist;
   });
 
   //test check for creation of new users
-  it('Should create a new user', async () => {
-    console.log('New user is created sucessfully! Below is the user id of newly created user:');
-    const res = await chai.request("http://localhost:3000")
-        .post('/users/create')
-        .send({ email: 'reviewSETA@example.com', password: 'reviewSETApassword' });
-    expect(res.status).to.equal(200);
-    expect(res.text).to.include('<h1>This is user profile</h1>');
-    userId = res.text.substring(res.text.indexOf('<h2>') + 4, res.text.indexOf('</h2>'));
+  it("Should create a new user", async () => {
+    console.log(
+      "New user is created successfully! Below is the user id of the newly created user:"
+    );
+    const res = await chai
+      .request("http://localhost:3000")
+      .post("/users/create")
+      .send({ email: "abc@example.com", password: "abcpassword" });
+      expect(res.status).to.equal(200);
+      expect(res.text).to.include("<h1>This is user profile</h1>");
+      userId = res.text.substring(
+        res.text.indexOf("<h2>") + 4,
+        res.text.indexOf("</h2>")
+      );
     console.log(userId);
   });
-
 });
-
-
