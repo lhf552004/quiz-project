@@ -35,4 +35,24 @@ Steps to run my test:
 
 [createQuizModal.js](/test/createQuizModal.js)
 
+### 4. Regression Test for Add New Quiz Item
+I created a test to make sure that the add quiz item page is shown correctly and the whole flow can proceed as expected. I also create a test quiz during test, then remove it after all tests are done.
+
+Things that I check in my test 
+1. Should show add quiz item page
+2. Check page elements loaded correctly
+3. Check quiz item is added correctly
+    - Type in question
+    - Type in options
+    - Select correct answer
+    - Click create button
+
+Steps to run my test: 
+1. run `npm install` to install all necessary test suites
+2. run `npx mocha test/createQuizItem.js --exit`
+
+[Task Card](https://github.com/MUN-COMP6905/project-eteam/issues/185)
+
+[createQuizModal.js](/test/createQuizItem.js)
+
 
