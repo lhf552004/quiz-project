@@ -1,6 +1,7 @@
 ### Completed and Ongoing tasks
 
-Please checkout code tasks detail for this sprint 
+Please checkout code tasks detail for this sprint in personal code tasks detail doc [Individual Task Doc](/doc/individual_submission/sprint%203/trangv_code_task_doc.md)
+
 1. Create modal to add in new quiz [Task 168](https://github.com/MUN-COMP6905/project-eteam/issues/168) **DONE**
 
 2. Create the page to add quiz's new quiz item [Task 169](https://github.com/MUN-COMP6905/project-eteam/issues/169) **DONE**
@@ -18,5 +19,7 @@ Please checkout code tasks detail for this sprint
 7. Conduct Scrum meeting and create meeting notes for [Apr 7th Notes](/doc/meeting_notes/sprint3_apr7.md) and [Apr 7th Notes](/doc/meeting_notes/sprint3_apr3.md)  **DONE**
 
 8. Create Overall Implementation State Doc [Implementation State Doc](/doc/implementationState.md) **DONE**
+
+9. Create Regression Test Doc [Regression Test Doc](/doc/regression_test.md) **DONE**
 
 8. Help and review multiple Pull Requests
