@@ -156,8 +156,10 @@ userRouter.get('/dash-board/:id', async (req, res) => {
  * @param {Object} res - The Express response object.
  * @returns {undefined}
  */
-userRouter.get('/admin/:id', (req, res) => {
-    res.render('userAdmin');
+userRouter.get('/admin/:id', async (req, res) => {
+    const quiz = new Quiz();
+    const quizzes = await quiz.fetchAllQuizNames();
+    res.render('userAdmin', {quizes: quizzes});
 });
 
 export { userRouter };
