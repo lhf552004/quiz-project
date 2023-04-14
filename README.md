@@ -87,6 +87,8 @@ QuizBank [QuizBank](./doc/Quizbank%20%26%20DB%20explanation.pdf)
 
 ## Regression/Unit Tests 
 
+Test file names reflect the component that it's for. Please read the doc below for instruction and available tests
+
 [Regression Test Documentation](./doc/regression_tests.md)
 
 ## Architeture Docs
