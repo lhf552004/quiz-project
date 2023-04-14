@@ -2,15 +2,16 @@
 
 ## Team description
 
-[Member roles definition](./doc/memberroles.md) **Updated to align with roles for sprint 2**
+[Member roles definition](./doc/memberroles.md)
 
 ## Project Description
 
 1. This project adopts the express.js framework and view engine pug.
 2. The persistence is implemented through the database, maybe firebase.
 3. Quiz test system, with user management and quiz management
-4. At assignment 2 sprint, the quiz system could offer new student signup, login, quiz page with mock data
-5. At assignment 3 sprint, there are multiple updates to the features of the project. We also provide multiple regression tests for our UI, modules and routers. 
+4. In sprint 1, the quiz system could offer new student signup, login, quiz page with mock data
+5. In sprint 2, there are multiple updates to the features of the project. We also provide multiple regression tests for our UI, modules and routers. 
+6. In sprint 3, more features are added. We also provide more tests for out built components and documentations for architecture and alt-architecture
 
 ## Instructions
 Start: 
@@ -27,9 +28,9 @@ Signup: http://localhost:3000/users/create
 
 Login: http://localhost:3000/users/login
 
-User Dashboard: http://localhost:3000/users/dash-board/:id (id is the parameter)
+User Dashboard: http://localhost:3000/users/dash-board/:id (id is the parameter, use id = 1 for demo)
 
-User Admin: http://localhost:3000/users/admin/:id (id is the parameter)
+User Admin: http://localhost:3000/users/admin/:id (id is the parameter, use id = 1 for demo)
 
 Add quiz item http://localhost:3000/quizitem/quiz/:name/add-quiz-item (name is the parameter)
 
@@ -84,37 +85,21 @@ QuizBank [QuizBank](./doc/Quizbank%20%26%20DB%20explanation.pdf)
 
   README file is the introduction for the project
 
-## Regression/Unit Tests  **New from sprint 2**
+## Regression/Unit Tests 
 
-Available tests from this sprint 
+Test file names reflect the component that it's for. Please read the doc below for instruction and available tests
 
-### Tests for modules and routers
-We are using mocha with the help of chai to make request and puppeteer to run as a shadow browser for UI Tests
-
-[quizbank.test.mjs](/test/quizbank.test.mjs): If you want to run this file separately, mention full path while running cmd. "/test/quizbank.test.mjs" 
-
-[user.test.mjs](/test/user.test.mjs)
-
-[userRouter.test.mjs](/test/userRouter.test.mjs)
-
-[quizRouter.test.mjs](/test/quizRouter.test.mjs)
-
-[quizItemRouter.test.mjs](/test/quizItemRouter.test.mjs)
-
-### Tests for UI Pages
-Please prefer to instruction docs to run tests 
-
-[/test/createAccountPage.js](/test/createAccountPage.js) | [Test Instructions](/doc/individual_submission/sprint%202/neha_code_task.md)
-
-[/test/quizPage.js](/test/quizPage.js) | [Test Instruction](/doc/individual_submission/sprint%202/trangv_code_task_doc.md)
+[Regression Test Documentation](./doc/regression_tests.md)
 
 ## Architeture Docs
-[Architecture Docs](/doc/architecture.md) **New document from sprint 3**
+[Architecture Docs](/doc/architecture.md)
+
+[Alternative Architecture Docs]
 
 ## Code Style
 [Nodejs Code style External Resources](https://github.com/felixge/node-style-guide)
 
-[CSS Code Style](/doc/csscodestyle.md)
+[Internal CSS Code Style](/doc/csscodestyle.md)
 
 ## Code Review Standard
 
@@ -140,11 +125,11 @@ Code review is performed in all PR with codes about to be merged to dev branch. 
 
 [Sprint 2 Meetings](/doc/sprint-2-meetings.md)
 
-[Sprint 3 Meetings](/doc/sprint-3-meetings.md) **New document from sprint 3**
+[Sprint 3 Meetings](/doc/sprint-3-meetings.md)
 
-## Team members tasks status
+## Team members tasks status for ALL SPRINTS
 
-[Teammember tasks status](/doc/teammember-tasks-status.md) **Updates to include status of all sprints**
+[Teammember tasks status](/doc/teammember-tasks-status.md) 
 
 ## Performance Review of Each Team-Member
 

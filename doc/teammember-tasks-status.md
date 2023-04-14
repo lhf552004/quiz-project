@@ -28,6 +28,8 @@
 
 ## Sprint 3
 
+[Yawen Li](/doc/individual_submission/sprint%203/yawen_li_tasks.md)
+
 [Trang Vo](/doc/individual_submission/sprint%203/trang_vo_tasks.md)
 
 [Sukrut Dani](https://github.com/MUN-COMP6905/project-eteam/blob/dev/doc/individual_submission/sprint%203/sukrut_task.md)
