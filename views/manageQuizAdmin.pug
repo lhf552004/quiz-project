@@ -5,10 +5,10 @@ block content
     .dashboard-form
       .manage-page-header
         h2(class="heading-manage-quiz") Manage Your Quiz
-        a(href="") Back
+        a(href="http://localhost:3000/users/admin/1") Back
       .manage-page-container
         h4(class="heading") #{data.name} Quiz
-        a(href="", class="color-width-font") Add New Question +
+        a(href="http://localhost:3000/quizitem/quiz/" + data.name + "/add-quiz-item", class="color-width-font") Add New Question +
       .list-container
         ul(class="question-list")
           each quizItem, n in data.quizItems

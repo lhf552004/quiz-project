@@ -27,13 +27,19 @@ Signup: http://localhost:3000/users/create
 
 Login: http://localhost:3000/users/login
 
-User Dashboard: http://localhost:3000/users/dash-board/:1 (id is the parameter)
+User Dashboard: http://localhost:3000/users/dash-board/:id (id is the parameter)
 
 User Admin: http://localhost:3000/users/admin/:id (id is the parameter)
 
 Add quiz item http://localhost:3000/quizitem/quiz/:name/add-quiz-item (name is the parameter)
 
-## Routers doc: **New document from sprint 2**
+Quiz Manage Admin http://localhost:3000/quiz/:name/quiz-admin (name is parameter)
+
+## Overall Project Implementation State
+
+[Implementaion State](./doc/implementationState.md)
+
+## Routers doc:
 
 Quiz: [Quiz Router](./doc/routers/quizRouter.md)
 

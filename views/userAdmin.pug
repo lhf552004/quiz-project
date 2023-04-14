@@ -17,9 +17,9 @@ block content
                 each quiz in quizes
                     li 
                         .admin-quiz-list-name= quiz
-                        a.admin-quiz-list-link Edit
+                        a.admin-quiz-list-link(href="http://localhost:3000/quiz/" + quiz + "/quiz-admin") Edit
                         a.admin-quiz-list-link Analyze 
-    .modal.fade(id="createQuizModal", tabindex="-1", role="dialog", aria-hiddden="true")
+    .modal.fade.create-quiz-modal(id="createQuizModal", tabindex="-1", role="dialog", aria-hiddden="true")
         .modal-dialog
             .modal-content
                 .modal-header
@@ -29,6 +29,7 @@ block content
                 .modal-body
                     input(type="text" id="quizname" name="quizname" placeholder="Type Your Quiz Name")
                     button.create-quiz-btn.btn.btn-primary Create Quiz
+	
 
                     
 
