@@ -101,7 +101,7 @@ describe('User Management Regression Test', () => {
         console.log('it access dashboard page');
         const res = await chai.request(app).get(`/users/dash-board/1`);
         expect(res.status).to.equal(200);       
-        expect(res.text).to.include('<h2 class="dashboard-heading">Dashboard</h2>');
+        expect(res.text).to.include('<h2 class="heading">Dashboard</h2>');
     });
 
     it('Should access the admin page', async () => {

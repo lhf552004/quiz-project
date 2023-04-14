@@ -1,4 +1,49 @@
 extends layout
 
+block head 
+    title Home
+
 block content
-    h2 This is home here
+    .form-page-container.large-container
+        .form-wrapper
+            h3.page-title Current Available Built Front-End Pages
+            .form-wrapper-content 
+                .row
+                    .col-md-6
+                        ul 
+                            li
+                                a(href="http://localhost:3000/", target="_blank") Home
+                                p Using as a placeholder to show all available routes. Final product would not look like this
+                            li
+                                a(href="http://localhost:3000/users/login", target="_blank") Sign Up
+                                p Sign up function is working, user profile is not in scope of development for sprint 1-3
+                            li
+                                a(href="http://localhost:3000/users/create", target="_blank") Login
+                                p Login function is working, user profile is not in scope of development for sprint 1-3
+                            li
+                                a(href="http://localhost:3000/users/dash-board/1", target="_blank") User Dashboard
+                                p Dynamically show all quizzes from the database. Can access single quiz by clicking the link. Analyze and Preview are NOT implemented
+                            li
+                                a(href="http://localhost:3000/users/admin/1", target="_blank") Admin Dashboard
+                                p Dynamically show all quizzes from the database. Can create new quiz, can access quiz admin page. Analyze is NOT implemented
+                    .col-md-6 
+                        ul 
+                            li
+                                a(href="http://localhost:3000/quiz", target="_blank") Quiz List
+                                p Route is available but UI is not built
+                            li
+                                a(href="http://localhost:3000/quiz/GK", target="_blank") Single quiz
+                                p Single quiz is fully functional. Can show right/wrong answers and final result
+                            li
+                                a(href="http://localhost:3000/quizitem/quiz/GK/add-quiz-item", target="_blank") Add new quiz item to specific quiz
+                                p Add new quiz item is fully implemented. Add question, options and select correct answer
+                            li
+                                a(href="http://localhost:3000/quiz/GK/quiz-admin", target="_blank") Quiz Manage Page
+                                p Dynamically shows all questions of a specific quiz. Add new question is connected. Edit and Delete is not connected
+                            
+
+                            
+                                                
+                            
+                        
+
