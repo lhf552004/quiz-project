@@ -38,3 +38,11 @@ Front-end is done with
 - Using GET request in javascript for single quiz page
 - UPDATE and DELETE are not connected to the back-end
 
+Front-end is done with 
+- Create Account Page is fully functional. user can create new account and if he already has account the he can navigate to login page [Create New Account](http://localhost:3000/users/create)
+- On User Dashboard Page, user can navigate to quiz page to give the specific quiz by click on the particular quiz name link [User Dashboard](http://localhost:3000/users/dash-board/1)
+- Analyze, Preview and logout functionality are not implemented in this this sprint. This will be done in next sprint.
+- On Manage Your Quiz(For Admin Page) admin user can get the list of all the question for particular quiz [View of Maths Quiz](http://localhost:3000/quiz/Maths/quiz-admin#) , [View of GK Quiz](http://localhost:3000/quiz/GK/quiz-admin#)
+- Add New Question, Edit and Delete are not connected to the back-end
+
+

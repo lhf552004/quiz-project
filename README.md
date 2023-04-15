@@ -35,6 +35,7 @@ User Admin: http://localhost:3000/users/admin/:id (id is the parameter, use id =
 Add quiz item http://localhost:3000/quizitem/quiz/:name/add-quiz-item (name is the parameter)
 
 Quiz Manage Admin http://localhost:3000/quiz/:name/quiz-admin (name is parameter)
+- Replace ':name' with GK to get perfect view [View GK Quiz](http://localhost:3000/quiz/GK/quiz-admin#)
 
 ## Overall Project Implementation State
 
@@ -136,6 +137,8 @@ Code review is performed in all PR with codes about to be merged to dev branch. 
 [Performance Review Sprint 1](/doc/performance_review_sprint1.md)
 
 [Performance Review Sprint 2](/doc/performance_review_sprint2.md)
+
+[Performance Review Sprint 3](/doc/performance_review_sprint3.md)
 
 ## Attributions
 
