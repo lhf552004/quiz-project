@@ -12,7 +12,7 @@ Create the design and UI for add in a new quiz item to a specific quiz. The page
 
 [PR](https://github.com/MUN-COMP6905/project-eteam/pull/180)
 
-[Task Card]((https://github.com/MUN-COMP6905/project-eteam/issues/169))
+[Task Card](https://github.com/MUN-COMP6905/project-eteam/issues/169)
 
 ### 4. Regression Test for Add New Quiz Modal
 I created a test to make sure that the modal exist, open when the trigger is clicked, also successfully created new quiz. I also made sure to delete the test quiz when the test is completed. 
@@ -50,6 +50,8 @@ Things that I check in my test
 Steps to run my test: 
 1. run `npm install` to install all necessary test suites
 2. run `npx mocha test/createQuizItem.js --exit`
+
+[PR](https://github.com/MUN-COMP6905/project-eteam/pull/212)
 
 [Task Card](https://github.com/MUN-COMP6905/project-eteam/issues/185)
 

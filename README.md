@@ -39,7 +39,7 @@ Quiz Manage Admin http://localhost:3000/quiz/:name/quiz-admin (name is parameter
 
 ## Overall Project Implementation State
 
-[Implementaion State](./doc/implementationState.md)
+[Implementation State](./doc/implementationState.md)
 
 ## Routers doc:
 
