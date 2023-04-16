@@ -95,7 +95,7 @@ Test file names reflect the component that it's for. Please read the doc below f
 ## Architeture Docs
 [Architecture Docs](/doc/architecture.md)
 
-[Alternative Architecture Docs]
+[Alternative Architecture Docs](/doc/alt-architecture.md)
 
 ## Code Style
 [Nodejs Code style External Resources](https://github.com/felixge/node-style-guide)
