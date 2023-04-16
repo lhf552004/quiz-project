@@ -13,6 +13,7 @@ Our router docs are living under `/doc/routers`
 
 6. QuizBank module: QuizBank is a module that provides a set of classes and methods for managing quiz questions and answers. It includes classes for Quiz and QuizItem, which represent the quiz and quiz questions, respectively. The module provides methods for fetching quiz data from the Firebase database and adding, removing, and updating quiz questions.
 
-7. [Structural Diagram](https://github.com/MUN-COMP6905/project-eteam/blob/dev/doc/image/structure%20diagram.png)
+7. [QuizBank explanation](/doc/Quizbank%20%26%20DB%20explanation.pdf)
 
-8. [QuizBank explanation](https://github.com/MUN-COMP6905/project-eteam/blob/dev/doc/Quizbank%20%26%20DB%20explanation.pdf)
+!["Architecture Diagram"](/doc/images/architecture_diagram.png)
+
