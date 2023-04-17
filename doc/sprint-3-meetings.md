@@ -30,3 +30,9 @@
 - Updated on Completed and ongoing task
 - Discussed on alternative architecture
 - Asked to fill performence review for each team member.
+
+### 5. April 14th, 2023
+
+[Meeting Notes](/doc/meeting_notes/sprint3_apr14.md)
+
+- Updated on all completed tasks and all other docs that still need to finish for submission.
