@@ -17,7 +17,7 @@ Participants:
 - Yawen created User Module doc and regression test for homeRouter and serve.js
 - Neha done with her code task, and User Dashboard test. Working on finishing other docs. 
 - Anton is finishing alt-architecture doc.
-- Sukrut will check Yawen's PR to merge and approve it.
+- Sukrut will check Yawen's PR to merge and approve it. And finish all his remaining documentations updates
 
 
 
