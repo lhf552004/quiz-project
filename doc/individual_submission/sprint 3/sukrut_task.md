@@ -13,7 +13,7 @@
 
 4. Mocha Testing Task: Test cases for the updated QuizBank Module for both the classes QuizItem and Quiz class(Attached output screenshot as well) [Task #204](https://github.com/MUN-COMP6905/project-eteam/issues/204) *-Done*
 
-5. Suggested an **Alternate Architecture** for our Project as mentioned in the assignment guidelines. [Task#190](https://github.com/MUN-COMP6905/project-eteam/issues/190) *-Done*
+5. Suggested an **Alternate Architecture** [[Alt-archi doc]](https://github.com/MUN-COMP6905/project-eteam/blob/dev/doc/alt-architecture.md) for our Project as mentioned in the assignment guidelines. [Task#190](https://github.com/MUN-COMP6905/project-eteam/issues/190) *-Done*
 
 6. Update the document explaining QuizBank.mjs module so that everyone will know the updated module working. [Quizbank & DB explanation](https://github.com/MUN-COMP6905/project-eteam/blob/dev/doc/Quizbank%20%26%20DB%20explanation.pdf) *-Done*
 
