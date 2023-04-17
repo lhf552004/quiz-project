@@ -13,7 +13,7 @@ Participants:
 - Sukrut Dani (@Sukrut2710)
 
 ## Tasks updates of every team member
-- Trang is done with create a 
+- Trang is done with create a test for create quiz modal. Will create test for add quiz item if have enough time
 - Sukrut finished changes to add ing
 - Yawen finished 3 coding tasks with documents. Coding tasks including routers for create quiz item, user dashboard and update quiz item. 
 - Neha completed manage admin quiz view. She might create tests for User Dashboard screen. Yawen will add in a route for her to show her page if he has enough time. 
