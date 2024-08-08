@@ -9,3 +9,5 @@ temp_bank*
 temp_user*
 
 user.json
+.env
+.env.test
