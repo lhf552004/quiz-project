@@ -2,10 +2,10 @@ import qs from "querystring";
 
 import express from "express";
 import bodyParser from "body-parser";
-import { homeRouter } from "./routers/home.mjs";
-import { userRouter } from "./routers/users.mjs";
-import { quizRouter } from "./routers/quiz.mjs";
-import { quizItemRouter } from "./routers/quizitem.mjs";
+import { homeRouter } from "./routers/home.js";
+import { userRouter } from "./routers/users.js";
+import { quizRouter } from "./routers/quiz.js";
+import { quizItemRouter } from "./routers/quizitem.js";
 /**
  * The main express application object.
  * @typedef {Object} expressApp

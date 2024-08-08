@@ -1,5 +1,5 @@
-import express from 'express';
-import { Quiz } from '../modules/quizbank.mjs';
+import express from "express";
+import { Quiz } from "../modules/quizbank.js";
 /**
  * @module quizRouter The module is to handler quiz router
  */
@@ -14,9 +14,9 @@ const quizRouter = express.Router();
 @param {object} res - The response object
 @returns {void}
 */
-quizRouter.get('/', (req, res) => {
-    const quiz = new Quiz();
-    res.render("quizlist", {list: quiz.fetchAllQuizNames()});
+quizRouter.get("/", (req, res) => {
+  const quiz = new Quiz();
+  res.render("quizlist", { list: quiz.fetchAllQuizNames() });
 });
 
 /**
@@ -28,12 +28,12 @@ quizRouter.get('/', (req, res) => {
 @param {object} res - The response object
 @returns {void}
 */
-quizRouter.get('/:name', async (req, res) => {
-    const name = req.params.name;
-    const quiz = new Quiz()
-    const quizItems = await quiz.fetchAllQuizItems(name);
+quizRouter.get("/:name", async (req, res) => {
+  const name = req.params.name;
+  const quiz = new Quiz();
+  const quizItems = await quiz.fetchAllQuizItems(name);
 
-    res.render("quiz", {data: {name : name, quizItems: quizItems}});
+  res.render("quiz", { data: { name: name, quizItems: quizItems } });
 });
 
 /**
@@ -45,12 +45,12 @@ quizRouter.get('/:name', async (req, res) => {
 @param {object} res - The response object
 @returns {void}
 */
-quizRouter.get('/:name/quiz-admin', async (req, res) => {
-    const name = req.params.name;
-    const quiz = new Quiz();
-    const quizItems = await quiz.fetchAllQuizItems(name);
+quizRouter.get("/:name/quiz-admin", async (req, res) => {
+  const name = req.params.name;
+  const quiz = new Quiz();
+  const quizItems = await quiz.fetchAllQuizItems(name);
 
-    res.render("manageQuizAdmin", {data: {name : name, quizItems: quizItems}});
+  res.render("manageQuizAdmin", { data: { name: name, quizItems: quizItems } });
 });
 
 /**
@@ -64,12 +64,12 @@ POST route handler for creating a new quiz.
 @param {Object} res - The response object
 @returns {Object} - The response object with status 200 and a success message
 */
-quizRouter.post('/', (req, res) => {
-    const json = req.body; // get the form data from the request body
-    // According to the quizbank module, to create a quiz, a quiz name is needed
-    const newQuiz = new Quiz(json.name);
-    newQuiz.createNewQuiz(json.name);
-    res.status(200).json({ message: 'quiz create successfully.' });
+quizRouter.post("/", (req, res) => {
+  const json = req.body; // get the form data from the request body
+  // According to the quizbank module, to create a quiz, a quiz name is needed
+  const newQuiz = new Quiz(json.name);
+  newQuiz.createNewQuiz(json.name);
+  res.status(200).json({ message: "quiz create successfully." });
 });
 
 /**
@@ -81,11 +81,11 @@ quizRouter.post('/', (req, res) => {
 @param {object} res - The response object
 @returns {void}
 */
-quizRouter.delete('/:name', (req, res) => {
-    const name = req.params.name;
-    const quizToDelete = new Quiz(name);
-    quizToDelete.deleteQuiz(name);
-    res.status(200).json({ message: 'quiz deleted successfully.' });
+quizRouter.delete("/:name", (req, res) => {
+  const name = req.params.name;
+  const quizToDelete = new Quiz(name);
+  quizToDelete.deleteQuiz(name);
+  res.status(200).json({ message: "quiz deleted successfully." });
 });
 
 export { quizRouter };

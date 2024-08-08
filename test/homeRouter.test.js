@@ -1,13 +1,10 @@
 import chai from "chai";
 import chaiHttp from "chai-http";
 import { app, server } from "../src/serve.js";
-import { Quiz, QuizItem } from "../src/modules/quizbank.mjs";
+import { Quiz, QuizItem } from "../src/modules/quizbank.js";
 const expect = chai.expect;
 
 chai.use(chaiHttp);
-after(function (done) {
-  server.close(done);
-});
 // It maybe failed for router test, as it just not for the router itself.
 // It involves pages, which maybe change.
 describe("Home Router Regression Test", () => {

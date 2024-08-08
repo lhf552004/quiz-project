@@ -1,4 +1,4 @@
-import { User } from "../src/modules/user.mjs";
+import { User } from "../src/modules/user.js";
 import chai, { assert } from "chai";
 const expect = chai.expect;
 

@@ -6,7 +6,7 @@ const expect = chai.expect;
 chai.use(chaiHttp);
 
 describe("Server Test", () => {
-  after((done) => {
+  afterEach((done) => {
     server.close(done);
   });
   describe("GET /", () => {

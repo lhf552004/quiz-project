@@ -1,6 +1,6 @@
-import express from 'express';
-import { User } from '../modules/user.mjs';
-import { Quiz } from '../modules/quizbank.mjs';
+import express from "express";
+import { User } from "../modules/user.js";
+import { Quiz } from "../modules/quizbank.js";
 
 /**
 
@@ -17,8 +17,8 @@ const userRouter = express.Router();
 @param {object} res - The response object
 @returns {void}
 */
-userRouter.get('/', (req, res) => {
-    res.render('users', { users: User.fetchUsers('user') });
+userRouter.get("/", (req, res) => {
+  res.render("users", { users: User.fetchUsers("user") });
 });
 
 /**
@@ -31,8 +31,8 @@ userRouter.get('/', (req, res) => {
  * @param {Object} res - The Express response object.
  * @returns {undefined}
  */
-userRouter.get('/login', (req, res) => {
-    res.render('login');
+userRouter.get("/login", (req, res) => {
+  res.render("login");
 });
 
 /**
@@ -48,14 +48,23 @@ userRouter.get('/login', (req, res) => {
  * @param {Object} res - The Express response object.
  * @returns {undefined}
  */
-userRouter.post('/login', (req, res) => {
-    let { email, password } = req.body;
-    const user = User.fetch('user', email, password);
-    if (user !== undefined) {
-        res.render('profile', { id: user.id, email, username: user.username, firstname: user.firstname, lastname: user.lastname, age: user.age });
-    } else {
-        res.status(500).json({ message: 'User not found or password not correct.' });
-    }
+userRouter.post("/login", (req, res) => {
+  let { email, password } = req.body;
+  const user = User.fetch("user", email, password);
+  if (user !== undefined) {
+    res.render("profile", {
+      id: user.id,
+      email,
+      username: user.username,
+      firstname: user.firstname,
+      lastname: user.lastname,
+      age: user.age,
+    });
+  } else {
+    res
+      .status(500)
+      .json({ message: "User not found or password not correct." });
+  }
 });
 
 /**
@@ -68,8 +77,8 @@ userRouter.post('/login', (req, res) => {
  * @param {Object} res - The Express response object.
  * @returns {undefined}
  */
-userRouter.get('/create', (req, res) => {
-    res.render('createAccount');
+userRouter.get("/create", (req, res) => {
+  res.render("createAccount");
 });
 
 /**
@@ -85,13 +94,20 @@ userRouter.get('/create', (req, res) => {
  * @param {Object} res - The Express response object.
  * @returns {undefined}
  */
-userRouter.post('/create', (req, res) => {
-    let { email, password } = req.body;
+userRouter.post("/create", (req, res) => {
+  let { email, password } = req.body;
 
-    const user = new User('', email, password);
-    user.store('user');
-    // Redirect to profile
-    res.render('profile', { id: user.id, email, username: user.username, firstname: user.firstname, lastname: user.lastname, age: user.age });
+  const user = new User("", email, password);
+  user.store("user");
+  // Redirect to profile
+  res.render("profile", {
+    id: user.id,
+    email,
+    username: user.username,
+    firstname: user.firstname,
+    lastname: user.lastname,
+    age: user.age,
+  });
 });
 
 /**
@@ -102,11 +118,18 @@ userRouter.post('/create', (req, res) => {
 @param {object} res - The response object
 @returns {void}
 */
-userRouter.put('/:id', (req, res) => {
-    const id = req.params.id;
-    let updated = req.body;
-    User.update('user', id, updated);
-    res.render('profile', { id: id, email: updated.email, username: updated.username, firstname: updated.firstname, lastname: updated.lastname, age: updated.age });
+userRouter.put("/:id", (req, res) => {
+  const id = req.params.id;
+  let updated = req.body;
+  User.update("user", id, updated);
+  res.render("profile", {
+    id: id,
+    email: updated.email,
+    username: updated.username,
+    firstname: updated.firstname,
+    lastname: updated.lastname,
+    age: updated.age,
+  });
 });
 
 /**
@@ -117,15 +140,14 @@ userRouter.put('/:id', (req, res) => {
 @param {object} res - The response object
 @returns {void}
 */
-userRouter.delete('/:id', (req, res) => {
-    const id = req.params.id;
-    const code = User.delete('user', id);
-    if (code === 0) {
-        res.status(200).json({ message: 'user deleted successfully.' });
-    } else {
-        res.status(500).json({ message: 'user deleted failed.' });
-    }
-
+userRouter.delete("/:id", (req, res) => {
+  const id = req.params.id;
+  const code = User.delete("user", id);
+  if (code === 0) {
+    res.status(200).json({ message: "user deleted successfully." });
+  } else {
+    res.status(500).json({ message: "user deleted failed." });
+  }
 });
 
 /**
@@ -139,10 +161,10 @@ userRouter.delete('/:id', (req, res) => {
  * @param {Object} res - The Express response object.
  * @returns {undefined}
  */
-userRouter.get('/dash-board/:id', async (req, res) => {
-    const quiz = new Quiz();
-    const quizzes = await quiz.fetchAllQuizNames();
-    res.render('userDashboard', {quizzes: quizzes});
+userRouter.get("/dash-board/:id", async (req, res) => {
+  const quiz = new Quiz();
+  const quizzes = await quiz.fetchAllQuizNames();
+  res.render("userDashboard", { quizzes: quizzes });
 });
 
 /**
@@ -156,10 +178,10 @@ userRouter.get('/dash-board/:id', async (req, res) => {
  * @param {Object} res - The Express response object.
  * @returns {undefined}
  */
-userRouter.get('/admin/:id', async (req, res) => {
-    const quiz = new Quiz();
-    const quizzes = await quiz.fetchAllQuizNames();
-    res.render('userAdmin', {quizes: quizzes});
+userRouter.get("/admin/:id", async (req, res) => {
+  const quiz = new Quiz();
+  const quizzes = await quiz.fetchAllQuizNames();
+  res.render("userAdmin", { quizes: quizzes });
 });
 
 export { userRouter };
