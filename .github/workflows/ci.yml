@@ -21,7 +21,49 @@ jobs:
 
       - name: Install dependencies
         run: npm install
-
+      - name: Install browser dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            libwoff1 \
+            libopus0 \
+            libwebp6 \
+            libwebpdemux2 \
+            libenchant1c2a \
+            libgudev-1.0-0 \
+            libsecret-1-0 \
+            libhyphen0 \
+            libgstreamer1.0-0 \
+            libgstreamer-plugins-base1.0-0 \
+            libgstreamer-plugins-good1.0-0 \
+            gstreamer1.0-libav \
+            gstreamer1.0-plugins-bad \
+            gstreamer1.0-plugins-base \
+            gstreamer1.0-plugins-good \
+            gstreamer1.0-pulseaudio \
+            libgtk-3-0 \
+            libnotify4 \
+            libnspr4 \
+            libnss3 \
+            libxss1 \
+            libxtst6 \
+            libatk-bridge2.0-0 \
+            libxcomposite1 \
+            libxdamage1 \
+            libxrandr2 \
+            libgbm1 \
+            libpango1.0-0 \
+            libpangocairo-1.0-0 \
+            libatspi2.0-0 \
+            libjpeg-turbo8 \
+            libgdk-pixbuf2.0-0 \
+            libcups2 \
+            libxshmfence1 \
+            libopenjp2-7 \
+            libwoff2-1 \
+            libflac8 \
+            libharfbuzz-icu0 \
+            libflite1
       - name: Install playwright driver
         run: npx playwright install
 
