@@ -1,4 +1,4 @@
-// tests/example.spec.mjs
+// tests/login.test.js
 import { test, expect } from "@playwright/test";
 
 test("Login test", async ({ page, context }) => {
