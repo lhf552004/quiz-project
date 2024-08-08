@@ -4,9 +4,11 @@
     "start": "cross-env NODE_ENV=development node src/serve.js",
     "start:prod": "cross-env NODE_ENV=production node src/serve.js",
     "start:test": "cross-env NODE_ENV=test node src/serve.js",
-    "test": "npx mocha"
+    "test": "npx mocha",
+    "coverage": "nyc npm run test",
+    "test:coverage:single": "nyc --reporter=html --reporter=text-summary mocha"
   },
-  "author": "Sukrut Dani, Yawen Li, Trang Vo, avynnyk, nvthakare",
+  "author": "Yawen Li",
   "license": "ISC",
   "devDependencies": {
     "chai": "^4.3.7",

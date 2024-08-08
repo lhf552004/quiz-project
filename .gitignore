@@ -13,3 +13,6 @@ user.json
 .env.development
 .env.production
 .env.test
+
+coverage/
+.nyc_output/
