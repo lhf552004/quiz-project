@@ -1,23 +1,28 @@
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-import firebase from 'firebase/compat/app';
-import 'firebase/compat/auth';
-import 'firebase/compat/firestore';
+import firebase from "firebase/compat/app";
+import "firebase/compat/auth";
+import "firebase/compat/firestore";
 
+// TODO: move it to env
 const firebaseConfig = {
-  apiKey: "AIzaSyDkqDGRJfn0bPzR-9TfSL461lHxx0Rwgzo",
-  authDomain: "quizproject-8b8c8.firebaseapp.com",
-  projectId: "quizproject-8b8c8",
-  storageBucket: "quizproject-8b8c8.appspot.com",
-  messagingSenderId: "1010494877447",
-  appId: "1:1010494877447:web:6b1173602871fc56e9dfa2",
-  measurementId: "G-XZ7VNV4EGQ"
+  apiKey: process.env.FIREBASE_API_KEY,
+
+  authDomain: process.env.FIREBASE_AUTHDOMAIN,
+
+  projectId: process.env.FIREBASE_PROJECT_ID,
+
+  storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
+
+  messagingSenderId: process.env.FIREBASE_MESSAGE_SENDER_ID,
+
+  appId: process.env.FIREBASE_APP_ID,
 };
 
 // Initialize Firebase
-firebase.initializeApp(firebaseConfig)
+firebase.initializeApp(firebaseConfig);
 //const db = firebase.getFirestore(app);
-const db = firebase.firestore()
+const db = firebase.firestore();
 //const quiz_db = db.collection('QuizBankDb')
 
-export {db};
+export { db };
