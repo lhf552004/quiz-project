@@ -10,4 +10,6 @@ temp_user*
 
 user.json
 .env
+.env.development
+.env.production
 .env.test

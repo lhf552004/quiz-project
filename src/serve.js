@@ -1,11 +1,11 @@
-import qs from 'querystring';
+import qs from "querystring";
 
-import express from 'express';
-import bodyParser from 'body-parser';
-import {homeRouter} from './routers/home.mjs';
-import {userRouter} from './routers/users.mjs';
-import {quizRouter} from './routers/quiz.mjs';
-import {quizItemRouter} from './routers/quizitem.mjs';
+import express from "express";
+import bodyParser from "body-parser";
+import { homeRouter } from "./routers/home.mjs";
+import { userRouter } from "./routers/users.mjs";
+import { quizRouter } from "./routers/quiz.mjs";
+import { quizItemRouter } from "./routers/quizitem.mjs";
 /**
  * The main express application object.
  * @typedef {Object} expressApp
@@ -28,7 +28,7 @@ const app = express();
  * @param {string} value - The setting value.
  * @returns {expressApp} The express app instance.
  */
-app.set('view engine', 'pug');
+app.set("view engine", "pug");
 
 /**
  * Set the view folder.
@@ -38,7 +38,7 @@ app.set('view engine', 'pug');
  * @param {string} value - The setting value.
  * @returns {expressApp} The express app instance.
  */
-app.set('views', './views');
+app.set("views", "./views");
 
 /**
  * Mount the public directory for static files.
@@ -48,17 +48,17 @@ app.set('views', './views');
  * @param {Function} middleware - The middleware function to mount.
  * @returns {expressApp} The express app instance.
  */
-app.use(express.static('public'));
+app.use(express.static("public"));
 
 // Use middleware to parse incoming request bodies
 app.use(bodyParser.json()); // for parsing application/json
-app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.urlencoded({ extended: false }));
 /**
  * The router for the home page.
  * @type {Object}
  * @property {Function} get - Handle GET requests to the home page.
  */
-app.use('/', homeRouter);
+app.use("/", homeRouter);
 
 /**
 
@@ -68,10 +68,9 @@ Mounts the quiz router to the specified route
 @param {string} route - The route to mount the router to
 @param {Object} quizRouter - The quiz router to mount
 */
-app.use('/quiz', quizRouter); 
+app.use("/quiz", quizRouter);
 
-
-app.use('/quizitem', quizItemRouter)
+app.use("/quizitem", quizItemRouter);
 
 /**
 
@@ -81,7 +80,7 @@ Mounts the users router to the specified route
 @param {string} route - The route to mount the router to
 @param {Object} userRouter - The users router to mount
 */
-app.use('/users', userRouter);
+app.use("/users", userRouter);
 
 /**
  * Listen for connections on port 3000.
@@ -92,7 +91,7 @@ app.use('/users', userRouter);
  * @returns {http.Server} The HTTP server instance.
  */
 var server = app.listen(3000, () => {
-  console.log('Server is listening on port 3000');
+  console.log("Server is listening on port 3000");
 });
 
-export {server, app}
+export { server, app };
