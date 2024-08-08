@@ -28,5 +28,5 @@ test("Signup test", async ({ page, context }) => {
   // await expect(page).toHaveURL(/\/profile/);
   // const newTitleLocator = await page.locator("h1");
   // expect(newTitleLocator).toHaveText("This is user profile");
-  // await page.screenshot({ path: "profile.png" });
+  await page.screenshot({ path: "signup.png" });
 });

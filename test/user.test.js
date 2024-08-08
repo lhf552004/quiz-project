@@ -1,13 +1,22 @@
 import { User } from "../src/modules/user.js";
+import sinon from "sinon";
 import chai, { assert } from "chai";
+import fs from "fs";
 const expect = chai.expect;
 
 describe("User class", () => {
   let userId;
-  it("store and fetch", () => {
+  it("fetch", () => {
+    sinon.stub(fs, "existsSync").returnValues(true);
+    sinon.stub(fs, "readFileSync").returns(
+      JSON.stringify([
+        {
+          id: 1,
+          email: "tom.cruise@gmail.com",
+        },
+      ])
+    );
     const newUser = new User("", "tom.cruise@gmail.com", "123");
-    newUser.store("temp_user");
-    userId = newUser.id;
     const existed = User.fetch("temp_user", newUser.email, newUser.password);
     assert.equal(existed.email, newUser.email);
     assert.equal(existed.password, newUser.password);

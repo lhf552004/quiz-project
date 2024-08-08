@@ -21,6 +21,7 @@ jobs:
 
       - name: Install dependencies
         run: npm install
+
       - name: Install browser dependencies
         run: |
           sudo apt-get update
@@ -78,3 +79,10 @@ jobs:
           FIREBASE_MESSAGE_SENDER_ID: ${{ secrets.FIREBASE_MESSAGE_SENDER_ID }}
           FIREBASE_APP_ID: ${{ secrets.FIREBASE_APP_ID }}
         run: npx playwright test
+
+      - name: Upload screenshots
+        if: always() # Always run this step, even if previous steps fail
+        uses: actions/upload-artifact@v2
+        with:
+          name: screenshots
+          path: "*.png"
