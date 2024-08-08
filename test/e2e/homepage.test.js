@@ -9,8 +9,8 @@ test("Home Page test", async ({ page, context }) => {
   // Check the presence and functionality of each link
   const links = [
     { href: "http://localhost:3000/", text: "Home" },
-    { href: "http://localhost:3000/users/login", text: "Sign Up" },
-    { href: "http://localhost:3000/users/create", text: "Login" },
+    { href: "http://localhost:3000/users/login", text: "Login" },
+    { href: "http://localhost:3000/users/create", text: "Sign Up" },
     {
       href: "http://localhost:3000/users/dash-board/1",
       text: "User Dashboard",
@@ -34,6 +34,9 @@ test("Home Page test", async ({ page, context }) => {
     await expect(linkElement).toHaveText(link.text);
   }
 
+  const logoLocator = await page.locator('img[src="/img/quizzy_logo.png"]');
+  await expect(logoLocator).toBeVisible();
+  await expect(logoLocator).toHaveAttribute("alt", "Quizzy Logo");
   // Optionally, click each link to ensure it navigates correctly
   for (const link of links) {
     const [newPage] = await Promise.all([
