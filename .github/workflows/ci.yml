@@ -62,7 +62,9 @@ jobs:
             libflac8 \
             libharfbuzz-icu0 \
             libflite1 \
-            libgles2-mesa
+            libgles2-mesa \
+            libevent-2.1-7 \
+            libmanette-0.2-0
 
       - name: Install playwright driver
         run: npx playwright install
