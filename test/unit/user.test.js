@@ -1,4 +1,4 @@
-import { User } from "../src/modules/user.js";
+import { User } from "../../src/modules/user.js";
 import sinon from "sinon";
 import chai, { assert } from "chai";
 import fs from "fs";

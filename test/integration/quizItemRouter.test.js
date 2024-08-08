@@ -1,7 +1,7 @@
 import chai from "chai";
 import chaiHttp from "chai-http";
-import { app } from "../src/serve.js";
-import { Quiz, QuizItem } from "../src/modules/quizbank.js";
+import { app } from "../../src/serve.js";
+import { Quiz, QuizItem } from "../../src/modules/quizbank.js";
 const expect = chai.expect;
 
 chai.use(chaiHttp);

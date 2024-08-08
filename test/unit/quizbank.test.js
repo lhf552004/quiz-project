@@ -1,7 +1,7 @@
 import { expect } from "chai";
 import sinon from "sinon";
-import { QuizItem, Quiz } from "../src/modules/quizbank.js";
-import { db } from "../src/api/config.js";
+import { QuizItem, Quiz } from "../../src/modules/quizbank.js";
+import { db } from "../../src/api/config.js";
 import firebase from "firebase/compat/app";
 import "firebase/compat/firestore";
 import firebaseMock from "firebase-mock";
