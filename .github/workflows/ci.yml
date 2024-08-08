@@ -62,8 +62,7 @@ jobs:
             libflac8 \
             libharfbuzz-icu0 \
             libflite1 \
-            libgles2-mesa \
-            libx264-155
+            libgles2-mesa
 
       - name: Install playwright driver
         run: npx playwright install
