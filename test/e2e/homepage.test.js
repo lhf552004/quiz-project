@@ -33,7 +33,7 @@ test("Home Page test", async ({ page, context }) => {
     await expect(linkElement).toBeVisible();
     await expect(linkElement).toHaveText(link.text);
   }
-
+  await page.waitForSelector("img");
   const logoLocator = await page.locator('img[src="/img/quizzy_logo.png"]');
   await expect(logoLocator).toBeVisible();
   await expect(logoLocator).toHaveAttribute("alt", "Quizzy Logo");
