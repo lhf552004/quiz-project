@@ -2,7 +2,7 @@
 import { defineConfig, devices } from "@playwright/test";
 
 export default defineConfig({
-  testDir: "./test/e2e",
+  testDir: "./e2e",
   timeout: 30000,
   use: {
     headless: true,

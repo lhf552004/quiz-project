@@ -4,7 +4,7 @@
     "start": "cross-env NODE_ENV=development node src/serve.js",
     "start:prod": "cross-env NODE_ENV=production node src/serve.js",
     "start:test": "cross-env NODE_ENV=test node src/serve.js",
-    "test": "npx mocha",
+    "test": "npx mocha test/**/*.test.js",
     "coverage": "nyc npm run test",
     "test:coverage:single": "nyc --reporter=html --reporter=text-summary mocha"
   },
@@ -18,7 +18,6 @@
     "firebase-mock": "^2.3.2",
     "mocha": "^10.2.0",
     "nyc": "^17.0.0",
-    "puppeteer": "^19.7.5",
     "sinon": "^18.0.0"
   },
   "dependencies": {
