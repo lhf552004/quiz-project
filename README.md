@@ -1,7 +1,7 @@
 [![CI](https://github.com/lhf552004/quiz-project/actions/workflows/ci.yml/badge.svg)](https://github.com/lhf552004/quiz-project/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![GitHub release](https://img.shields.io/github/release/lhf552004/quiz-project.svg)](https://GitHub.com/lhf552004/quiz-project/releases/)
-[![GitHub last commit](https://img.shields.io/github/last-commit/lhf552004/quiz-project.svg)](https://github.com/lhf552004/quiz-project/commits/main)
+[![GitHub last commit](https://img.shields.io/github/last-commit/lhf552004/quiz-project.svg)](https://github.com/lhf552004/quiz-project/commits/dev)
 
 # Term Project COMP 6905 Winter 2023
 
