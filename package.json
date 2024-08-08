@@ -11,13 +11,13 @@
   "author": "Yawen Li",
   "license": "ISC",
   "devDependencies": {
+    "@playwright/test": "^1.46.0",
     "chai": "^4.3.7",
     "chai-http": "^4.3.0",
     "cross-env": "^7.0.3",
     "firebase-mock": "^2.3.2",
     "mocha": "^10.2.0",
     "nyc": "^17.0.0",
-    "playwright": "^1.46.0",
     "puppeteer": "^19.7.5",
     "sinon": "^18.0.0"
   },

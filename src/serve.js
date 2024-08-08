@@ -1,11 +1,13 @@
 import qs from "querystring";
-
+import path from "path";
 import express from "express";
 import bodyParser from "body-parser";
 import { homeRouter } from "./routers/home.js";
 import { userRouter } from "./routers/users.js";
 import { quizRouter } from "./routers/quiz.js";
 import { quizItemRouter } from "./routers/quizitem.js";
+import { fileURLToPath } from "url";
+
 /**
  * The main express application object.
  * @typedef {Object} expressApp
@@ -30,6 +32,10 @@ const app = express();
  */
 app.set("view engine", "pug");
 
+// Derive __dirname equivalent
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+console.log(__dirname);
 /**
  * Set the view folder.
  * @name app.set
@@ -38,7 +44,7 @@ app.set("view engine", "pug");
  * @param {string} value - The setting value.
  * @returns {expressApp} The express app instance.
  */
-app.set("views", "./views");
+app.set("views", path.join(__dirname, "views"));
 
 /**
  * Mount the public directory for static files.
@@ -48,7 +54,7 @@ app.set("views", "./views");
  * @param {Function} middleware - The middleware function to mount.
  * @returns {expressApp} The express app instance.
  */
-app.use(express.static("public"));
+app.use(express.static(path.join(__dirname, "..", "public")));
 
 // Use middleware to parse incoming request bodies
 app.use(bodyParser.json()); // for parsing application/json

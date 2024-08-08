@@ -8,7 +8,6 @@ import { config } from "dotenv";
 const env = process.env.NODE_ENV || "development";
 console.log(process.env.NODE_ENV);
 config({ path: `.env.${env}` });
-console.log(process.env.FIREBASE_API_KEY);
 
 // TODO: move it to env
 const firebaseConfig = {
