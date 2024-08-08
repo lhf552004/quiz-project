@@ -22,5 +22,8 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Install playwright driver
+        run: npx playwright install
+
       - name: Run Playwright tests
         run: npx playwright test
