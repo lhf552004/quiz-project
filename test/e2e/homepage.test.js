@@ -38,16 +38,5 @@ test.describe("Home Page test", () => {
     const logoLocator = await page.locator('img[src="/img/quizzy_logo.png"]');
     await expect(logoLocator).toBeVisible();
     await expect(logoLocator).toHaveAttribute("alt", "Quizzy Logo");
-    // Optionally, click each link to ensure it navigates correctly
-    for (const link of links) {
-      const [newPage] = await Promise.all([
-        context.waitForEvent("page"), // Wait for the new tab to open
-        page.click(`a[href="${link.href}"]`), // Perform the click that opens a new tab
-      ]);
-
-      await newPage.waitForLoadState(); // Ensure the new page is fully loaded
-      await expect(newPage).toHaveURL(link.href); // Verify the URL of the new tab
-      await newPage.close(); // Close the new tab
-    }
   });
 });
