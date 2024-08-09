@@ -1,6 +1,9 @@
 {
-  "include": ["src/modules/**/*.js"],
+  "include": ["src/**/*.js"],
   "exclude": ["test/**/*.js", "**/*.config.js"],
-  "reporter": ["html", "text-summary"],
-  "all": true
+  "reporter": ["lcov", "text-summary"],
+  "sourceMap": true,
+  "instrument": true,
+  "cache": true,
+  "all": false
 }

@@ -9,16 +9,18 @@
     "test:integration": "mocha --recursive test/integration",
     "test:watch": "mocha --watch",
     "coverage": "nyc npm run test:unit",
+    "coverage:c8": "c8 npm run test:unit",
     "test:coverage:single": "nyc --reporter=html --reporter=text-summary mocha"
   },
   "author": "Yawen Li",
   "license": "ISC",
   "devDependencies": {
     "@playwright/test": "^1.46.0",
+    "c8": "^10.1.2",
     "chai": "^4.3.7",
     "chai-http": "^4.3.0",
     "cross-env": "^7.0.3",
-    "firebase-mock": "^2.3.2",
+    "firebase-mock": "^2.2.4",
     "mocha": "^10.2.0",
     "nyc": "^17.0.0",
     "sinon": "^18.0.0"
@@ -27,8 +29,7 @@
     "body-parser": "^1.20.2",
     "dotenv": "^16.4.5",
     "express": "^4.18.2",
-    "firebase": "^9.17.1",
-    "nodemon": "^2.0.20",
+    "firebase": "^10.12.5",
     "pug": "^3.0.2",
     "uuid": "^9.0.0"
   }
