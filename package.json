@@ -17,6 +17,7 @@
     "@playwright/test": "^1.46.0",
     "c8": "^10.1.2",
     "chai": "^4.3.7",
+    "chai-as-promised": "^8.0.0",
     "chai-http": "^4.3.0",
     "cross-env": "^7.0.3",
     "firebase-mock": "^2.2.4",

@@ -60,6 +60,7 @@ class QuizItem {
         `Error fetching quiz item with id ${quizItemId} from quiz collection ${quizName}: `,
         error
       );
+      throw new Error(error);
     }
   }
 
@@ -68,51 +69,42 @@ class QuizItem {
    * @param {string} quizName - The name of the quiz to add the quiz items to
    * @description Store the quiz item into database
    */
-  storeQuizItem(quizName) {
-    // Get the collection reference for the quiz with the given name
-    const quizCollectionRef = db.collection(quizName);
+  async storeQuizItem(quizName) {
+    try {
+      // Get the collection reference for the quiz with the given name
+      const quizCollectionRef = db.collection(quizName);
 
-    // Retrieve all quiz items in the collection
-    quizCollectionRef
-      .get()
-      .then((snapshot) => {
-        let maxId = 0;
+      // Retrieve all quiz items in the collection
+      const snapshot = await quizCollectionRef.get();
+      let maxId = 0;
 
-        // Find the maximum ID among the existing quiz items
-        snapshot.forEach((doc) => {
-          const currentId = parseInt(doc.id, 10);
-          if (currentId > maxId) {
-            maxId = currentId;
-          }
-        });
-
-        // Increment the maximum ID by one for the new quiz item
-        const nextId = (maxId + 1).toString();
-
-        // Add the new quiz item with the next ID to the collection
-        quizCollectionRef
-          .doc(nextId)
-          .set({
-            question: this.question,
-            answer: this.answer,
-            options: this.options,
-          })
-          .then(() => {
-            console.log(
-              `Quiz item '${nextId}' added to quiz collection '${quizName}'`
-            );
-          })
-          .catch((error) => {
-            console.error(
-              `Error adding quiz item '${nextId}' to quiz collection '${quizName}': ${error}`
-            );
-          });
-      })
-      .catch((error) => {
-        console.error(
-          `Error retrieving quiz items from collection '${quizName}': ${error}`
-        );
+      // Find the maximum ID among the existing quiz items
+      snapshot.forEach((doc) => {
+        const currentId = parseInt(doc.id, 10);
+        if (currentId > maxId) {
+          maxId = currentId;
+        }
       });
+
+      // Increment the maximum ID by one for the new quiz item
+      const nextId = (maxId + 1).toString();
+
+      // Add the new quiz item with the next ID to the collection
+      await quizCollectionRef.doc(nextId).set({
+        question: this.question,
+        answer: this.answer,
+        options: this.options,
+      });
+
+      console.log(
+        `Quiz item '${nextId}' added to quiz collection '${quizName}'`
+      );
+    } catch (error) {
+      console.error(
+        `Error storing quiz item in collection '${quizName}': ${error}`
+      );
+      throw new Error(error); // Rethrow the error to ensure it's handled by the caller
+    }
   }
 
   /**
@@ -163,10 +155,22 @@ class QuizItem {
    * @param {string} quizName - Name of the quiz collection to delete the quiz item from
    * @param {string} quizItemId - ID of the quiz item to be deleted
    */
-  deleteQuizItem(quizName, quizItemId) {
-    // delete the quiz item in the Firebase Firestore
-    db.collection(quizName).doc(quizItemId).delete();
-    console.log(`Deleted quiz item ${quizItemId} from ${quizName}`);
+  async deleteQuizItem(quizName, quizItemId) {
+    try {
+      const docRef = db.collection(quizName);
+      const doc = await docRef.doc(quizItemId).get();
+      if (doc.exists) {
+        // delete the quiz item in the Firebase Firestore
+        await db.collection(quizName).doc(quizItemId).delete();
+        console.log(`Deleted quiz item ${quizItemId} from ${quizName}`);
+      }
+    } catch (error) {
+      console.error(
+        `Failed to delete quiz item with ID ${quizItemId}: `,
+        error
+      );
+      throw error;
+    }
   }
 
   /**
@@ -179,6 +183,27 @@ class QuizItem {
    */
   async update(quizName, quizItemId, updatedFields) {
     try {
+      // Input type checks
+      if (typeof quizName !== "string" || quizName.trim() === "") {
+        throw new TypeError(
+          `Expected quizName to be a non-empty string, but got '${quizName}'`
+        );
+      }
+      if (typeof quizItemId !== "string" || quizItemId.trim() === "") {
+        throw new TypeError(
+          `Expected quizItemId to be a non-empty string, but got '${quizItemId}'`
+        );
+      }
+      if (
+        updatedFields === null ||
+        typeof updatedFields !== "object" ||
+        Array.isArray(updatedFields)
+      ) {
+        throw new TypeError(
+          `Expected updatedFields to be a non-null object, but got ${typeof updatedFields}`
+        );
+      }
+
       const docRef = db.collection(quizName).doc(quizItemId);
       const doc = await docRef.get();
       if (doc.exists) {
@@ -199,7 +224,7 @@ class QuizItem {
         `Error updating quiz item with ID ${quizItemId} in quiz collection ${quizName}:`,
         error
       );
-      return false;
+      throw error;
     }
   }
 }

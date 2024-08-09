@@ -2,6 +2,22 @@
 import { test, expect } from "@playwright/test";
 
 test.describe("Existed user take exam", () => {
+  test.beforeEach(async ({ page, context }) => {
+    // Start tracing before each test
+    await context.tracing.start({ screenshots: true, snapshots: true });
+  });
+
+  test.afterEach(async ({ page, context }, testInfo) => {
+    // Stop tracing after each test and export if the test failed
+    if (testInfo.status !== testInfo.expectedStatus) {
+      await context.tracing.stop({
+        path: `trace-${testInfo.title.replace(/\s+/g, "_")}.zip`,
+      });
+    } else {
+      await context.tracing.stop();
+    }
+  });
+
   test("Should login successfully and take a exam", async ({
     page,
     context,
@@ -18,7 +34,7 @@ test.describe("Existed user take exam", () => {
     await expect(logoLocator).toBeVisible();
     await expect(logoLocator).toHaveAttribute("alt", "Quizzy Logo");
 
-    const loginElement = await page.locator(`a[href=${loginUrl}"]`);
+    const loginElement = await page.locator(`a[href="${loginUrl}"]`);
     await expect(loginElement).toBeVisible();
     await expect(loginElement).toHaveText("Login");
     await page.click(`a[href="${loginUrl}"]`);
@@ -36,17 +52,17 @@ test.describe("Existed user take exam", () => {
     await submitLocator.click();
 
     // Go back to home
-    const logoElement = await page.locator(`a[href=${homeUrl}"]`);
+    const logoElement = await page.locator(`a[href="${homeUrl}"]`);
     await logoElement.click();
     const titleBack = await page.title();
     expect(titleBack).toBe("Home");
 
     // Go to single quiz page
     const quizElement = await page.locator(
-      `a[href=http://localhost:3000/quiz/GK"]`
+      `a[href="http://localhost:3000/quiz/GK"]`
     );
     await quizElement.click();
-    const quizTitle = await page.locator(`h1.text-center]`);
+    const quizTitle = await page.locator(`h1.text-center`);
     // Here, the text should be `Quiz ${quizname}`
     await expect(quizTitle).toHaveText("Quiz GK");
     // Button navigate to next question
@@ -56,10 +72,10 @@ test.describe("Existed user take exam", () => {
     await expect(nextButton).toBeDisabled();
 
     // First question section
-    const firstH4 = await page.locator(`h4]`).nth(0);
+    const firstH4 = await page.locator(`h4`).nth(0);
     await expect(firstH4).toHaveText("Question 1:");
     // Question
-    const questionElement = await page.locator(`p.quiz-item-question`);
+    const questionElement = await page.locator(`p.quiz-item-question`).first();
     await expect(questionElement).toHaveText("What is the capital of France?");
     // Correct answer option
     const answer1Option = await page.locator(`div.quiz-answer:text("Paris")`);
@@ -92,9 +108,9 @@ test.describe("Existed user take exam", () => {
 
     await nextButton.click();
     await expect(answer2Option).toHaveClass(/.*right.*/);
-    const finishedText = await page
-      .locator('h3:txt("Thank you for completing Quiz")')
-      .nth(1);
+    const finishedText = await page.locator(
+      'h3:has-text("Thank you for completing Quiz")'
+    );
 
     await expect(finishedText).toBeVisible();
   });
