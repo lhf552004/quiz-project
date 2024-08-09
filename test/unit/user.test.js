@@ -107,20 +107,79 @@ describe("User", () => {
         "The user doesn't exist."
       );
 
-      // expect(() => User.update("temp_user", "1", "")).to.throw(
-      //   "The input is not user object."
-      // );
+      expect(() => User.update("temp_user", "1", "")).to.throw(
+        "The input is not user object."
+      );
 
-      // expect(() =>
-      //   User.update("temp_user", "1", JSON.stringify(existingUsers))
-      // ).to.throw("The input is not user object.");
+      expect(() =>
+        User.update("temp_user", "1", JSON.stringify(existingUsers))
+      ).to.throw("The input is not user object.");
     });
 
-    it("Should partial update", () => {});
+    it("Should partial update", () => {
+      const existingUsers = [{ id: "1", email: "test@example.com" }];
+      const stubExistsSync = sandbox.stub(fs, "existsSync").returns(true);
+      const stubReadFileSync = sandbox
+        .stub(fs, "readFileSync")
+        .returns(JSON.stringify(existingUsers));
+      const stubWriteFileSync = sandbox.stub(fs, "writeFileSync");
 
-    it("Should handle database error", () => {});
+      User.update("temp_user", "1", { username: "newUsername" });
 
-    it("Should no side effect", () => {});
+      expect(stubWriteFileSync.calledOnce).to.be.true;
+
+      const updatedUsers = JSON.parse(stubWriteFileSync.getCall(0).args[1]);
+      expect(updatedUsers[0].username).to.equal("newUsername");
+      // Other property should not be changed
+      expect(updatedUsers[0].id).to.equal("1");
+      expect(updatedUsers[0].email).to.equal("test@example.com");
+    });
+
+    it("Should handle database error", () => {
+      const existingUsers = [{ id: "1", email: "test@example.com" }];
+      const stubExistsSync = sandbox.stub(fs, "existsSync").returns(true);
+      const stubReadFileSync = sandbox
+        .stub(fs, "readFileSync")
+        .returns(JSON.stringify(existingUsers));
+      const stubWriteFileSync = sandbox.stub(fs, "writeFileSync");
+      stubWriteFileSync.rejects(new Error("File saving error"));
+
+      expect(() =>
+        User.update("temp_user", "1", { username: "newUsername" })
+      ).to.throw("File saving error");
+    });
+
+    it("Should no side effect", () => {
+      const existingUsers = [
+        { id: "1", email: "test@example.com" },
+        {
+          id: "2",
+          email: "test2@example.com",
+          username: "test2",
+          firstname: "Elon",
+          lastname: "Mask",
+        },
+      ];
+      const stubExistsSync = sandbox.stub(fs, "existsSync").returns(true);
+      const stubReadFileSync = sandbox
+        .stub(fs, "readFileSync")
+        .returns(JSON.stringify(existingUsers));
+      const stubWriteFileSync = sandbox.stub(fs, "writeFileSync");
+
+      User.update("temp_user", "1", { username: "newUsername" });
+
+      expect(stubWriteFileSync.calledOnce).to.be.true;
+
+      const updatedUsers = JSON.parse(stubWriteFileSync.getCall(0).args[1]);
+      const newUpdated = updatedUsers.find((u) => u.id === "1");
+      const anotherUser = updatedUsers.find((u) => u.id === "2");
+      expect(newUpdated.username).to.equal("newUsername");
+      // Other property should not be changed
+      expect(anotherUser.email).to.equal("test2@example.com");
+      expect(anotherUser.username).to.equal("test2");
+      expect(anotherUser.firstname).to.equal("Elon");
+      expect(anotherUser.lastname).to.equal("Mask");
+    });
   });
 
   describe("fetch", () => {

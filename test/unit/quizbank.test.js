@@ -380,12 +380,7 @@ describe("QuizItem", function () {
   });
 
   describe("deleteQuizItem", () => {
-    it("Should delete quizitem successfully", () => {
-      deleteStub = sinon.stub();
-      docStub.returns({
-        delete: deleteStub,
-      });
-    });
+    it("Should delete quizitem successfully", () => {});
 
     it("Should handle quiz item not found", () => {});
 
