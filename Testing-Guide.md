@@ -27,5 +27,5 @@ npm run test:integration
 ## Run e2e test
 
 ```
-npx playwright test
+npm run test:e2e
 ```
