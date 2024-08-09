@@ -5,80 +5,158 @@ import fs from "fs";
 const expect = chai.expect;
 
 describe("User class", () => {
-  let userId;
-  it("fetch", () => {
-    sinon.stub(fs, "existsSync").returnValues(true);
+  // Fake user info
+  const fileName = "temp_user";
+  const email = "tom.cruise@gmail.com";
+  const password = "123";
+
+  it("Fetch user list", () => {
+    // Stub the file, assume it is existed
+    sinon.stub(fs, "existsSync").returns(true);
+    // Stub the read file method
     sinon.stub(fs, "readFileSync").returns(
       JSON.stringify([
         {
           id: 1,
-          email: "tom.cruise@gmail.com",
+          email: email,
+          password: password,
         },
       ])
     );
-    const newUser = new User("", "tom.cruise@gmail.com", "123");
-    const existed = User.fetch("temp_user", newUser.email, newUser.password);
-    assert.equal(existed.email, newUser.email);
-    assert.equal(existed.password, newUser.password);
-    assert.lengthOf(existed.id, 36);
+
+    const users = User.fetchUsers(fileName);
+
+    expect(users).to.have.lengthOf(1);
+    users.forEach((user) => {
+      expect(user).to.not.have.property("password");
+    });
   });
 
-  it("store should failed as duplicate", () => {
-    expect(function () {
-      const newUser = new User("", "tom.cruise@gmail.com", "123");
-      newUser.store("temp_user");
-    }).to.throw(Error, "User already existed.");
+  it("Fetch single user by email and password", () => {
+    // Stub the file, assume it is existed
+    sinon.stub(fs, "existsSync").returns(true);
+    sinon.stub(fs, "readFileSync").returns(
+      JSON.stringify([
+        {
+          id: 1,
+          email: email,
+          password: password,
+        },
+      ])
+    );
+
+    const existed = User.fetch(fileName, email, password);
+
+    expect(existed).not.to.be.undefined;
+    console.log("fetched user is not null");
+    expect(existed).to.have.property("email", email);
   });
 
-  it("update and fetch", () => {
+  it("Create user without duplicate", () => {
+    // Stub the file, assume it is existed
+    sinon.stub(fs, "existsSync").returns(true);
+    // Stub a empty array of users
+    sinon.stub(fs, "readFileSync").returns(JSON.stringify([]));
+    // Stub the write method
+    const writeStub = sinon.stub(fs, "writeFileSync");
+    // Create the user
+    const newUser = new User("", email, password);
+    newUser.store(fileName);
+
+    expect(writeStub.calledOnce).to.be.true;
+  });
+
+  it("Create user with duplicate", () => {
+    // Stub the file, assume it is existed
+    sinon.stub(fs, "existsSync").returns(true);
+    // Stub a empty array of users
+    sinon.stub(fs, "readFileSync").returns(
+      JSON.stringify([
+        {
+          id: 1,
+          email: email,
+          password: password,
+        },
+      ])
+    );
+    // Create the user
+    const newUser = new User("", email, password);
+    expect(() => newUser.store(fileName)).to.throw("User already existed.");
+  });
+
+  it("Update with existed user", () => {
+    // Stub the file, assume it is existed
+    sinon.stub(fs, "existsSync").returns(true);
+    // Stub a empty array of users
+    const existed = {
+      id: 1,
+      email: email,
+      password: password,
+    };
+    sinon.stub(fs, "readFileSync").returns(JSON.stringify([existed]));
+    // Stub the write method
+    const writeStub = sinon.stub(fs, "writeFileSync");
     const updated = {
-      email: "tom2.cruise@gmail.com",
-      username: "tom_cruise",
+      ...existed,
+      username: "TomCruise",
       firstname: "Tom",
       lastname: "Cruise",
-      age: 30,
     };
-    User.update("temp_user", userId, updated);
 
-    const existed = User.fetch("temp_user", updated.email, "123");
-    assert.equal(existed.email, updated.email);
-    assert.equal(existed.username, updated.username);
-    assert.equal(existed.firstname, updated.firstname);
-    assert.equal(existed.lastname, updated.lastname);
-    assert.equal(existed.age, updated.age);
-    assert.equal(existed.password, "123");
-    assert.lengthOf(existed.id, 36);
+    User.update(fileName, 1, updated);
+    const data = JSON.stringify([updated]);
+    // Check it is called
+    expect(writeStub.calledOnce).to.be.true;
+    // Check the parameter is the same
+    const actualCallArgs = writeStub.getCall(0).args[1];
+    const actualData = JSON.parse(actualCallArgs);
+    const expectedData = JSON.parse(data);
+    expect(actualData).to.deep.equal(expectedData);
   });
 
-  it("update should failed as doesn' exist", () => {
-    expect(function () {
-      const updated = {
-        email: "tom2.cruise@gmail.com",
-        username: "tom_cruise",
-        firstname: "Tom",
-        lastname: "Cruise",
-        age: 30,
-      };
-      User.update("temp_user", "123456", updated);
-    }).to.throw(Error, "The user doesn't exist.");
+  it("Update with not existed user", () => {
+    // Stub a empty array of users
+    const existed = {
+      id: 1,
+      email: email,
+      password: password,
+    };
+    // Stub the file, assume it is existed
+    sinon.stub(fs, "existsSync").returns(true);
+    sinon.stub(fs, "readFileSync").returns(JSON.stringify([]));
+    const updated = {
+      ...existed,
+      username: "TomCruise",
+      firstname: "Tom",
+      lastname: "Cruise",
+    };
+    expect(() => User.update(fileName, 1, updated)).to.throw(
+      "The user doesn't exist."
+    );
   });
 
-  it("delete", () => {
-    console.log(userId);
-    User.delete("temp_user", userId);
+  it("Delete user with id", () => {
+    // Stub a empty array of users
+    const existed = {
+      id: 1,
+      email: email,
+      password: password,
+    };
+    // Stub the file, assume it is existed
+    sinon.stub(fs, "existsSync").returns(true);
+    sinon.stub(fs, "readFileSync").returns(JSON.stringify([existed]));
+    // Stub the write method
+    const writeStub = sinon.stub(fs, "writeFileSync");
+    User.delete(fileName, 1);
+    expect(writeStub.calledOnce).to.be.true;
+    // Check the user list is empty
+    const actualCallArgs = writeStub.getCall(0).args[1];
+    const actualData = JSON.parse(actualCallArgs);
+    expect(actualData).to.have.lengthOf(0);
+  });
 
-    var theUser;
-
-    try {
-      theUser = User.fetch("temp_user", "tom2.cruise@gmail.com", "123");
-    } catch (e) {
-      return;
-    }
-
-    if (!theUser) return;
-
-    assert.notEqual(theUser.email, newUser.email);
-    assert.notEqual(theUser.password, newUser.password);
-    assert.notEqual(theUser.id, existed.id);
+  afterEach(() => {
+    // Restore the stubs
+    sinon.restore();
   });
 });

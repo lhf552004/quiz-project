@@ -108,8 +108,7 @@ class User {
       if (fs.existsSync(fileName)) {
         let rawdata = fs.readFileSync(fileName);
         let users = JSON.parse(rawdata);
-        users.map((u) => ({ id: u.id, email: u.email }));
-        return users;
+        return users.map((u) => ({ id: u.id, email: u.email }));
       }
     } catch (err) {}
     return undefined;

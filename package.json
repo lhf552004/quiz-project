@@ -5,10 +5,10 @@
     "start:prod": "cross-env NODE_ENV=production node src/serve.js",
     "start:test": "cross-env NODE_ENV=test node src/serve.js",
     "test": "npx mocha test/**/*.test.js",
-    "test:unit": "mocha --recursive test/unit", 
-    "test:integration": "mocha --recursive test/integration", 
+    "test:unit": "mocha --recursive test/unit",
+    "test:integration": "mocha --recursive test/integration",
     "test:watch": "mocha --watch",
-    "coverage": "nyc npm run test",
+    "coverage": "nyc npm run test:unit",
     "test:coverage:single": "nyc --reporter=html --reporter=text-summary mocha"
   },
   "author": "Yawen Li",

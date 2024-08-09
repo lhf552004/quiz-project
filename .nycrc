@@ -1,5 +1,5 @@
 {
-  "include": ["src/modules/quizbank.js"],
+  "include": ["src/modules/**/*.js"],
   "exclude": ["test/**/*.js", "**/*.config.js"],
   "reporter": ["html", "text-summary"],
   "all": true
