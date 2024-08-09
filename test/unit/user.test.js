@@ -42,7 +42,7 @@ describe("User", () => {
         "username"
       );
 
-      user.store("testBank");
+      user.store("temp_user");
 
       expect(stubExistsSync.calledOnce).to.be.true;
       expect(stubWriteFileSync.calledOnce).to.be.true;
@@ -66,12 +66,12 @@ describe("User", () => {
         "username"
       );
 
-      expect(() => user.store("testBank")).to.throw("User already existed.");
+      expect(() => user.store("temp_user")).to.throw("User already existed.");
     });
   });
 
   describe("update", () => {
-    it("should update an existing user in the database", () => {
+    it("Should update user successfully", () => {
       const existingUsers = [{ id: "1", email: "test@example.com" }];
       const stubExistsSync = sandbox.stub(fs, "existsSync").returns(true);
       const stubReadFileSync = sandbox
@@ -79,7 +79,7 @@ describe("User", () => {
         .returns(JSON.stringify(existingUsers));
       const stubWriteFileSync = sandbox.stub(fs, "writeFileSync");
 
-      User.update("testBank", "1", { username: "newUsername" });
+      User.update("temp_user", "1", { username: "newUsername" });
 
       expect(stubWriteFileSync.calledOnce).to.be.true;
 
@@ -92,9 +92,35 @@ describe("User", () => {
       const stubReadFileSync = sandbox.stub(fs, "readFileSync").returns("[]");
 
       expect(() =>
-        User.update("testBank", "1", { username: "newUsername" })
+        User.update("temp_user", "1", { username: "newUsername" })
       ).to.throw("The user doesn't exist.");
     });
+
+    it("Should handle invalid input", () => {
+      const existingUsers = [{ id: "1", email: "test@example.com" }];
+      const stubExistsSync = sandbox.stub(fs, "existsSync").returns(true);
+      const stubReadFileSync = sandbox
+        .stub(fs, "readFileSync")
+        .returns(JSON.stringify(existingUsers));
+
+      expect(() => User.update("temp_user", "1", null)).to.throw(
+        "The user doesn't exist."
+      );
+
+      // expect(() => User.update("temp_user", "1", "")).to.throw(
+      //   "The input is not user object."
+      // );
+
+      // expect(() =>
+      //   User.update("temp_user", "1", JSON.stringify(existingUsers))
+      // ).to.throw("The input is not user object.");
+    });
+
+    it("Should partial update", () => {});
+
+    it("Should handle database error", () => {});
+
+    it("Should no side effect", () => {});
   });
 
   describe("fetch", () => {
@@ -107,7 +133,7 @@ describe("User", () => {
         .stub(fs, "readFileSync")
         .returns(JSON.stringify(existingUsers));
 
-      const user = User.fetch("testBank", "test@example.com", "password123");
+      const user = User.fetch("temp_user", "test@example.com", "password123");
 
       expect(user).to.be.an.instanceof(User);
       expect(user.email).to.equal("test@example.com");
@@ -117,7 +143,7 @@ describe("User", () => {
       const stubExistsSync = sandbox.stub(fs, "existsSync").returns(true);
       const stubReadFileSync = sandbox.stub(fs, "readFileSync").returns("[]");
 
-      const user = User.fetch("testBank", "test@example.com", "wrongPassword");
+      const user = User.fetch("temp_user", "test@example.com", "wrongPassword");
 
       expect(user).to.be.undefined;
     });
@@ -131,7 +157,7 @@ describe("User", () => {
         .stub(fs, "readFileSync")
         .returns(JSON.stringify(existingUsers));
 
-      const users = User.fetchUsers("testBank");
+      const users = User.fetchUsers("temp_user");
 
       expect(users).to.deep.equal([{ id: "1", email: "test@example.com" }]);
     });
@@ -139,7 +165,7 @@ describe("User", () => {
     it("should return undefined if no users are found", () => {
       const stubExistsSync = sandbox.stub(fs, "existsSync").returns(false);
 
-      const users = User.fetchUsers("testBank");
+      const users = User.fetchUsers("temp_user");
 
       expect(users).to.be.undefined;
     });
@@ -154,7 +180,7 @@ describe("User", () => {
         .returns(JSON.stringify(existingUsers));
       const stubWriteFileSync = sandbox.stub(fs, "writeFileSync");
 
-      const result = User.delete("testBank", "1");
+      const result = User.delete("temp_user", "1");
 
       expect(result).to.equal(0);
       expect(stubWriteFileSync.calledOnce).to.be.true;
@@ -168,7 +194,7 @@ describe("User", () => {
         .stub(fs, "existsSync")
         .throws(new Error("File system error"));
 
-      const result = User.delete("testBank", "1");
+      const result = User.delete("temp_user", "1");
 
       expect(result).to.equal(-1);
     });

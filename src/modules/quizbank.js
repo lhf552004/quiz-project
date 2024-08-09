@@ -10,7 +10,7 @@
  * @typedef import ref from db config file
  */
 import { db } from "../api/config.js";
-import fs from "fs";
+
 /**
  * @class QuizItem representing a Quiz Item.
  * @author: Sukrut

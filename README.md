@@ -3,11 +3,7 @@
 [![GitHub release](https://img.shields.io/github/release/lhf552004/quiz-project.svg)](https://GitHub.com/lhf552004/quiz-project/releases/)
 [![GitHub last commit](https://img.shields.io/github/last-commit/lhf552004/quiz-project.svg)](https://github.com/lhf552004/quiz-project/commits/dev)
 
-# Term Project COMP 6905 Winter 2023
-
-## Team description
-
-[Member roles definition](./doc/memberroles.md)
+# Quiz System
 
 ## Project Description
 
@@ -43,6 +39,10 @@ Add quiz item http://localhost:3000/quizitem/quiz/:name/add-quiz-item (name is t
 Quiz Manage Admin http://localhost:3000/quiz/:name/quiz-admin (name is parameter)
 
 - Replace ':name' with GK to get perfect view [View GK Quiz](http://localhost:3000/quiz/GK/quiz-admin#)
+
+## Testing
+
+[Test Instruction](./Testing-Guide.md)
 
 ## Overall Project Implementation State
 

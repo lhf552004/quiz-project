@@ -4,10 +4,9 @@
     "start": "cross-env NODE_ENV=development node src/serve.js",
     "start:prod": "cross-env NODE_ENV=production node src/serve.js",
     "start:test": "cross-env NODE_ENV=test node src/serve.js",
-    "test": "npx mocha test/**/*.test.js",
-    "test:unit": "mocha --recursive test/unit",
-    "test:integration": "mocha --recursive test/integration",
-    "test:watch": "mocha --watch",
+    "test:unit": "mocha --recursive --exclude test/e2e/**/*.js test/unit/**/*.test.js",
+    "test:integration": "cross-env NODE_ENV=test mocha --recursive test/integration/**/*.test.js",
+    "test:e2e": "cross-env NODE_ENV=test playwright test",
     "coverage": "nyc npm run test:unit",
     "coverage:c8": "c8 npm run test:unit",
     "test:coverage:single": "nyc --reporter=html --reporter=text-summary mocha"
