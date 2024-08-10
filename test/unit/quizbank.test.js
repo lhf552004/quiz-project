@@ -309,12 +309,17 @@ describe("QuizItem", function () {
   });
 
   describe("deleteQuizItem", () => {
-    it("Should delete quizitem successfully", async () => {
-      const docDeleteStub = sinon.stub();
-
+    let docDeleteStub;
+    let docGetStub;
+    beforeEach(function () {
+      docDeleteStub = sinon.stub();
+      docGetStub = sinon.stub();
       docStub.returns({
         delete: docDeleteStub,
+        get: docGetStub,
       });
+    });
+    it("Should delete quizitem successfully", async () => {
       docDeleteStub.resolves();
       const quizItem = new QuizItem("", "", "");
       await expect(quizItem.deleteQuizItem(quizName, quizItemId)).to.be
@@ -322,7 +327,25 @@ describe("QuizItem", function () {
       expect(docDeleteStub.calledOnce).to.be.true;
     });
 
-    it("Should handle quiz item not found", () => {});
+    it("Should handle quiz item not found", async () => {
+      // Simulate the document does not exist
+      docGetStub.resolves({ exists: false });
+      docDeleteStub.resolves(); // Firestore delete will still resolve even if the document doesn't exist
+
+      const quizItem = new QuizItem("testQuiz", "testItem");
+
+      try {
+        await quizItem.deleteQuizItem();
+      } catch (error) {
+        // Handle the error, e.g., log it or throw a custom error
+        expect(error.message).to.equal(
+          `Quiz item with ID 'testItem' not found in quiz 'testQuiz'.`
+        );
+      }
+
+      expect(docGetStub.calledOnce).to.be.true;
+      expect(docDeleteStub.called).to.be.false; // Ensure delete is not called when the item doesn't exist
+    });
 
     it("Should handle firebase error", async () => {
       const docDeleteStub = sinon.stub();
@@ -339,7 +362,28 @@ describe("QuizItem", function () {
       expect(docDeleteStub.calledOnce).to.be.true;
     });
 
-    it("Should no side effect", () => {});
+    it("Should no side effect", async () => {
+      docDeleteStub.resolves();
+
+      docGetStub.resolves({
+        id: "anotherItem",
+        exists: true,
+        data: () => ({
+          id: "anotherItem",
+          answer: "answer",
+          question: "question",
+          options: ["answer", "option2"],
+        }),
+      });
+      const quizItem = new QuizItem();
+      await expect(quizItem.deleteQuizItem(quizName, quizItemId)).to.be
+        .fulfilled;
+      expect(docDeleteStub.calledOnce).to.be.true;
+
+      const result = await quizItem.getQuizItemById(quizItem, "anotherItem");
+      console.log(result);
+      expect(result).to.not.be.null;
+    });
   });
 
   describe("update", () => {

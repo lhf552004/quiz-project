@@ -165,9 +165,17 @@ class QuizItem {
    * @param {string} quizItemId - ID of the quiz item to be deleted
    */
   async deleteQuizItem(quizName, quizItemId) {
-    // delete the quiz item in the Firebase Firestore
-    await db.collection(quizName).doc(quizItemId).delete();
-    console.log(`Deleted quiz item ${quizItemId} from ${quizName}`);
+    try {
+      // delete the quiz item in the Firebase Firestore
+      await db.collection(quizName).doc(quizItemId).delete();
+      console.log(`Deleted quiz item ${quizItemId} from ${quizName}`);
+    } catch (error) {
+      console.error(
+        `Failed to delete quiz item with ID ${quizItemId}: `,
+        error
+      );
+      throw error;
+    }
   }
 
   /**
