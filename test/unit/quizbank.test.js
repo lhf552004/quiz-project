@@ -75,9 +75,9 @@ describe("QuizItem", function () {
       await quizItem.storeQuizItem(quizName); // Call the method being tested
 
       // Verify that the Firestore methods were called correctly
-      console.log("Check collection calling");
+
       expect(collectionStub.calledOnceWithExactly(quizName)).to.be.true;
-      console.log("Check get method calling");
+
       expect(getStub.calledOnce).to.be.true;
       console.log("Check doc method calling");
       expect(docStub.calledOnceWithExactly("2")).to.be.true; // ID is "2" because of the mock
@@ -91,22 +91,21 @@ describe("QuizItem", function () {
     });
 
     it("Store a quiz item with error when fetch from collection in the database", async function () {
-      const consoleErrorSpyOnStore = sinon.spy(console, "error");
-
       // Simulate an error when fetching the collection
       getStub.rejects(new Error("Error fetching collection"));
 
       const quizItem = new QuizItem(testQuestion, testAnswer, testOptions);
-      await quizItem.storeQuizItem(quizName); // Attempt to store the item
+
+      // Attempt to store the item with firebase error
+      await expect(quizItem.storeQuizItem(quizName)).to.be.rejectedWith(
+        "Error fetching collection"
+      );
 
       // Verify that the correct error handling occurred
-      console.log("Check collection calling");
+
       expect(collectionStub.calledOnceWithExactly(quizName)).to.be.true;
-      console.log("Check get method calling");
+
       expect(getStub.calledOnce).to.be.true;
-      console.log("Check the exception");
-      expect(consoleErrorSpyOnStore.calledOnce).to.be.false; // Check error was not logged
-      consoleErrorSpyOnStore.restore(); // Restore original console.error
     });
   });
 
@@ -136,9 +135,9 @@ describe("QuizItem", function () {
       const item = await quizItem.getQuizItemById(quizName, "2");
 
       // Verify that the item was retrieved successfully
-      console.log("Check collection calling");
+
       expect(collectionStub.calledOnceWithExactly(quizName)).to.be.true;
-      console.log("Check get method calling");
+
       expect(docGetStub.calledOnce).to.be.true;
       console.log("Check the item");
       expect(item).to.deep.equal({
@@ -165,9 +164,9 @@ describe("QuizItem", function () {
       const item = await quizItem.getQuizItemById(quizName, "3");
 
       // Verify that null is returned for non-existent items
-      console.log("Check collection calling");
+
       expect(collectionStub.calledOnceWithExactly(quizName)).to.be.true;
-      console.log("Check get method calling");
+
       expect(get2Stub.calledOnce).to.be.true;
       console.log("Check the item");
       expect(item).to.be.null;
@@ -190,9 +189,9 @@ describe("QuizItem", function () {
       const item = await quizItem.getQuizItemById(quizName, "3");
 
       // Verify that the error was logged and handled correctly
-      console.log("Check collection calling");
+
       expect(collectionStub.calledOnceWithExactly(quizName)).to.be.true;
-      console.log("Check get method calling");
+
       expect(get2Stub.calledOnce).to.be.true;
       console.log("Check the item");
       expect(item).to.be.null; // Item should be null if there was an error
@@ -235,9 +234,9 @@ describe("QuizItem", function () {
       const result = await quizItem.correct(quizName, quizItemId, testAnswer);
 
       // Verify that the correct answer is identified
-      console.log("Check collection calling");
+
       expect(collectionStub.calledOnceWithExactly(quizName)).to.be.true;
-      console.log("Check get method calling");
+
       expect(docGetStub.calledOnce).to.be.true;
       console.log("Check the item");
       expect(result).to.be.true;
@@ -272,9 +271,9 @@ describe("QuizItem", function () {
       );
 
       // Verify that the wrong answer is identified correctly
-      console.log("Check collection calling");
+
       expect(collectionStub.calledOnceWithExactly(quizName)).to.be.true;
-      console.log("Check get method calling");
+
       expect(docGetStub.calledOnce).to.be.true;
       console.log("Check the item");
       expect(result).to.be.false;
@@ -305,9 +304,9 @@ describe("QuizItem", function () {
       const result = await quizItem.correct(quizName, quizItemId, testAnswer);
 
       // Verify that the method handles non-existent documents correctly
-      console.log("Check collection calling");
+
       expect(collectionStub.calledOnceWithExactly(quizName)).to.be.true;
-      console.log("Check get method calling");
+
       expect(docGetStub.calledOnce).to.be.true;
       console.log("Check the item");
       console.log(result);
@@ -402,10 +401,10 @@ describe("QuizItem", function () {
       docDeleteStub.resolves();
 
       docGetStub.resolves({
-        id: "anotherItem",
+        id: "anotherItemId",
         exists: true,
         data: () => ({
-          id: "anotherItem",
+          id: "anotherItemId",
           answer: "answer",
           question: "question",
           options: ["answer", "option2"],
@@ -420,9 +419,10 @@ describe("QuizItem", function () {
       expect(docDeleteStub.calledOnce).to.be.true;
 
       // Call getQuizItemById and ensure that another item still exists
-      const result = await quizItem.getQuizItemById(quizName, "anotherItem");
+      const result = await quizItem.getQuizItemById(quizName, "anotherItemId");
       console.log(result);
       expect(result).to.not.be.null;
+      expect(result.id).to.be.equal("anotherItemId");
     });
   });
 

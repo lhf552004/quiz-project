@@ -69,51 +69,42 @@ class QuizItem {
    * @param {string} quizName - The name of the quiz to add the quiz items to
    * @description Store the quiz item into database
    */
-  storeQuizItem(quizName) {
-    // Get the collection reference for the quiz with the given name
-    const quizCollectionRef = db.collection(quizName);
+  async storeQuizItem(quizName) {
+    try {
+      // Get the collection reference for the quiz with the given name
+      const quizCollectionRef = db.collection(quizName);
 
-    // Retrieve all quiz items in the collection
-    quizCollectionRef
-      .get()
-      .then((snapshot) => {
-        let maxId = 0;
+      // Retrieve all quiz items in the collection
+      const snapshot = await quizCollectionRef.get();
+      let maxId = 0;
 
-        // Find the maximum ID among the existing quiz items
-        snapshot.forEach((doc) => {
-          const currentId = parseInt(doc.id, 10);
-          if (currentId > maxId) {
-            maxId = currentId;
-          }
-        });
-
-        // Increment the maximum ID by one for the new quiz item
-        const nextId = (maxId + 1).toString();
-
-        // Add the new quiz item with the next ID to the collection
-        quizCollectionRef
-          .doc(nextId)
-          .set({
-            question: this.question,
-            answer: this.answer,
-            options: this.options,
-          })
-          .then(() => {
-            console.log(
-              `Quiz item '${nextId}' added to quiz collection '${quizName}'`
-            );
-          })
-          .catch((error) => {
-            console.error(
-              `Error adding quiz item '${nextId}' to quiz collection '${quizName}': ${error}`
-            );
-          });
-      })
-      .catch((error) => {
-        console.error(
-          `Error retrieving quiz items from collection '${quizName}': ${error}`
-        );
+      // Find the maximum ID among the existing quiz items
+      snapshot.forEach((doc) => {
+        const currentId = parseInt(doc.id, 10);
+        if (currentId > maxId) {
+          maxId = currentId;
+        }
       });
+
+      // Increment the maximum ID by one for the new quiz item
+      const nextId = (maxId + 1).toString();
+
+      // Add the new quiz item with the next ID to the collection
+      await quizCollectionRef.doc(nextId).set({
+        question: this.question,
+        answer: this.answer,
+        options: this.options,
+      });
+
+      console.log(
+        `Quiz item '${nextId}' added to quiz collection '${quizName}'`
+      );
+    } catch (error) {
+      console.error(
+        `Error storing quiz item in collection '${quizName}': ${error}`
+      );
+      throw new Error(error); // Rethrow the error to ensure it's handled by the caller
+    }
   }
 
   /**
