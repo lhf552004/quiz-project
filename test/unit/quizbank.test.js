@@ -100,95 +100,6 @@ describe("QuizItem", function () {
       expect(consoleErrorSpyOnStore.calledOnce).to.be.false;
       consoleErrorSpyOnStore.restore();
     });
-
-    it("should get a quiz item in the database", async function () {
-      const docGetStub = sinon.stub();
-
-      const itemMock = {
-        question: testQuestion,
-        answer: testAnswer,
-        options: testOptions,
-      };
-      debugger;
-      docStub.returns({
-        get: docGetStub,
-      });
-      docGetStub.resolves({
-        id: quizItemId,
-        exists: true,
-        data: () => itemMock,
-      });
-      // const doc2Stub = sinon.stub(get2Stub, "data").callsFake(itemMock);
-      const quizItem = new QuizItem("", "", "");
-
-      const item = await quizItem.getQuizItemById(quizName, "2");
-
-      // Verify the interactions
-      console.log("Check collection calling");
-      expect(collectionStub.calledOnceWithExactly(quizName)).to.be.true;
-      console.log("Check get method calling");
-      expect(docGetStub.calledOnce).to.be.true;
-      console.log("Check the item");
-      expect(item).to.deep.equal({
-        ...itemMock,
-        id: quizItemId,
-      });
-    });
-
-    it("getQuizItemById should null by wrong id", async function () {
-      const get2Stub = sinon.stub();
-
-      docStub.returns({
-        get: get2Stub,
-      });
-      get2Stub.resolves({
-        id: null,
-        exists: false,
-      });
-      // const doc2Stub = sinon.stub(get2Stub, "data").callsFake(itemMock);
-      const quizItem = new QuizItem("", "", "");
-
-      const item = await quizItem.getQuizItemById(quizName, "3");
-
-      // Verify the interactions
-      console.log("Check collection calling");
-      expect(collectionStub.calledOnceWithExactly(quizName)).to.be.true;
-      console.log("Check get method calling");
-      expect(get2Stub.calledOnce).to.be.true;
-      console.log("Check the item");
-      expect(item).to.be.null;
-    });
-
-    it("getQuizItemById handle error when fetching quiz item", async function () {
-      const get2Stub = sinon.stub();
-
-      const itemMock = {
-        question: testQuestion,
-        answer: testAnswer,
-        options: testOptions,
-      };
-      debugger;
-      docStub.returns({
-        get: get2Stub,
-      });
-      get2Stub.rejects(new Error("Error fetching quiz item"));
-      const consoleErrorSpy = sinon.spy(console, "error");
-
-      // const doc2Stub = sinon.stub(get2Stub, "data").callsFake(itemMock);
-      const quizItem = new QuizItem("", "", "");
-
-      const item = await quizItem.getQuizItemById(quizName, "3");
-
-      // Verify the interactions
-      console.log("Check collection calling");
-      expect(collectionStub.calledOnceWithExactly(quizName)).to.be.true;
-      console.log("Check get method calling");
-      expect(get2Stub.calledOnce).to.be.true;
-      console.log("Check the item");
-      expect(item).to.be.null;
-      expect(consoleErrorSpy.calledOnce).to.be.true;
-      consoleErrorSpy.restore();
-    });
   });
 
   describe("getQuizItemById", () => {
@@ -398,11 +309,35 @@ describe("QuizItem", function () {
   });
 
   describe("deleteQuizItem", () => {
-    it("Should delete quizitem successfully", () => {});
+    it("Should delete quizitem successfully", async () => {
+      const docDeleteStub = sinon.stub();
+
+      docStub.returns({
+        delete: docDeleteStub,
+      });
+      docDeleteStub.resolves();
+      const quizItem = new QuizItem("", "", "");
+      await expect(quizItem.deleteQuizItem(quizName, quizItemId)).to.be
+        .fulfilled;
+      expect(docDeleteStub.calledOnce).to.be.true;
+    });
 
     it("Should handle quiz item not found", () => {});
 
-    it("Should handle database error", () => {});
+    it("Should handle firebase error", async () => {
+      const docDeleteStub = sinon.stub();
+      docStub.returns({
+        delete: docDeleteStub,
+      });
+      docDeleteStub.rejects(new Error("Firestore delete error")); // Simulate a deletion error
+
+      const quizItem = new QuizItem();
+      await expect(
+        quizItem.deleteQuizItem(quizName, quizItemId)
+      ).to.be.rejectedWith("Firestore delete error");
+
+      expect(docDeleteStub.calledOnce).to.be.true;
+    });
 
     it("Should no side effect", () => {});
   });
