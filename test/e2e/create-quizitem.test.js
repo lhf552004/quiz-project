@@ -1,4 +1,3 @@
-// tests/home.test.js
 import { test, expect } from "@playwright/test";
 
 test.describe("Admin user create quiz item", () => {
@@ -18,10 +17,10 @@ test.describe("Admin user create quiz item", () => {
     }
   });
 
-  test("Should create quizitem successfully", async ({ page, context }) => {
-    // Home page
+  test("Should create quiz item successfully", async ({ page }) => {
     const homeUrl = "http://localhost:3000";
     const loginUrl = "http://localhost:3000/users/login";
+
     await page.goto(homeUrl);
     const title = await page.title();
     expect(title).toBe("Home");
@@ -43,9 +42,10 @@ test.describe("Admin user create quiz item", () => {
     const passwordLocator = await page.locator("#password");
     const submitLocator = await page.locator("input[type='submit']");
     await expect(submitLocator).toHaveText("SIGN IN");
+
     // Fill username and password
-    emailLocator.fill("test@example.com");
-    passwordLocator.fill("123");
+    await emailLocator.fill("test@example.com");
+    await passwordLocator.fill("123");
     await submitLocator.click();
 
     // Go back to home
@@ -54,40 +54,37 @@ test.describe("Admin user create quiz item", () => {
     const titleBack = await page.title();
     expect(titleBack).toBe("Home");
 
-    // Go to creating quizitem page
-    const createQuizItemELement = await page.locator(
+    // Go to creating quiz item page
+    const createQuizItemElement = await page.locator(
       `a[href="http://localhost:3000/quizitem/quiz/GK/add-quiz-item"]`
     );
-    await createQuizItemELement.click();
-    const createQuizItemTitle = await page.locator(`h3.page-title`);
-    // Here, the text should be `Quiz ${quizname}`
-    await expect(createQuizItemTitle).toHaveText("Add Question to Your Quiz");
+    await createQuizItemElement.click();
 
-    const questionInput = await page.locator(`#question`);
-    questionInput.fill("Which is city is the captial of Germany");
-
-    const option1Input = await page.locator(`#answer-1`);
-    const option2Input = await page.locator(`#answer-2`);
-    const option3Input = await page.locator(`#answer-3`);
-    const option4Input = await page.locator(`#answer-4`);
-
-    const check1Input = await page.locator(`#check-answer-1`);
-    const createButton = await page.locator(
-      `button.btn.btn-primary.create-quiz-item-btn`
+    // Wait for the URL to change to the quiz item creation page
+    await page.waitForURL(
+      "http://localhost:3000/quizitem/quiz/GK/add-quiz-item"
     );
 
-    option1Input.fill("Berlin");
-    option2Input.fill("London");
-    option3Input.fill("Vienna");
-    option4Input.fill("Zurich");
+    const createQuizItemTitle = await page.locator(`h3.page-title`);
+    await expect(createQuizItemTitle).toHaveText("Add Question to Your Quiz");
 
-    check1Input.check();
+    // Fill in quiz item details
+    await page
+      .locator(`#question`)
+      .fill("Which city is the capital of Germany");
+    await page.locator(`#answer-1`).fill("Berlin");
+    await page.locator(`#answer-2`).fill("London");
+    await page.locator(`#answer-3`).fill("Vienna");
+    await page.locator(`#answer-4`).fill("Zurich");
 
-    createButton.click();
+    await page.locator(`#check-answer-1`).check();
+    await page.locator(`div.btn.btn-primary.create-quiz-item-btn`).click();
 
+    // Wait for the final page to load and validate the title
     await page.waitForURL("http://localhost:3000/quiz/GK");
+
     const quizTitle = await page.locator(`h1.text-center`);
-    // Here, the text should be `Quiz ${quizname}`
-    await expect(quizTitle).toHaveText("Quiz GK");
+    await expect(quizTitle).toBeVisible();
+    await expect(quizTitle).toHaveText("Quiz GK", { timeout: 10000 });
   });
 });
