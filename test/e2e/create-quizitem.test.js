@@ -59,8 +59,35 @@ test.describe("Admin user create quiz item", () => {
       `a[href="http://localhost:3000/quizitem/quiz/GK/add-quiz-item"]`
     );
     await createQuizItemELement.click();
-    const quizTitle = await page.locator(`h3.page-title`);
+    const createQuizItemTitle = await page.locator(`h3.page-title`);
     // Here, the text should be `Quiz ${quizname}`
-    await expect(quizTitle).toHaveText("Add Question to Your Quiz");
+    await expect(createQuizItemTitle).toHaveText("Add Question to Your Quiz");
+
+    const questionInput = await page.locator(`#question`);
+    questionInput.fill("Which is city is the captial of Germany");
+
+    const option1Input = await page.locator(`#answer-1`);
+    const option2Input = await page.locator(`#answer-2`);
+    const option3Input = await page.locator(`#answer-3`);
+    const option4Input = await page.locator(`#answer-4`);
+
+    const check1Input = await page.locator(`#check-answer-1`);
+    const createButton = await page.locator(
+      `button.btn.btn-primary.create-quiz-item-btn`
+    );
+
+    option1Input.fill("Berlin");
+    option2Input.fill("London");
+    option3Input.fill("Vienna");
+    option4Input.fill("Zurich");
+
+    check1Input.check();
+
+    createButton.click();
+
+    await page.waitForURL("http://localhost:3000/quiz/GK");
+    const quizTitle = await page.locator(`h1.text-center`);
+    // Here, the text should be `Quiz ${quizname}`
+    await expect(quizTitle).toHaveText("Quiz GK");
   });
 });
