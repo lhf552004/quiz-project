@@ -28,15 +28,24 @@ describe("QuizItem", function () {
   const testQuestion = "What is the capital of France?";
   const testAnswer = "Paris";
   const testOptions = ["Paris", "Berlin", "London", "Rome"];
-
-  let collectionStub, docStub, setStub, getStub, dbStub;
+  let quizItem;
+  let collectionStub,
+    docStub,
+    setStub,
+    getStub,
+    dbStub,
+    docGetStub,
+    docDeleteStub,
+    docUpdateStub;
 
   beforeEach(() => {
     // Create stubs for Firestore methods
     docStub = sinon.stub();
     setStub = sinon.stub();
     getStub = sinon.stub();
-
+    docGetStub = sinon.stub();
+    docDeleteStub = sinon.stub();
+    docUpdateStub = sinon.stub();
     // Stub Firestore collection and document methods
     collectionStub = sinon.stub(db, "collection").returns({
       doc: docStub,
@@ -44,13 +53,17 @@ describe("QuizItem", function () {
     });
     docStub.returns({
       set: setStub,
+      get: docGetStub,
+      delete: docDeleteStub,
+      update: docUpdateStub,
     });
+    quizItem = new QuizItem();
   });
 
   describe("constructor", () => {
     it("should create a quiz item", async function () {
       // Test that the QuizItem constructor initializes properties correctly
-      const quizItem = new QuizItem(testQuestion, testAnswer, testOptions);
+      quizItem = new QuizItem(testQuestion, testAnswer, testOptions);
 
       // Verify that the properties are set correctly
       expect(quizItem.question).to.be.equal(testQuestion);
@@ -71,7 +84,7 @@ describe("QuizItem", function () {
       getStub.resolves(mockSnapshot);
       setStub.resolves(); // Simulate a successful set operation
 
-      const quizItem = new QuizItem(testQuestion, testAnswer, testOptions);
+      quizItem = new QuizItem(testQuestion, testAnswer, testOptions);
       await quizItem.storeQuizItem(quizName); // Call the method being tested
 
       // Verify that the Firestore methods were called correctly
@@ -94,7 +107,7 @@ describe("QuizItem", function () {
       // Simulate an error when fetching the collection
       getStub.rejects(new Error("Error fetching collection"));
 
-      const quizItem = new QuizItem(testQuestion, testAnswer, testOptions);
+      quizItem = new QuizItem(testQuestion, testAnswer, testOptions);
 
       // Attempt to store the item with firebase error
       await expect(quizItem.storeQuizItem(quizName)).to.be.rejectedWith(
@@ -111,25 +124,17 @@ describe("QuizItem", function () {
 
   describe("getQuizItemById", () => {
     it("Should get a quiz item successfully", async function () {
-      const docGetStub = sinon.stub();
-
       const itemMock = {
         question: testQuestion,
         answer: testAnswer,
         options: testOptions,
       };
 
-      docStub.returns({
-        get: docGetStub,
-      });
-
       docGetStub.resolves({
         id: quizItemId,
         exists: true,
         data: () => itemMock,
       });
-
-      const quizItem = new QuizItem("", "", "");
 
       // Call the method to retrieve a quiz item by ID
       const item = await quizItem.getQuizItemById(quizName, "2");
@@ -158,8 +163,6 @@ describe("QuizItem", function () {
         exists: false, // Simulate a non-existent document
       });
 
-      const quizItem = new QuizItem("", "", "");
-
       // Call the method to retrieve a non-existent quiz item
       const item = await quizItem.getQuizItemById(quizName, "3");
 
@@ -182,8 +185,6 @@ describe("QuizItem", function () {
       // Simulate an error when fetching the quiz item
       get2Stub.rejects(new Error("Error fetching quiz item"));
       const consoleErrorSpy = sinon.spy(console, "error");
-
-      const quizItem = new QuizItem("", "", "");
 
       // Call the method, expecting it to handle the error
       const item = await quizItem.getQuizItemById(quizName, "3");
@@ -210,25 +211,17 @@ describe("QuizItem", function () {
 
   describe("correct", () => {
     it("Should return true for the correct answer", async function () {
-      const docGetStub = sinon.stub();
-
       const itemMock = {
         question: testQuestion,
         answer: testAnswer,
         options: testOptions,
       };
 
-      docStub.returns({
-        get: docGetStub,
-      });
-
       docGetStub.resolves({
         id: quizItemId,
         exists: true,
         data: () => itemMock,
       });
-
-      const quizItem = new QuizItem("", "", "");
 
       // Call the method to check if the correct answer is returned
       const result = await quizItem.correct(quizName, quizItemId, testAnswer);
@@ -243,25 +236,17 @@ describe("QuizItem", function () {
     });
 
     it("Should return false for the wrong answer", async function () {
-      const docGetStub = sinon.stub();
-
       const itemMock = {
         question: testQuestion,
         answer: testAnswer,
         options: testOptions,
       };
 
-      docStub.returns({
-        get: docGetStub,
-      });
-
       docGetStub.resolves({
         id: quizItemId,
         exists: true,
         data: () => itemMock,
       });
-
-      const quizItem = new QuizItem("", "", "");
 
       // Call the method with the wrong answer
       const result = await quizItem.correct(
@@ -280,16 +265,11 @@ describe("QuizItem", function () {
     });
 
     it("Should handle the doc not existed", async function () {
-      const docGetStub = sinon.stub();
       const itemMock = {
         question: testQuestion,
         answer: testAnswer,
         options: testOptions,
       };
-
-      docStub.returns({
-        get: docGetStub,
-      });
 
       // Simulate a document that does not exist
       docGetStub.resolves({
@@ -297,8 +277,6 @@ describe("QuizItem", function () {
         exists: false,
         data: () => itemMock,
       });
-
-      const quizItem = new QuizItem("", "", "");
 
       // Call the method expecting it to handle the non-existent document
       const result = await quizItem.correct(quizName, quizItemId, testAnswer);
@@ -314,21 +292,9 @@ describe("QuizItem", function () {
     });
 
     it("Should handle database error", async function () {
-      const docGetStub = sinon.stub();
-      const itemMock = {
-        question: testQuestion,
-        answer: testAnswer,
-        options: testOptions,
-      };
-
-      docStub.returns({
-        get: docGetStub,
-      });
-
       // Simulate an error when getting the document
       docGetStub.rejects(new Error("Firestore get error"));
 
-      const quizItem = new QuizItem("", "", "");
       const result = quizItem.correct(quizName, quizItemId, testAnswer);
 
       // Verify that the method correctly rejects with the Firestore error
@@ -339,12 +305,10 @@ describe("QuizItem", function () {
 
   describe("deleteQuizItem", () => {
     let docDeleteStub;
-    let docGetStub;
 
     beforeEach(function () {
       // Stub the Firestore delete and get methods
       docDeleteStub = sinon.stub();
-      docGetStub = sinon.stub();
       docStub.returns({
         delete: docDeleteStub,
         get: docGetStub,
@@ -354,8 +318,7 @@ describe("QuizItem", function () {
     it("Should delete quiz item successfully", async () => {
       // Simulate a successful deletion
       docDeleteStub.resolves();
-      const quizItem = new QuizItem("", "", "");
-
+      docGetStub.resolves({ exists: true });
       // Call the method and expect it to fulfill the promise
       await expect(quizItem.deleteQuizItem(quizName, quizItemId)).to.be
         .fulfilled;
@@ -366,8 +329,6 @@ describe("QuizItem", function () {
       // Simulate the document does not exist
       docGetStub.resolves({ exists: false });
       docDeleteStub.resolves(); // Firestore delete will still resolve even if the document doesn't exist
-
-      const quizItem = new QuizItem();
 
       // Call the method expecting it to handle the non-existent item
       try {
@@ -385,9 +346,8 @@ describe("QuizItem", function () {
 
     it("Should handle firebase error", async () => {
       // Simulate a deletion error
+      docGetStub.resolves({ exists: true });
       docDeleteStub.rejects(new Error("Firestore delete error"));
-
-      const quizItem = new QuizItem();
 
       // Call the method and expect it to reject with the Firestore error
       await expect(
@@ -411,8 +371,6 @@ describe("QuizItem", function () {
         }),
       });
 
-      const quizItem = new QuizItem();
-
       // Call the method to delete a quiz item and ensure no side effects
       await expect(quizItem.deleteQuizItem(quizName, quizItemId)).to.be
         .fulfilled;
@@ -427,24 +385,87 @@ describe("QuizItem", function () {
   });
 
   describe("update", () => {
-    it("Should update quiz item successfully", () => {
+    let updateMock = {
+      question: "updated question",
+      answer: "updated answer",
+      options: ["option1", "option2"],
+    };
+    beforeEach(() => {});
+    it("Should update quiz item successfully", async () => {
       // This test would ensure the quiz item is updated correctly
+      docGetStub.resolves({
+        id: quizItemId,
+        exists: true,
+      });
+
+      const result = await quizItem.update(quizName, quizItemId, updateMock);
+      expect(docUpdateStub.calledOnce).to.be.true;
+      expect(docUpdateStub.calledWithExactly(updateMock)).to.be.true;
+
+      // Check that the update method was called with the correct partial data
+      expect(docUpdateStub.args[0][0]).to.deep.equal(updateMock);
+
+      // Verify that the update method returned true, indicating success
+      expect(result).to.be.true;
     });
 
-    it("Should handle quiz item not found", () => {
+    it("Should handle quiz item not found", async () => {
       // This test would ensure the method handles cases where the item does not exist
+      docGetStub.resolves({
+        exists: false,
+      });
+
+      const result = await quizItem.update(quizName, quizItemId, updateMock);
+      await expect(docUpdateStub.calledOnce).to.be.false;
+      await expect(result).to.be.false;
     });
 
     it("Should handle invalid input", () => {
       // This test would ensure the method handles invalid input correctly
+      docGetStub.resolves({
+        id: quizItemId,
+        exists: true,
+        data: () => ({
+          question: testQuestion,
+          answer: testAnswer,
+          options: testOptions,
+        }),
+      });
+      let wrongInput;
+      wrongInput = null;
+
+      const checkInput = async (wrongInput) => {
+        console.log(wrongInput);
+        console.log(typeof wrongInput);
+        await expect(() =>
+          quizItem.update(quizName, quizItemId, wrongInput)
+        ).to.throw(
+          `Expected updatedFields to be a non-null object, but got ${typeof wrongInput}`
+        );
+      };
+      checkInput(null);
+      checkInput("");
+      checkInput([]);
     });
 
-    it("Should partial update", () => {
+    it("Should partial update", async () => {
       // This test would ensure the method handles partial updates correctly
     });
 
-    it("Should handle database error", () => {
+    it("Should handle database error", async () => {
       // This test would ensure the method handles database errors correctly
+      docGetStub.resolves({
+        exists: true,
+      });
+      // Simulate a update error
+      docUpdateStub.rejects(new Error("Firestore delete error"));
+
+      // Call the method and expect it to reject with the Firestore error
+      await expect(
+        quizItem.update(quizName, quizItemId, updateMock)
+      ).to.be.rejectedWith("Firestore delete error");
+
+      expect(docUpdateStub.calledOnce).to.be.true;
     });
 
     it("Should no side effect", () => {

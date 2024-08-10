@@ -104,16 +104,16 @@ describe("User", () => {
         .returns(JSON.stringify(existingUsers));
 
       expect(() => User.update("temp_user", "1", null)).to.throw(
-        "The user doesn't exist."
+        "The input is not valid."
       );
 
       expect(() => User.update("temp_user", "1", "")).to.throw(
-        "The input is not user object."
+        "The input is not valid."
       );
 
       expect(() =>
         User.update("temp_user", "1", JSON.stringify(existingUsers))
-      ).to.throw("The input is not user object.");
+      ).to.throw("The input is not valid.");
     });
 
     it("Should partial update", () => {

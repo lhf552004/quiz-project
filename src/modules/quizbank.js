@@ -157,9 +157,13 @@ class QuizItem {
    */
   async deleteQuizItem(quizName, quizItemId) {
     try {
-      // delete the quiz item in the Firebase Firestore
-      await db.collection(quizName).doc(quizItemId).delete();
-      console.log(`Deleted quiz item ${quizItemId} from ${quizName}`);
+      const docRef = db.collection(quizName);
+      const doc = await docRef.doc(quizItemId).get();
+      if (doc.exists) {
+        // delete the quiz item in the Firebase Firestore
+        await db.collection(quizName).doc(quizItemId).delete();
+        console.log(`Deleted quiz item ${quizItemId} from ${quizName}`);
+      }
     } catch (error) {
       console.error(
         `Failed to delete quiz item with ID ${quizItemId}: `,
@@ -179,6 +183,27 @@ class QuizItem {
    */
   async update(quizName, quizItemId, updatedFields) {
     try {
+      // Input type checks
+      if (typeof quizName !== "string" || quizName.trim() === "") {
+        throw new TypeError(
+          `Expected quizName to be a non-empty string, but got '${quizName}'`
+        );
+      }
+      if (typeof quizItemId !== "string" || quizItemId.trim() === "") {
+        throw new TypeError(
+          `Expected quizItemId to be a non-empty string, but got '${quizItemId}'`
+        );
+      }
+      if (
+        updatedFields === null ||
+        typeof updatedFields !== "object" ||
+        Array.isArray(updatedFields)
+      ) {
+        throw new TypeError(
+          `Expected updatedFields to be a non-null object, but got ${typeof updatedFields}`
+        );
+      }
+
       const docRef = db.collection(quizName).doc(quizItemId);
       const doc = await docRef.get();
       if (doc.exists) {
@@ -199,7 +224,7 @@ class QuizItem {
         `Error updating quiz item with ID ${quizItemId} in quiz collection ${quizName}:`,
         error
       );
-      return false;
+      throw error;
     }
   }
 }
