@@ -60,6 +60,7 @@ class QuizItem {
         `Error fetching quiz item with id ${quizItemId} from quiz collection ${quizName}: `,
         error
       );
+      throw new Error(error);
     }
   }
 
@@ -163,9 +164,9 @@ class QuizItem {
    * @param {string} quizName - Name of the quiz collection to delete the quiz item from
    * @param {string} quizItemId - ID of the quiz item to be deleted
    */
-  deleteQuizItem(quizName, quizItemId) {
+  async deleteQuizItem(quizName, quizItemId) {
     // delete the quiz item in the Firebase Firestore
-    db.collection(quizName).doc(quizItemId).delete();
+    await db.collection(quizName).doc(quizItemId).delete();
     console.log(`Deleted quiz item ${quizItemId} from ${quizName}`);
   }
 

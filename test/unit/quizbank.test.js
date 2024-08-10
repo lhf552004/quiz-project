@@ -5,6 +5,9 @@ import { db } from "../../src/api/config.js";
 import firebase from "firebase/compat/app";
 import "firebase/compat/firestore";
 import firebaseMock from "firebase-mock";
+import chaiAsPromised from "chai-as-promised";
+import chai from "chai";
+chai.use(chaiAsPromised);
 
 // Create a mock Firestore instance
 const mockFirestore = new firebaseMock.MockFirestore();
@@ -376,7 +379,22 @@ describe("QuizItem", function () {
       expect(result).to.be.undefined;
     });
 
-    it("Should handle database error", async function () {});
+    it("Should handle database error", async function () {
+      const docGetStub = sinon.stub();
+      const itemMock = {
+        question: testQuestion,
+        answer: testAnswer,
+        options: testOptions,
+      };
+      docStub.returns({
+        get: docGetStub,
+      });
+      docGetStub.rejects(new Error("Firestore get error"));
+      const quizItem = new QuizItem("", "", "");
+      const result = quizItem.correct(quizName, quizItemId, testAnswer);
+      await expect(result).to.be.rejectedWith("Firestore get error");
+      expect(docGetStub.calledOnce).to.be.true;
+    });
   });
 
   describe("deleteQuizItem", () => {

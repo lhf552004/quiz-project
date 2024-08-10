@@ -16,6 +16,13 @@ npx playwright install
 
 ```
 npm run test:unit
+
+```
+
+Run single file
+
+```
+npx mocha --grep "QuizItem"
 ```
 
 ## Run integration test
