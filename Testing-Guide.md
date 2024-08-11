@@ -43,3 +43,10 @@ Run single test file
 npx cross-env NODE_ENV=test npx playwright test "./test/e2e/create-quizitem.test.js"
 
 ```
+
+Generate report
+
+```
+npx cross-env NODE_ENV=test npx playwright test --reporter=html
+
+```
