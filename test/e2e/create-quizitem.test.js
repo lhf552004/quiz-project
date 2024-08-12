@@ -18,7 +18,7 @@ test.describe("Admin user create quiz item", () => {
   // });
 
   test("Should create quiz item successfully", async ({ page }) => {
-    await page.route("**/quizitem/quiz/*", async (route, request) => {
+    await page.route("**/quizitem/*", async (route, request) => {
       if (request.method() === "POST") {
         // Mock the server-side behavior
         const mockQuizItems = [
