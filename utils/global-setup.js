@@ -1,5 +1,5 @@
 import dotenv from "dotenv";
-import { chromium } from "@playwright/test";
+import { chromium, firefox, webkit } from "@playwright/test";
 
 export default async function globalSetup(config) {
   dotenv.config({
@@ -7,14 +7,25 @@ export default async function globalSetup(config) {
     override: true,
   });
 
-  // Launch a browser instance
-  const browser = await chromium.launch();
-  const context = await browser.newContext();
+  // Launch Chromium browser
+  const chromiumBrowser = await chromium.launch();
+  const chromiumContext = await chromiumBrowser.newContext();
+  await chromiumContext.tracing.start({ screenshots: true, snapshots: true });
 
-  // Start tracing before any tests run
-  await context.tracing.start({ screenshots: true, snapshots: true });
+  // Launch Firefox browser
+  const firefoxBrowser = await firefox.launch();
+  const firefoxContext = await firefoxBrowser.newContext();
+  await firefoxContext.tracing.start({ screenshots: true, snapshots: true });
 
-  // Store the browser instance globally, so it can be accessed in global teardown
-  global.browser = browser;
-  global.context = context;
+  // Launch WebKit browser
+  const webkitBrowser = await webkit.launch();
+  const webkitContext = await webkitBrowser.newContext();
+  await webkitContext.tracing.start({ screenshots: true, snapshots: true });
+
+  // Store the browser and context instances globally
+  global.browsers = {
+    chromium: { browser: chromiumBrowser, context: chromiumContext },
+    firefox: { browser: firefoxBrowser, context: firefoxContext },
+    webkit: { browser: webkitBrowser, context: webkitContext },
+  };
 }

@@ -58,3 +58,9 @@ Debug in UI
 ```
 npx playwright test --ui
 ```
+
+Show trace
+
+```
+npx playwright show-trace trace.zip
+```
