@@ -2,21 +2,21 @@
 import { test, expect } from "@playwright/test";
 
 test.describe("Existed user take exam", () => {
-  test.beforeEach(async ({ page, context }) => {
-    // Start tracing before each test
-    await context.tracing.start({ screenshots: true, snapshots: true });
-  });
+  // test.beforeEach(async ({ page, context }) => {
+  //   // Start tracing before each test
+  //   await context.tracing.start({ screenshots: true, snapshots: true });
+  // });
 
-  test.afterEach(async ({ page, context }, testInfo) => {
-    // Stop tracing after each test and export if the test failed
-    if (testInfo.status !== testInfo.expectedStatus) {
-      await context.tracing.stop({
-        path: `trace-${testInfo.title.replace(/\s+/g, "_")}.zip`,
-      });
-    } else {
-      await context.tracing.stop();
-    }
-  });
+  // test.afterEach(async ({ page, context }, testInfo) => {
+  //   // Stop tracing after each test and export if the test failed
+  //   if (testInfo.status !== testInfo.expectedStatus) {
+  //     await context.tracing.stop({
+  //       path: `trace-${testInfo.title.replace(/\s+/g, "_")}.zip`,
+  //     });
+  //   } else {
+  //     await context.tracing.stop();
+  //   }
+  // });
 
   test("Should login successfully and take a exam", async ({
     page,

@@ -52,3 +52,9 @@ npx cross-env NODE_ENV=test npx playwright test --reporter=html
 npx playwright show-report
 
 ```
+
+Debug in UI
+
+```
+npx playwright test --ui
+```

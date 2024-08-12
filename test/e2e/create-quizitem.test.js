@@ -1,21 +1,21 @@
 import { test, expect } from "@playwright/test";
 
 test.describe("Admin user create quiz item", () => {
-  test.beforeEach(async ({ page, context }) => {
-    // Start tracing before each test
-    await context.tracing.start({ screenshots: true, snapshots: true });
-  });
+  // test.beforeEach(async ({ page, context }) => {
+  //   // Start tracing before each test
+  //   await context.tracing.start({ screenshots: true, snapshots: true });
+  // });
 
-  test.afterEach(async ({ page, context }, testInfo) => {
-    // Stop tracing after each test and export if the test failed
-    if (testInfo.status !== testInfo.expectedStatus) {
-      await context.tracing.stop({
-        path: `trace-${testInfo.title.replace(/\s+/g, "_")}.zip`,
-      });
-    } else {
-      await context.tracing.stop();
-    }
-  });
+  // test.afterEach(async ({ page, context }, testInfo) => {
+  //   // Stop tracing after each test and export if the test failed
+  //   if (testInfo.status !== testInfo.expectedStatus) {
+  //     await context.tracing.stop({
+  //       path: `trace-${testInfo.title.replace(/\s+/g, "_")}.zip`,
+  //     });
+  //   } else {
+  //     await context.tracing.stop();
+  //   }
+  // });
 
   test("Should create quiz item successfully", async ({ page }) => {
     const homeUrl = "http://localhost:3000";
