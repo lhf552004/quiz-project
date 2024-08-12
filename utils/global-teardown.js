@@ -18,6 +18,16 @@ export default async function globalTeardown() {
     await webkit.context.tracing.stop({ path: "trace-webkit.zip" });
     await webkit.browser.close();
   }
+
+  // if (!process.env.CI) {
+  //   // Kill the process running on port 3000 (or the port you're using)
+  //   try {
+  //     console.log("Stopping the server...");
+  //     execSync("lsof -t -i:3000 | xargs kill -9");
+  //   } catch (error) {
+  //     console.error("Failed to stop the server:", error);
+  //   }
+  // }
   console.log("B Y E !");
   // You can add additional cleanup logic here if needed
 }
