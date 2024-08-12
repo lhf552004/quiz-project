@@ -49,4 +49,6 @@ Generate report
 ```
 npx cross-env NODE_ENV=test npx playwright test --reporter=html
 
+npx playwright show-report
+
 ```
