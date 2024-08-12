@@ -1,4 +1,3 @@
-import { FullConfig } from "@playwright/test";
 import dotenv from "dotenv";
 
 export default async function globalSetup(config) {

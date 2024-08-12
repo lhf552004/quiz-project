@@ -44,6 +44,7 @@ test.describe("Admin user create quiz item", () => {
     await expect(submitLocator).toHaveText("SIGN IN");
 
     // Fill username and password
+    // TODO: should move the user and password in the .env
     await emailLocator.fill("test@example.com");
     await passwordLocator.fill("123");
     await submitLocator.click();

@@ -10,6 +10,7 @@ test.describe("Home Page test", () => {
     const passwordLocator = await page.locator("#password");
     const submitLocator = await page.locator("input[type='submit']");
     await expect(submitLocator).toHaveText("SIGN UP");
+    // TODO: should move the user and password in the .env
     emailLocator.fill("testUser");
     passwordLocator.fill("testPassword");
     await submitLocator.click();

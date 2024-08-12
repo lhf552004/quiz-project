@@ -47,6 +47,7 @@ test.describe("Existed user take exam", () => {
     const submitLocator = await page.locator("input[type='submit']");
     await expect(submitLocator).toHaveText("SIGN IN");
     // Fill username and password
+    // TODO: should move the user and password in the .env
     emailLocator.fill("test@example.com");
     passwordLocator.fill("123");
     await submitLocator.click();

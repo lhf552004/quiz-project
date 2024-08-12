@@ -4,6 +4,8 @@ import { defineConfig, devices } from "@playwright/test";
 export default defineConfig({
   testDir: "./test/e2e",
   timeout: 30000,
+  globalSetup: "./utils/global-setup.js", // Path to global setup script
+  globalTeardown: "./utils/global-teardown.js", // Path to global teardown script
   use: {
     headless: true,
     viewport: { width: 1280, height: 720 },
