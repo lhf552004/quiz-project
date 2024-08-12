@@ -64,3 +64,9 @@ Show trace
 ```
 npx playwright show-trace trace.zip
 ```
+
+Kill the port
+
+```
+npx kill-port 3000
+```
