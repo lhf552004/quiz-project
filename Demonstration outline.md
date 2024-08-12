@@ -1,5 +1,9 @@
 # Demonstration
 
+This is a demo project, which is to build a quiz test web system, based on nodejs and express, and the pug template engine.
+
+The test framework and library is mocha chai, sinon, playwright
+
 ## Introduce the structure of the project
 
 test/
