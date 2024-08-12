@@ -18,6 +18,52 @@ test.describe("Admin user create quiz item", () => {
   // });
 
   test("Should create quiz item successfully", async ({ page }) => {
+    await page.route("**/quizitem/quiz/*", async (route, request) => {
+      if (request.method() === "POST") {
+        // Mock the server-side behavior
+        const mockQuizItems = [
+          {
+            id: 1,
+            question: "What is Playwright?",
+            answer: "A testing framework.",
+          },
+          {
+            id: 2,
+            question: "What is Node.js?",
+            answer: "A JavaScript runtime.",
+          },
+          {
+            id: 3,
+            question: "What is the capital of France?",
+            answer: "Paris",
+          },
+        ];
+
+        // Render a mock HTML response
+        const mockHTMLResponse = `
+          <html>
+          <body>
+            <h1>Quiz: ${route.request().url().split("/").pop()}</h1>
+            <ul>
+              ${mockQuizItems
+                .map((item) => `<li>${item.question} - ${item.answer}</li>`)
+                .join("")}
+            </ul>
+          </body>
+          </html>
+        `;
+
+        // Fulfill the route with the mock HTML
+        await route.fulfill({
+          status: 200,
+          contentType: "text/html",
+          body: mockHTMLResponse,
+        });
+      } else {
+        route.continue(); // Continue with the normal request flow for non-POST requests
+      }
+    });
+
     const homeUrl = "http://localhost:3000";
     const loginUrl = "http://localhost:3000/users/login";
 
