@@ -267,7 +267,7 @@ class Quiz {
       console.log(`New quiz added with ID: ${quizName}`);
 
       // Create a new Quiz instance with the new quiz ID
-      const newQuiz = new Quiz(quizName);
+      new Quiz(quizName);
       return quizName;
     } catch (error) {
       console.error("Error creating new quiz: ", error);

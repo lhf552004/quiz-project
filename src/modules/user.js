@@ -93,7 +93,9 @@ class User {
         if (user !== undefined) return Object.assign(new User(), user);
         else return undefined;
       }
-    } catch (err) {}
+    } catch (err) {
+      console.log(err);
+    }
     return undefined;
   }
 
@@ -110,7 +112,9 @@ class User {
         let users = JSON.parse(rawdata);
         return users.map((u) => ({ id: u.id, email: u.email }));
       }
-    } catch (err) {}
+    } catch (err) {
+      console.log(err);
+    }
     return undefined;
   }
 
@@ -133,6 +137,7 @@ class User {
         fs.writeFileSync(fileName, data);
       }
     } catch (err) {
+      console.log(err);
       return -1;
     }
     return 0;

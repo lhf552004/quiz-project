@@ -22,6 +22,9 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Lint
+        run: npm run lint # Run ESLint during the build stage
+
       - name: Install browser dependencies
         run: |
           sudo apt-get update
